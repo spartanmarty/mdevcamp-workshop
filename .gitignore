@@ -1,0 +1,38 @@
+# General
+.gradle
+build
+*.log
+*.keystore
+*.properties
+.DS_Store
+
+# Android
+android/local.properties
+android/gradle.properties
+android/google-services.json
+android/app/build
+android/app/debug
+android/app/release
+
+# iOS
+ios/Pods
+ios/*.xcworkspace
+ios/*.xcodeproj/xcuserdata
+ios/GoogleService-Info.plist
+ios/DerivedData
+
+# IntelliJ/Android Studio
+.idea
+*.iml
+*.hprof
+
+# Kotlin
+.kotlin
+.kotlin_module
+
+# Dependency cache
+**/build/
+**/out/
+**/.mf/
+**/.externalNativeBuild/
+**/CMakeLists.txt.user
