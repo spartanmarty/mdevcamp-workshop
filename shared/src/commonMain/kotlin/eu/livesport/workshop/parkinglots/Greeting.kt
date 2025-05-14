@@ -1,8 +1,8 @@
 package eu.livesport.workshop.parkinglots
 
-class Greeting {
+public class Greeting {
 
-    fun greet(): String {
+    public fun greet(): String {
         return "Hello!"
     }
 }

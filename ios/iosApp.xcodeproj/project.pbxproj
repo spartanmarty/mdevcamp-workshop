@@ -11,6 +11,9 @@
 		058557D9273AAEEB004C7B11 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 058557D8273AAEEB004C7B11 /* Preview Assets.xcassets */; };
 		2152FB042600AC8F00CF470E /* iOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2152FB032600AC8F00CF470E /* iOSApp.swift */; };
 		7555FF83242A565900829871 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7555FF82242A565900829871 /* ContentView.swift */; };
+		7CCAB8CD2DD4B8EB006454D7 /* ApplicationServiceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CCAB8CB2DD4B8EB006454D7 /* ApplicationServiceType.swift */; };
+		7CCAB8CE2DD4B8EB006454D7 /* MultiplatformApplicationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CCAB8CC2DD4B8EB006454D7 /* MultiplatformApplicationService.swift */; };
+		7CCAB8CF2DD4B8EB006454D7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CCAB8CA2DD4B8EB006454D7 /* AppDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +23,9 @@
 		7555FF7B242A565900829871 /* ParkingLots.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ParkingLots.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7555FF82242A565900829871 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		7555FF8C242A565B00829871 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7CCAB8CA2DD4B8EB006454D7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		7CCAB8CB2DD4B8EB006454D7 /* ApplicationServiceType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationServiceType.swift; sourceTree = "<group>"; };
+		7CCAB8CC2DD4B8EB006454D7 /* MultiplatformApplicationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiplatformApplicationService.swift; sourceTree = "<group>"; };
 		AB3632DC29227652001CCB65 /* Config.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -70,10 +76,13 @@
 		7555FF7D242A565900829871 /* iosApp */ = {
 			isa = PBXGroup;
 			children = (
-				058557BA273AAA24004C7B11 /* Assets.xcassets */,
-				7555FF82242A565900829871 /* ContentView.swift */,
-				7555FF8C242A565B00829871 /* Info.plist */,
 				2152FB032600AC8F00CF470E /* iOSApp.swift */,
+				7CCAB8CA2DD4B8EB006454D7 /* AppDelegate.swift */,
+				7CCAB8CB2DD4B8EB006454D7 /* ApplicationServiceType.swift */,
+				7CCAB8CC2DD4B8EB006454D7 /* MultiplatformApplicationService.swift */,
+				7555FF82242A565900829871 /* ContentView.swift */,
+				058557BA273AAA24004C7B11 /* Assets.xcassets */,
+				7555FF8C242A565B00829871 /* Info.plist */,
 				058557D7273AAEEB004C7B11 /* Preview Content */,
 			);
 			path = iosApp;
@@ -186,6 +195,9 @@
 			files = (
 				2152FB042600AC8F00CF470E /* iOSApp.swift in Sources */,
 				7555FF83242A565900829871 /* ContentView.swift in Sources */,
+				7CCAB8CD2DD4B8EB006454D7 /* ApplicationServiceType.swift in Sources */,
+				7CCAB8CE2DD4B8EB006454D7 /* MultiplatformApplicationService.swift in Sources */,
+				7CCAB8CF2DD4B8EB006454D7 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
