@@ -30,6 +30,8 @@ kotlin {
             implementation(libs.koin)
         }
     }
+
+    explicitApi()
 }
 
 android {

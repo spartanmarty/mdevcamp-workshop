@@ -4,6 +4,7 @@ import org.koin.core.KoinApplication
 import org.koin.core.module.Module
 import org.koin.core.context.startKoin
 
+@Suppress("EXPECT_ACTUAL_CLASSIFIERS_ARE_IN_BETA_WARNING")
 public expect class PlatformModules() {
     public val get: KoinApplication.() -> List<Module>
 }
