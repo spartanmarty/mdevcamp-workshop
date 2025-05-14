@@ -3,12 +3,13 @@
 build
 *.log
 *.keystore
-*.properties
 .DS_Store
+
+# Local configuration file (sdk path, etc)
+local.properties
 
 # Android
 android/local.properties
-android/gradle.properties
 android/google-services.json
 android/app/build
 android/app/debug
