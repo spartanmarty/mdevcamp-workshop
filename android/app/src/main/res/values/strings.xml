@@ -6,6 +6,7 @@
     <string name="label_covered">Covered:</string>
     <string name="label_prohibitions">Prohibitions:</string>
     <string name="label_favorites">Favorites</string>
+    <string name="label_parking_lots">Parking Lots</string>
     <string name="covered_yes">Yes</string>
     <string name="covered_no">No</string>
 </resources>

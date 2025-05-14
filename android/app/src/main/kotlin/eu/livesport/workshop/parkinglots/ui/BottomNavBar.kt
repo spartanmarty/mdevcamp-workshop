@@ -9,11 +9,11 @@ import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.navigation.NavController
 import eu.livesport.workshop.parkinglots.R
 import eu.livesport.workshop.parkinglots.navigation.destination.Favorites
 import eu.livesport.workshop.parkinglots.navigation.destination.ParkingLotsList
-import kotlinx.coroutines.processNextEventInCurrentThread
 
 @Composable
 fun BottomNavBar(
@@ -54,12 +54,12 @@ private fun navBarItems(): List<NavBarItem> {
         NavBarItem(
             route = ParkingLotsList,
             icon = R.drawable.icon_list,
-            label = "Parking Lots"
+            label = stringResource(R.string.label_parking_lots)
         ),
         NavBarItem(
             route = Favorites,
             icon = R.drawable.icon_favorites,
-            label = "Favorites"
+            label = stringResource(R.string.label_favorites)
         )
     )
 }

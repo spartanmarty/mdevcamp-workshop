@@ -17,7 +17,6 @@ import eu.livesport.workshop.parkinglots.data.ParkingDetailModel
 import eu.livesport.workshop.parkinglots.ui.common.LabelValueText
 import eu.livesport.workshop.parkinglots.ui.theme.Spacings
 
-
 @Composable
 fun ParkingLotDetailScreen(model: ParkingDetailModel) {
     Column(
