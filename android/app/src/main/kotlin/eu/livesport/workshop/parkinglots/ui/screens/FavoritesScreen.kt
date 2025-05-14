@@ -12,12 +12,13 @@ import androidx.compose.ui.unit.dp
 import eu.livesport.workshop.parkinglots.R
 import eu.livesport.workshop.parkinglots.data.favoriteItemsMock
 import eu.livesport.workshop.parkinglots.ui.common.ParkingItemsList
+import eu.livesport.workshop.parkinglots.ui.theme.Spacings
 
 @Composable
 fun FavoritesScreen(onItemClick: () -> Unit) {
     Column {
         Text(
-            modifier = Modifier.padding(start = 12.dp, end = 12.dp, top = 16.dp),
+            modifier = Modifier.padding(start = Spacings.medium, end = Spacings.medium, top = Spacings.large),
             text = stringResource(R.string.label_favorites),
             style = MaterialTheme.typography.titleLarge,
             fontWeight = FontWeight.Bold,

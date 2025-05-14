@@ -8,6 +8,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Modifier
 import eu.livesport.workshop.parkinglots.data.favoriteItemsMock
 import eu.livesport.workshop.parkinglots.data.parkingItemsMock
 import eu.livesport.workshop.parkinglots.ui.common.ParkingItemsList
@@ -15,8 +16,11 @@ import eu.livesport.workshop.parkinglots.ui.components.ParkingItem
 import eu.livesport.workshop.parkinglots.ui.components.ParkingTypeFilterBar
 
 @Composable
-fun ParkingLotsListScreen(onItemClick: () -> Unit) {
-    Column {
+fun ParkingLotsListScreen(
+    onItemClick: () -> Unit,
+    modifier: Modifier = Modifier,
+) {
+    Column(modifier = modifier) {
         FiltersMock()
         ParkingItemsList(
             items = parkingItemsMock,
