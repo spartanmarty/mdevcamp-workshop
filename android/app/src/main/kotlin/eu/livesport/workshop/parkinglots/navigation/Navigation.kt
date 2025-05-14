@@ -7,9 +7,13 @@ import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import eu.livesport.workshop.parkinglots.data.parkingDetailMock
 import eu.livesport.workshop.parkinglots.navigation.destination.Favorites
 import eu.livesport.workshop.parkinglots.navigation.destination.ParkingLotDetail
 import eu.livesport.workshop.parkinglots.navigation.destination.ParkingLotsList
+import eu.livesport.workshop.parkinglots.ui.screens.FavoritesScreen
+import eu.livesport.workshop.parkinglots.ui.screens.ParkingLotDetailScreen
+import eu.livesport.workshop.parkinglots.ui.screens.ParkingLotsListScreen
 
 @Composable
 fun Navigation(
@@ -25,7 +29,9 @@ fun Navigation(
             navController.navigate(route = ParkingLotDetail)
         }
         parkingLotDetail()
-        favorites()
+        favorites {
+            navController.navigate(route = ParkingLotDetail)
+        }
     }
 }
 
@@ -33,7 +39,7 @@ private fun NavGraphBuilder.parkingLotsList(
     navigateParkingLotDetail: () -> Unit,
 ) {
     composable<ParkingLotsList> {
-        Text(text = "hello list")
+        ParkingLotsListScreen(navigateParkingLotDetail)
     }
 }
 
@@ -41,14 +47,14 @@ private fun NavGraphBuilder.parkingLotDetail(
     navigateBack: () -> Unit = {},
 ) {
     composable<ParkingLotDetail> {
-        Text(text = "hello detail")
+        ParkingLotDetailScreen(parkingDetailMock)
     }
 }
 
 private fun NavGraphBuilder.favorites(
-    navigateBack: () -> Unit = {},
+    navigateParkingLotDetail: () -> Unit,
 ) {
     composable<Favorites> {
-        Text(text = "hello favorites")
+        FavoritesScreen(navigateParkingLotDetail)
     }
 }

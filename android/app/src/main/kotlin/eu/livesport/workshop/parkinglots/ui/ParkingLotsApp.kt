@@ -2,19 +2,16 @@ package eu.livesport.workshop.parkinglots.ui
 
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.compose.rememberNavController
 import eu.livesport.workshop.parkinglots.navigation.Navigation
-import eu.livesport.workshop.parkinglots.ui.theme.parkingLotsColors
+import eu.livesport.workshop.parkinglots.ui.theme.ParkingLotsTheme
 
 @Composable
 fun ParkingLotsApp() {
-    MaterialTheme(
-        colorScheme = parkingLotsColors,
-    ) {
+    ParkingLotsTheme {
         val navController = rememberNavController()
 
         Scaffold(
