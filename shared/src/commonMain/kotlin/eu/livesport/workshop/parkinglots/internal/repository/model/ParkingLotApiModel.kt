@@ -5,12 +5,12 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 internal data class ParkingLotApiModel(
-    val name: String,
-    val capacity: Int,
+    val properties: ParkingLotPropertiesApiModel,
 )
 
 internal fun ParkingLotApiModel.toParkingLot(): ParkingLot =
     ParkingLot(
-        name = name,
-        capacity = capacity,
+        id = properties.id,
+        name = properties.name,
+        capacity = properties.capacity,
     )
