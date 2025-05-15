@@ -6,7 +6,7 @@ import androidx.activity.ComponentActivity
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
-import eu.livesport.workshop.parkinglots.repository.ParkingLotDataRepository
+import eu.livesport.workshop.parkinglots.repository.ParkingRepository
 import kotlinx.coroutines.launch
 
 class MainActivity : ComponentActivity() {
@@ -17,7 +17,7 @@ class MainActivity : ComponentActivity() {
         // FOR TESTING PURPOSES ONLY
         lifecycleScope.launch {
             lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
-                val parkingLots = ParkingLotDataRepository.INSTANCE.getParkingLots()
+                val parkingLots = ParkingRepository.INSTANCE.getParkingLots()
                 Log.d("MainActivity", "Parking lots: $parkingLots")
             }
         }
