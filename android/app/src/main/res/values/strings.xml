@@ -9,4 +9,6 @@
     <string name="label_parking_lots">Parking Lots</string>
     <string name="covered_yes">Yes</string>
     <string name="covered_no">No</string>
+
+    <string name="value_unknown">¯\\_(ツ)_/¯</string>
 </resources>

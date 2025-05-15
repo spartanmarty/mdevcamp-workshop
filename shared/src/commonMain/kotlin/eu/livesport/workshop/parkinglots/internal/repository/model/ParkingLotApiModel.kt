@@ -12,5 +12,7 @@ internal fun ParkingLotApiModel.toParkingLot(): ParkingLot =
     ParkingLot(
         id = properties.id,
         name = properties.name,
+        address = properties.address?.formatted,
         capacity = properties.capacity,
+        covered = properties.covered,
     )
