@@ -1,16 +1,15 @@
 package eu.livesport.workshop.parkinglots.ui.components
 
-import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.FilterChipDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -46,21 +45,24 @@ fun ParkingTypeFilterBar(
 
 @Composable
 private fun FilterChip(selected: Boolean, label: String, onClick: () -> Unit) {
-    val shape = RoundedCornerShape(40.dp)
-    Box(
-        modifier = Modifier
-            .background(
-                color = if (selected) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.surfaceVariant,
-                shape = shape
+    androidx.compose.material3.FilterChip(
+        modifier = Modifier.height(55.dp),
+        selected = true,
+        onClick = onClick,
+        label = {
+            Text(
+                text = label,
+                fontWeight = if (selected) FontWeight.Bold else FontWeight.Normal,
+                fontSize = 18.sp,
+                color = Color.Black
             )
-            .clickable(enabled = true, onClick = onClick)
-            .padding(horizontal = 24.dp, vertical = 12.dp)
-    ) {
-        Text(
-            text = label,
-            fontWeight = if (selected) FontWeight.Bold else FontWeight.Normal,
-            fontSize = 18.sp,
-            color = Color.Black
-        )
-    }
+        },
+        shape = RoundedCornerShape(40.dp),
+        colors = FilterChipDefaults.filterChipColors(
+            selectedContainerColor = MaterialTheme.colorScheme.primary,
+            selectedLabelColor = Color.Black,
+            containerColor = MaterialTheme.colorScheme.surfaceVariant,
+            labelColor = Color.Black
+        ),
+    )
 }
