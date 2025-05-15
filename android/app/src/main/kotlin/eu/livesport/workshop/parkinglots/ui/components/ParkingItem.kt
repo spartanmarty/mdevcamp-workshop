@@ -17,7 +17,6 @@ import eu.livesport.workshop.parkinglots.data.ParkingItemModel
 import eu.livesport.workshop.parkinglots.data.parkingItemsMock
 import eu.livesport.workshop.parkinglots.ui.common.LabelValueText
 import eu.livesport.workshop.parkinglots.ui.theme.ParkingLotsTheme
-import eu.livesport.workshop.parkinglots.ui.theme.Spacings
 
 @Composable
 fun ParkingItem(
@@ -27,7 +26,7 @@ fun ParkingItem(
 ) {
     Card(
         modifier = modifier
-            .padding(Spacings.medium)
+            .padding(8.dp)
             .fillMaxWidth(),
         onClick = { onItemClick(model) },
         colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceVariant),
@@ -35,7 +34,7 @@ fun ParkingItem(
     ) {
         Column(
             modifier = Modifier
-                .padding(Spacings.medium)
+                .padding(8.dp)
         ) {
             ParkingName(model.title)
             ParkingInfo(model)

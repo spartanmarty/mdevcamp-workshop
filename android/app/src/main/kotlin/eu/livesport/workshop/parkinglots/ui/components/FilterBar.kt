@@ -20,7 +20,6 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import eu.livesport.workshop.parkinglots.ui.theme.Spacings
 
 @Composable
 fun ParkingTypeFilterBar(
@@ -32,20 +31,19 @@ fun ParkingTypeFilterBar(
     LazyRow(
         modifier = modifier
             .fillMaxWidth()
-            .padding(vertical = Spacings.large),
-        horizontalArrangement = Arrangement.spacedBy(Spacings.large),
+            .padding(vertical = 16.dp),
+        horizontalArrangement = Arrangement.spacedBy(12.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {
-        item { Spacer(modifier = Modifier.width(Spacings.medium)) }
+        item { Spacer(modifier = Modifier.width(8.dp)) }
         itemsIndexed(filters) { idx, label ->
             val selected = idx == selectedIndex
             FilterChip(selected, label) { onSelected(idx) }
         }
-        item { Spacer(modifier = Modifier.width(Spacings.medium)) }
+        item { Spacer(modifier = Modifier.width(8.dp)) }
     }
 }
 
-// TODO needs rework, new ripple API works oddly and is displaying only as a circle with given radius
 @Composable
 private fun FilterChip(selected: Boolean, label: String, onClick: () -> Unit) {
     val shape = RoundedCornerShape(40.dp)
@@ -56,7 +54,7 @@ private fun FilterChip(selected: Boolean, label: String, onClick: () -> Unit) {
                 shape = shape
             )
             .clickable(enabled = true, onClick = onClick)
-            .padding(horizontal = Spacings.xlarge, vertical = Spacings.large)
+            .padding(horizontal = 24.dp, vertical = 12.dp)
     ) {
         Text(
             text = label,

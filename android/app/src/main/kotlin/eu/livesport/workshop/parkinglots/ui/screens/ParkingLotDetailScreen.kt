@@ -15,22 +15,21 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import eu.livesport.workshop.parkinglots.data.ParkingDetailModel
 import eu.livesport.workshop.parkinglots.ui.common.LabelValueText
-import eu.livesport.workshop.parkinglots.ui.theme.Spacings
 
 @Composable
 fun ParkingLotDetailScreen(model: ParkingDetailModel) {
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .padding(horizontal = Spacings.large)
-            .padding(top = Spacings.xlarge)
+            .padding(horizontal = 18.dp)
+            .padding(top = 24.dp)
     ) {
         // Title
         Text(
             text = model.title,
             style = MaterialTheme.typography.headlineMedium,
             fontWeight = FontWeight.Bold,
-            modifier = Modifier.padding(bottom = Spacings.xlarge).align(Alignment.CenterHorizontally)
+            modifier = Modifier.padding(bottom = 24.dp).align(Alignment.CenterHorizontally)
         )
 
         LabelValueText(
@@ -39,36 +38,36 @@ fun ParkingLotDetailScreen(model: ParkingDetailModel) {
             style = MaterialTheme.typography.bodyLarge,
         )
 
-        Spacer(Modifier.height(Spacings.medium))
+        Spacer(Modifier.height(8.dp))
         LabelValueText(
             label = "Capacity: ",
             value = model.capacity.toString(),
             style = MaterialTheme.typography.bodyLarge,
         )
 
-        Spacer(Modifier.height(Spacings.medium))
+        Spacer(Modifier.height(8.dp))
         LabelValueText(
             label = "Type: ",
             value = model.type,
             style = MaterialTheme.typography.bodyLarge,
         )
 
-        Spacer(Modifier.height(Spacings.medium))
+        Spacer(Modifier.height(8.dp))
         LabelValueText(
             label = "Parking policy: ",
             value = model.parkingPolicy,
             style = MaterialTheme.typography.bodyLarge,
         )
 
-        Spacer(Modifier.height(Spacings.large))
+        Spacer(Modifier.height(16.dp))
         Text(
             text = "Prohibitions:",
             style = MaterialTheme.typography.headlineSmall,
-            modifier = Modifier.padding(bottom = Spacings.small)
+            modifier = Modifier.padding(bottom = 4.dp)
         )
 
         Row(
-            horizontalArrangement = Arrangement.spacedBy(Spacings.large)
+            horizontalArrangement = Arrangement.spacedBy(16.dp)
         ) {
             repeat(3) {
                 ProhibitionIcon()
