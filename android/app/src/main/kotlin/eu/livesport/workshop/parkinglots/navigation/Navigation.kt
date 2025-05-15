@@ -17,43 +17,55 @@ import eu.livesport.workshop.parkinglots.ui.screens.ParkingLotsListScreen
 @Composable
 fun Navigation(
     navController: NavHostController,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    onBottomBarVisibilityChange: (Boolean) -> Unit = {},
 ) {
     NavHost(
         modifier = modifier,
         navController = navController,
         startDestination = ParkingLotsList,
     ) {
-        parkingLotsList {
-            navController.navigate(route = ParkingLotDetail)
-        }
-        parkingLotDetail()
-        favorites {
-            navController.navigate(route = ParkingLotDetail)
-        }
+        parkingLotsList(
+            navigateParkingLotDetail = {
+                navController.navigate(route = ParkingLotDetail)
+            },
+            onBottomBarVisibilityChange = onBottomBarVisibilityChange,
+        )
+        parkingLotDetail(onBottomBarVisibilityChange)
+        favorites(
+            navigateParkingLotDetail = {
+                navController.navigate(route = ParkingLotDetail)
+            },
+            onBottomBarVisibilityChange = onBottomBarVisibilityChange,
+        )
     }
 }
 
 private fun NavGraphBuilder.parkingLotsList(
     navigateParkingLotDetail: () -> Unit,
+    onBottomBarVisibilityChange: (Boolean) -> Unit = {},
 ) {
     composable<ParkingLotsList> {
+        onBottomBarVisibilityChange(true)
         ParkingLotsListScreen(navigateParkingLotDetail)
     }
 }
 
 private fun NavGraphBuilder.parkingLotDetail(
-    navigateBack: () -> Unit = {},
+    onBottomBarVisibilityChange: (Boolean) -> Unit = {},
 ) {
     composable<ParkingLotDetail> {
+        onBottomBarVisibilityChange(false)
         ParkingLotDetailScreen(parkingDetailMock)
     }
 }
 
 private fun NavGraphBuilder.favorites(
     navigateParkingLotDetail: () -> Unit,
+    onBottomBarVisibilityChange: (Boolean) -> Unit = {},
 ) {
     composable<Favorites> {
+        onBottomBarVisibilityChange(true)
         FavoritesScreen(navigateParkingLotDetail)
     }
 }
