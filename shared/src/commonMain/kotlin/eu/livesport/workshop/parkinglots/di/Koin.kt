@@ -1,25 +1,22 @@
 package eu.livesport.workshop.parkinglots.di
 
-import org.koin.core.KoinApplication
 import org.koin.core.module.Module
 import org.koin.core.context.startKoin
+import org.koin.dsl.module
 
-@Suppress("EXPECT_ACTUAL_CLASSIFIERS_ARE_IN_BETA_WARNING")
-public expect class PlatformModules() {
-    public val get: KoinApplication.() -> List<Module>
+internal val platformModule = module {
+    // Register module
+    single { "Default module" }
+
+    // Include another internal module
+    includes(platformSpecificModule)
 }
 
-internal expect val platformMainModule: Module
-
-internal fun koinModules(
-): List<Module> {
-    return listOf(
-        platformMainModule,
-    )
-}
+internal expect val platformSpecificModule: Module
 
 public fun initKoin() {
     startKoin {
-        modules(koinModules())
+        platformModule
+        // Add more modules if needed
     }
 }
