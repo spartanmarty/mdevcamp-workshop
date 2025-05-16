@@ -1,12 +1,15 @@
 import SwiftUI
+import Shared
 
 struct TabItem: View {
 
-	private let model: TabItemModel
+	private let model: TabItemComponentModel
+	private let isActive: Bool
 	private let closure: () -> Void
 
-	init(model: TabItemModel, closure: @escaping () -> Void = {}) {
+	init(model: TabItemComponentModel, isActive: Bool, closure: @escaping () -> Void = {}) {
 		self.model = model
+		self.isActive = isActive
 		self.closure = closure
 	}
 
@@ -16,7 +19,7 @@ struct TabItem: View {
 			label: {
 				Text(model.name)
 					.padding(16)
-					.background(Color.green.opacity(model.isActive ? 1.0 : 0.4))
+					.background(Color.green.opacity(isActive ? 1.0 : 0.4))
 					.cornerRadius(16)
 					.fixedSize()
 			}
@@ -26,6 +29,6 @@ struct TabItem: View {
 }
 
 #Preview {
-	TabItem(model: .init(name: "In-Active", isActive: false))
-	TabItem(model: .init(name: "Active", isActive: true))
+	TabItem(model: .init(id: "", name: "In-Active"), isActive: true)
+	TabItem(model: .init(id: "", name: "Active"), isActive: false)
 }

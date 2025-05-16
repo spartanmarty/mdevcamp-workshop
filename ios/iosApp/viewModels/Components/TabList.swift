@@ -17,9 +17,7 @@ struct TabList: View {
 		ScrollView(.horizontal, showsIndicators: false) {
 			HStack {
 				ForEach(tabs, id: \.id) { tab in
-					TabItem(model: tab, isActive: tab.id == selectedTabId) {
-						closure(tab.id)
-					}
+					TabItem(model: tab, isActive: tab.id == selectedTabId, closure: { closure(tab.id) })
 				}
 			}
 			.padding(16)

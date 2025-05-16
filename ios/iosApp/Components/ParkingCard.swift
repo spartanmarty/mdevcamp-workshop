@@ -1,11 +1,12 @@
 import SwiftUI
+import Shared
 
 struct ParkingCard: View {
 
-	private let model: ParkingCardModel
+	private let model: ParkingCardComponentModel
 	private let closure: () -> Void
 
-	init(model: ParkingCardModel, closure: @escaping () -> Void = {}) {
+	init(model: ParkingCardComponentModel, closure: @escaping () -> Void = {}) {
 		self.model = model
 		self.closure = closure
 	}
@@ -13,46 +14,38 @@ struct ParkingCard: View {
 	var body: some View {
 		Button(
 			action: closure,
-			label: {
-				VStack(alignment: .leading, spacing: 2) {
-					row(keyText: nil, valueText: model.title)
-					row(keyText: "Capacity", valueText: "\(model.capacity)")
-					row(keyText: "address", valueText: model.address)
-					row(keyText: "covered", valueText: "\(model.covered)")
-					row(keyText: "prohibition", valueText: model.prohibition ?? "")
-				}
-				.frame(maxWidth: .infinity, alignment: .leading)
-				.padding(8)
-				.background(Color.green.opacity(0.4))
-				.cornerRadius(8)
-				.padding(.horizontal, 16)
-			}
+			label: contentView,
 		)
 		.buttonStyle(.plain)
-
 	}
 
-	private func row(keyText: String?, valueText: String, isBold: Bool = true) -> some View {
-		HStack {
-			if let keyText {
-				Text("\(keyText): ")
-					.font(.caption)
+	@ViewBuilder
+	private func contentView() -> some View {
+		VStack(alignment: .leading, spacing: 2) {
+			textView(text: model.title, weight: .bold)
+			ForEach(model.rows, id: \.id) { row in
+				HStack {
+					textView(text: row.title)
+					textView(text: row.value, weight: .bold)
+				}
 			}
-			Text(valueText)
-				.font(.caption)
-				.fontWeight(.bold)
 		}
+		.frame(maxWidth: .infinity, alignment: .leading)
+		.padding(8)
+		.background(Color.green.opacity(0.4))
+		.cornerRadius(8)
+		.padding(.horizontal, 16)
+	}
+
+	private func textView(
+		text: String, font: Font = .caption, weight: Font.Weight = .regular
+	) -> some View {
+		Text(text)
+			.font(font)
+			.fontWeight(weight)
 	}
 }
 
 #Preview {
-	ParkingCard(
-		model: .init(
-			title: "Parkoviště - Areál Gayerova kasárna",
-			capacity: 60,
-			address: "nám. Dr. E. Beneše, 46001 Liberec Staré Město, Česko",
-			covered: true,
-			prohibition: "lpg, motorcycle"
-		)
-	)
+	ParkingCard(model: .mock)
 }

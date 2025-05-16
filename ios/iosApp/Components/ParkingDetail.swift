@@ -1,36 +1,30 @@
 import SwiftUI
+import Shared
 
 struct ParkingDetail: View {
 
-	private let model: ParkingCardModel
-
-	init(model: ParkingCardModel) {
-		self.model = model
-	}
+	let model: ParkingDetailComponentModel
 
     var body: some View {
 		VStack(spacing: 0) {
-			title
-			detail
+			textView(text: model.title)
+			detail(rows: model.rows)
 			sectionProhibition
 		}
 		.frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
     }
 
-	private var title: some View {
-		Text(model.title)
-			.font(.title)
-	}
-
-	private var detail: some View {
-		VStack(alignment: .leading, spacing: 4) {
-			row(keyText: "Capacity", valueText: "\(model.capacity)")
-			row(keyText: "address", valueText: model.address)
-			row(keyText: "covered", valueText: "\(model.covered)")
-			row(keyText: "prohibition", valueText: model.prohibition ?? "")
-		}
-		.padding(16)
-		.frame(maxWidth: .infinity, alignment: .leading)
+	private func detail(rows: [RowComponentModel]) -> some View {
+			VStack(alignment: .leading, spacing: 4) {
+				ForEach(rows, id: \.id) { row in
+					HStack {
+						textView(text: row.title)
+						textView(text: row.value, weight: .bold)
+					}
+				}
+			}
+			.padding(16)
+			.frame(maxWidth: .infinity, alignment: .leading)
 	}
 
 	private var sectionProhibition: some View {
@@ -54,27 +48,16 @@ struct ParkingDetail: View {
 		.frame(maxWidth: .infinity, alignment: .leading)
 	}
 
-	private func row(keyText: String?, valueText: String, isBold: Bool = true) -> some View {
-		HStack(alignment: .top) {
-			if let keyText {
-				Text("\(keyText): ")
-					.font(.caption)
-			}
-			Text(valueText)
-				.font(.caption)
-				.fontWeight(.bold)
-		}
+	private func textView(
+		text: String, font: Font = .caption, weight: Font.Weight = .regular
+	) -> some View {
+		Text(text)
+			.font(font)
+			.fontWeight(weight)
 	}
+	
 }
 
 #Preview {
-    ParkingDetail(
-		model: .init(
-			title: "Parkoviště - Areál Gayerova kasárna",
-			capacity: 60,
-			address: "nám. Dr. E. Beneše, 46001 Liberec Staré Město, Česko",
-			covered: true,
-			prohibition: "lpg, motorcycle"
-		)
-	)
+	ParkingDetail(model: .mock)
 }
