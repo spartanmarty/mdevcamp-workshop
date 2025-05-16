@@ -30,6 +30,8 @@ kotlin {
             // put your Multiplatform dependencies here
         }
     }
+
+    explicitApi()
 }
 
 android {
