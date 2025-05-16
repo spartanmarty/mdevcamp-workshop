@@ -14,6 +14,7 @@ struct ParkingListView: View {
 
     var body: some View {
 		VStack(spacing: 0) {
+			TabsView()
 			ScrollView {
 				switch viewModel.viewState {
 				case .loading:

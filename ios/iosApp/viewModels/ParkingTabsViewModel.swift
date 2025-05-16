@@ -33,11 +33,7 @@ final class ParkingTabsViewModel: ObservableObject {
 	}
 
 	func fetchTabs() {
-		let tabs: [TabItemComponentModel] = [
-			.init(id: "OnStreet", name: "OnStreet"),
-			.init(id: "Underground", name: "Underground"),
-			.init(id: "Multi Storey", name: "Multi Storey"),
-		]
+		let tabs: [TabItemComponentModel] = .mock
 		self.viewState = .data(model: tabs)
 		self.selectedTabId = tabs.first?.id
 	}

@@ -39,26 +39,29 @@ struct RootView: View {
 	private var homeView: some View {
 		NavigationStack(path: $path) {
 			VStack(spacing: 0) {
-				TabsView()
-				
+				ParkingListView { parkId in
+					path.append(Route.parkingDetail(id: parkId))
+				}
+
 				Button(
 					action: {
 						path.append(Route.someOtherView)
 					},
-					label: { Text("Open some other View") }
+					label: {
+						Text("Open some other View")
+							.padding(16)
+					}
 				)
-
-				ParkingListView { parkId in
-					path.append(Route.parkingDetail(id: parkId))
-				}
 			}
 			.navigationDestination(for: Route.self) { route in
 				switch route {
 				case .parkingDetail(let id):
 					ParkingDetailView(parkId: id)
+						.toolbar(.hidden, for: .tabBar)
 
 				case .someOtherView:
 					SomeOtherView()
+						.toolbar(.hidden, for: .tabBar)
 				}
 			}
 		}

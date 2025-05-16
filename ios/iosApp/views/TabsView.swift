@@ -26,14 +26,5 @@ struct TabsView: View {
 }
 
 #Preview {
-	TabList(
-		tabs: [
-			.init(id: "OnStreet", name: "OnStreet"),
-			.init(id: "Underground", name: "Underground"),
-			.init(id: "Multi Storey", name: "Multi Storey"),
-		],
-		selectedTabId: "OnStreet",
-		closure: { _ in }
-	)
-
+	TabsView()
 }

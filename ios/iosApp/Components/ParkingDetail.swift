@@ -7,9 +7,9 @@ struct ParkingDetail: View {
 
     var body: some View {
 		VStack(spacing: 0) {
-			textView(text: model.title)
+			TextView(text: model.title)
 			detail(rows: model.rows)
-			sectionProhibition
+			sectionProhibition(items: model.prohibitions)
 		}
 		.frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
     }
@@ -18,8 +18,8 @@ struct ParkingDetail: View {
 			VStack(alignment: .leading, spacing: 4) {
 				ForEach(rows, id: \.id) { row in
 					HStack {
-						textView(text: row.title)
-						textView(text: row.value, weight: .bold)
+						TextView(text: row.title)
+						TextView(text: row.value, weight: .bold)
 					}
 				}
 			}
@@ -27,35 +27,31 @@ struct ParkingDetail: View {
 			.frame(maxWidth: .infinity, alignment: .leading)
 	}
 
-	private var sectionProhibition: some View {
-		VStack(alignment: .leading, spacing: 0) {
-			Text("Prohibition")
-				.font(.body)
+	private func sectionProhibition(items: [ProhibitionComponentModel]) -> some View {
+		Group {
+			if !items.isEmpty {
+				VStack(alignment: .leading, spacing: 0) {
+					Text("Prohibition")
+						.font(.body)
 
-			HStack(spacing: 0) {
-				ProhibitionItem()
-				ProhibitionItem()
-				ProhibitionItem()
-				ProhibitionItem()
-				ProhibitionItem()
-				ProhibitionItem()
+					HStack(spacing: 0) {
+						ForEach(items, id: \.id) { item in
+							ProhibitionItem()
+						}
+					}
+
+
+				}
+				.padding(.top, 32)
+				.padding(.horizontal, 16)
+				.frame(maxWidth: .infinity, alignment: .leading)
 			}
-
-
+			else {
+				ProgressView()
+					.frame(maxWidth: .infinity, alignment: .center)
+			}
 		}
-		.padding(.top, 32)
-		.padding(.horizontal, 16)
-		.frame(maxWidth: .infinity, alignment: .leading)
 	}
-
-	private func textView(
-		text: String, font: Font = .caption, weight: Font.Weight = .regular
-	) -> some View {
-		Text(text)
-			.font(font)
-			.fontWeight(weight)
-	}
-	
 }
 
 #Preview {

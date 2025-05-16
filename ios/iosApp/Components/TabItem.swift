@@ -17,7 +17,7 @@ struct TabItem: View {
 		Button(
 			action: closure,
 			label: {
-				Text(model.name)
+				TextView(text: model.name, font: .headline)
 					.padding(16)
 					.background(Color.green.opacity(isActive ? 1.0 : 0.4))
 					.cornerRadius(16)

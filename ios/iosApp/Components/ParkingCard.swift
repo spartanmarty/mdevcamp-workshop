@@ -22,11 +22,11 @@ struct ParkingCard: View {
 	@ViewBuilder
 	private func contentView() -> some View {
 		VStack(alignment: .leading, spacing: 2) {
-			textView(text: model.title, weight: .bold)
+			TextView(text: model.title, weight: .bold)
 			ForEach(model.rows, id: \.id) { row in
 				HStack {
-					textView(text: row.title)
-					textView(text: row.value, weight: .bold)
+					TextView(text: row.title)
+					TextView(text: row.value, weight: .bold)
 				}
 			}
 		}
@@ -35,14 +35,6 @@ struct ParkingCard: View {
 		.background(Color.green.opacity(0.4))
 		.cornerRadius(8)
 		.padding(.horizontal, 16)
-	}
-
-	private func textView(
-		text: String, font: Font = .caption, weight: Font.Weight = .regular
-	) -> some View {
-		Text(text)
-			.font(font)
-			.fontWeight(weight)
 	}
 }
 

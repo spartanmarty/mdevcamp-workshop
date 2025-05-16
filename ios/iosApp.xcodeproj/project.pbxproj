@@ -13,7 +13,7 @@
 		7555FF83242A565900829871 /* ParkingListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7555FF82242A565900829871 /* ParkingListView.swift */; };
 		7C35D23E2DD729A5007B26FB /* ScrollShadowMask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C35D23D2DD72999007B26FB /* ScrollShadowMask.swift */; };
 		7C35D2402DD736B2007B26FB /* ParkingListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C35D23F2DD736B1007B26FB /* ParkingListViewModel.swift */; };
-		7C35D2422DD73799007B26FB /* Mock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C35D2412DD73793007B26FB /* Mock.swift */; };
+		7C35D2422DD73799007B26FB /* ParkingDetailComponentModel+Mock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C35D2412DD73793007B26FB /* ParkingDetailComponentModel+Mock.swift */; };
 		7C35D2442DD73849007B26FB /* ParkingCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C35D2432DD73849007B26FB /* ParkingCard.swift */; };
 		7C35D2482DD74D0E007B26FB /* ParkingDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C35D2472DD74D00007B26FB /* ParkingDetailViewModel.swift */; };
 		7C35D24D2DD75826007B26FB /* ParkingDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C35D24C2DD75826007B26FB /* ParkingDetail.swift */; };
@@ -24,6 +24,9 @@
 		7C35D2592DD7706D007B26FB /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C35D2582DD7706D007B26FB /* SettingsView.swift */; };
 		7C35D25B2DD772FD007B26FB /* FavoritesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C35D25A2DD772F8007B26FB /* FavoritesView.swift */; };
 		7C35D25D2DD77469007B26FB /* SomeOtherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C35D25C2DD77464007B26FB /* SomeOtherView.swift */; };
+		7C35D25F2DD77594007B26FB /* TextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C35D25E2DD77591007B26FB /* TextView.swift */; };
+		7C35D2612DD77A33007B26FB /* ParkingCardComponentModel+Mock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C35D2602DD77A30007B26FB /* ParkingCardComponentModel+Mock.swift */; };
+		7C35D2632DD77A86007B26FB /* ListTabItemComponentModel+Mock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C35D2622DD77A70007B26FB /* ListTabItemComponentModel+Mock.swift */; };
 		7CCAB8E52DD4D1DE006454D7 /* TabItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CCAB8E12DD4D1DE006454D7 /* TabItem.swift */; };
 		7CCAB8EB2DD4D772006454D7 /* ParkingDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CCAB8EA2DD4D772006454D7 /* ParkingDetailView.swift */; };
 		7CCAB8ED2DD4E9FA006454D7 /* ProhibitionItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CCAB8EC2DD4E9F4006454D7 /* ProhibitionItem.swift */; };
@@ -38,7 +41,7 @@
 		7555FF8C242A565B00829871 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7C35D23D2DD72999007B26FB /* ScrollShadowMask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollShadowMask.swift; sourceTree = "<group>"; };
 		7C35D23F2DD736B1007B26FB /* ParkingListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkingListViewModel.swift; sourceTree = "<group>"; };
-		7C35D2412DD73793007B26FB /* Mock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mock.swift; sourceTree = "<group>"; };
+		7C35D2412DD73793007B26FB /* ParkingDetailComponentModel+Mock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ParkingDetailComponentModel+Mock.swift"; sourceTree = "<group>"; };
 		7C35D2432DD73849007B26FB /* ParkingCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkingCard.swift; sourceTree = "<group>"; };
 		7C35D2472DD74D00007B26FB /* ParkingDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkingDetailViewModel.swift; sourceTree = "<group>"; };
 		7C35D24C2DD75826007B26FB /* ParkingDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkingDetail.swift; sourceTree = "<group>"; };
@@ -49,6 +52,9 @@
 		7C35D2582DD7706D007B26FB /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		7C35D25A2DD772F8007B26FB /* FavoritesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesView.swift; sourceTree = "<group>"; };
 		7C35D25C2DD77464007B26FB /* SomeOtherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SomeOtherView.swift; sourceTree = "<group>"; };
+		7C35D25E2DD77591007B26FB /* TextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextView.swift; sourceTree = "<group>"; };
+		7C35D2602DD77A30007B26FB /* ParkingCardComponentModel+Mock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ParkingCardComponentModel+Mock.swift"; sourceTree = "<group>"; };
+		7C35D2622DD77A70007B26FB /* ListTabItemComponentModel+Mock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ListTabItemComponentModel+Mock.swift"; sourceTree = "<group>"; };
 		7CCAB8E12DD4D1DE006454D7 /* TabItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabItem.swift; sourceTree = "<group>"; };
 		7CCAB8EA2DD4D772006454D7 /* ParkingDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkingDetailView.swift; sourceTree = "<group>"; };
 		7CCAB8EC2DD4E9F4006454D7 /* ProhibitionItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProhibitionItem.swift; sourceTree = "<group>"; };
@@ -128,7 +134,9 @@
 		7C35D24A2DD757E6007B26FB /* mocks */ = {
 			isa = PBXGroup;
 			children = (
-				7C35D2412DD73793007B26FB /* Mock.swift */,
+				7C35D2622DD77A70007B26FB /* ListTabItemComponentModel+Mock.swift */,
+				7C35D2602DD77A30007B26FB /* ParkingCardComponentModel+Mock.swift */,
+				7C35D2412DD73793007B26FB /* ParkingDetailComponentModel+Mock.swift */,
 			);
 			path = mocks;
 			sourceTree = "<group>";
@@ -144,9 +152,9 @@
 		7C35D24E2DD75927007B26FB /* views */ = {
 			isa = PBXGroup;
 			children = (
-				7C35D25C2DD77464007B26FB /* SomeOtherView.swift */,
 				7C35D2502DD761D7007B26FB /* RootView.swift */,
 				7C35D2542DD76711007B26FB /* TabsView.swift */,
+				7C35D25C2DD77464007B26FB /* SomeOtherView.swift */,
 				7555FF82242A565900829871 /* ParkingListView.swift */,
 				7CCAB8EA2DD4D772006454D7 /* ParkingDetailView.swift */,
 				7C35D25A2DD772F8007B26FB /* FavoritesView.swift */,
@@ -158,6 +166,7 @@
 		7CCAB8E42DD4D1DE006454D7 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				7C35D25E2DD77591007B26FB /* TextView.swift */,
 				7C35D2562DD76868007B26FB /* TabList.swift */,
 				7C35D24C2DD75826007B26FB /* ParkingDetail.swift */,
 				7C35D2432DD73849007B26FB /* ParkingCard.swift */,
@@ -282,13 +291,16 @@
 				7C35D25D2DD77469007B26FB /* SomeOtherView.swift in Sources */,
 				7C35D2442DD73849007B26FB /* ParkingCard.swift in Sources */,
 				7C35D2552DD76719007B26FB /* TabsView.swift in Sources */,
+				7C35D2612DD77A33007B26FB /* ParkingCardComponentModel+Mock.swift in Sources */,
 				7C35D2592DD7706D007B26FB /* SettingsView.swift in Sources */,
 				7C35D23E2DD729A5007B26FB /* ScrollShadowMask.swift in Sources */,
 				7C35D2512DD761D7007B26FB /* RootView.swift in Sources */,
 				7C35D24D2DD75826007B26FB /* ParkingDetail.swift in Sources */,
 				7C35D25B2DD772FD007B26FB /* FavoritesView.swift in Sources */,
 				7555FF83242A565900829871 /* ParkingListView.swift in Sources */,
-				7C35D2422DD73799007B26FB /* Mock.swift in Sources */,
+				7C35D2422DD73799007B26FB /* ParkingDetailComponentModel+Mock.swift in Sources */,
+				7C35D2632DD77A86007B26FB /* ListTabItemComponentModel+Mock.swift in Sources */,
+				7C35D25F2DD77594007B26FB /* TextView.swift in Sources */,
 				7C35D2572DD76868007B26FB /* TabList.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

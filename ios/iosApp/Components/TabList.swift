@@ -30,11 +30,7 @@ struct TabList: View {
 
 #Preview {
 	TabList(
-		tabs: [
-			.init(id: "OnStreet", name: "OnStreet"),
-			.init(id: "Underground", name: "Underground"),
-			.init(id: "Multi Storey", name: "Multi Storey"),
-		],
+		tabs: .mock,
 		selectedTabId: "OnStreet",
 		closure: { _ in }
 	)
