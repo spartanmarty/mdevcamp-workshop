@@ -16,4 +16,4 @@ We are using third party API for the parking data. There are few easy steps to g
 
 * Create an account on [Golemio API](https://api.golemio.cz/docs/public-openapi/) and follow the instructions
 in **General info -> Authorization**
-* Once you have your own API key, replace `GOLEMIO_API_KEY` inside the `NetworkExecutor` class
+* Once you have your own API key, replace `GOLEMIO_API_KEY` inside the `NetworkExecutorImpl` class

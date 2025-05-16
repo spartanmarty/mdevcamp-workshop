@@ -6,6 +6,7 @@ plugins {
 
     alias(libs.plugins.kotlin.multiplatform)
     alias(libs.plugins.kotlin.serialization)
+    alias(libs.plugins.testing.mokkery)
 }
 
 kotlin {
@@ -15,7 +16,7 @@ kotlin {
             jvmTarget.set(JvmTarget.JVM_11)
         }
     }
-    
+
     listOf(
         iosX64(),
         iosArm64(),
@@ -26,7 +27,7 @@ kotlin {
             isStatic = true
         }
     }
-    
+
     sourceSets {
         commonMain.dependencies {
             implementation(libs.kotlinx.coroutines.core)
@@ -43,6 +44,11 @@ kotlin {
 
         iosMain.dependencies {
             implementation(libs.ktor.client.darwin)
+        }
+
+        commonTest.dependencies {
+            implementation(libs.testing.kotlin)
+            implementation(libs.testing.kotlin.coroutines)
         }
     }
 }

@@ -1,6 +1,8 @@
 package eu.livesport.workshop.parkinglots.internal.repository.api
 
 import eu.livesport.workshop.parkinglots.internal.network.NetworkExecutor
+import eu.livesport.workshop.parkinglots.internal.network.NetworkExecutorImpl
+import eu.livesport.workshop.parkinglots.internal.network.get
 import eu.livesport.workshop.parkinglots.internal.repository.model.ParkingApiModel
 import eu.livesport.workshop.parkinglots.internal.repository.model.ParkingLotApiModel
 
@@ -17,7 +19,7 @@ internal class ParkingApi(
     companion object {
         // TODO: Use DI to inject the repository.
         val INSTANCE: ParkingApi by lazy {
-            ParkingApi(networkExecutor = NetworkExecutor.INSTANCE)
+            ParkingApi(networkExecutor = NetworkExecutorImpl.INSTANCE)
         }
     }
 }
