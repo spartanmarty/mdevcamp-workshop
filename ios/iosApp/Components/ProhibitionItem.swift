@@ -13,7 +13,7 @@ struct ProhibitionItem: View {
 			.resizable()
 			.frame(width: 20, height: 20)
 			.padding(8)
-			.background(Color.green.opacity(0.4))
+			.background(Color.yellow)
 			.cornerRadius(8)
 			.padding(8)
 	}

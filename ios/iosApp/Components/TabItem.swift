@@ -19,7 +19,7 @@ struct TabItem: View {
 			label: {
 				TextView(text: model.name, font: .headline)
 					.padding(16)
-					.background(Color.green.opacity(isActive ? 1.0 : 0.4))
+					.background(isActive ? Color.orange : Color.yellow)
 					.cornerRadius(16)
 					.fixedSize()
 			}

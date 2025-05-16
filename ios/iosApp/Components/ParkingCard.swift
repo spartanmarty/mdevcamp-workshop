@@ -32,7 +32,7 @@ struct ParkingCard: View {
 		}
 		.frame(maxWidth: .infinity, alignment: .leading)
 		.padding(8)
-		.background(Color.green.opacity(0.4))
+		.background(Color.yellow)
 		.cornerRadius(8)
 		.padding(.horizontal, 16)
 	}

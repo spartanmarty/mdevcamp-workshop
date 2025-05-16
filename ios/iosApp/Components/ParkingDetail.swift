@@ -39,16 +39,10 @@ struct ParkingDetail: View {
 							ProhibitionItem()
 						}
 					}
-
-
 				}
 				.padding(.top, 32)
 				.padding(.horizontal, 16)
 				.frame(maxWidth: .infinity, alignment: .leading)
-			}
-			else {
-				ProgressView()
-					.frame(maxWidth: .infinity, alignment: .center)
 			}
 		}
 	}
