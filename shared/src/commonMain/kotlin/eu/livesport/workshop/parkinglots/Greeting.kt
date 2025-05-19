@@ -1,9 +1,8 @@
 package eu.livesport.workshop.parkinglots
 
-class Greeting {
-    private val platform = getPlatform()
+public class Greeting {
 
-    fun greet(): String {
-        return "Hello, ${platform.name}!"
+    public fun greet(): String {
+        return "Hello!"
     }
 }

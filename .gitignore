@@ -19,6 +19,7 @@ android/app/release
 ios/Pods
 ios/*.xcworkspace
 ios/*.xcodeproj/xcuserdata
+ios/*.xcodeproj/project.pbxproj
 ios/**/*.xcuserstate
 ios/GoogleService-Info.plist
 ios/DerivedData
