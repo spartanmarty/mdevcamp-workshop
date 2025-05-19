@@ -30,6 +30,7 @@ kotlin {
 
     sourceSets {
         commonMain.dependencies {
+            implementation(libs.koin)
             implementation(libs.kotlinx.coroutines.core)
             implementation(libs.kotlinx.serialization.json)
             implementation(libs.ktor.client.content.negotiation)
@@ -51,6 +52,8 @@ kotlin {
             implementation(libs.testing.kotlin.coroutines)
         }
     }
+
+    explicitApi()
 }
 
 android {
