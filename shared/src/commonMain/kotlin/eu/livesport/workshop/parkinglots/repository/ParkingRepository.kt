@@ -4,13 +4,13 @@ import eu.livesport.workshop.parkinglots.internal.repository.ParkingRepositoryIm
 import eu.livesport.workshop.parkinglots.internal.repository.datasource.ParkingDataSource
 import eu.livesport.workshop.parkinglots.repository.model.ParkingLot
 
-interface ParkingRepository {
+public interface ParkingRepository {
 
-    suspend fun getParkingLots(): List<ParkingLot>
+    public suspend fun getParkingLots(): List<ParkingLot>
 
-    companion object {
+    public companion object {
         // TODO: Use DI to inject the repository.
-        val INSTANCE: ParkingRepository by lazy {
+        public val INSTANCE: ParkingRepository by lazy {
             ParkingRepositoryImpl(dataSource = ParkingDataSource.INSTANCE)
         }
     }
