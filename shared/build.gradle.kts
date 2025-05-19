@@ -30,6 +30,8 @@ kotlin {
 
     sourceSets {
         commonMain.dependencies {
+            implementation(libs.androidx.lifecycle.common)
+            implementation(libs.androidx.lifecycle.viewmodel.savedstate)
             implementation(libs.koin)
             implementation(libs.kotlinx.coroutines.core)
             implementation(libs.kotlinx.serialization.json)

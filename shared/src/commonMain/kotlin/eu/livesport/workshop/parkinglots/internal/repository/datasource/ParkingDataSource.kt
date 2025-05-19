@@ -8,11 +8,4 @@ internal class ParkingDataSource(
 ) {
 
     suspend fun getParkingLots(): List<ParkingLotApiModel> = api.getParkingLots()
-
-    companion object {
-        // TODO: Use DI to inject the repository.
-        val INSTANCE: ParkingDataSource by lazy {
-            ParkingDataSource(api = ParkingApi.INSTANCE)
-        }
-    }
 }
