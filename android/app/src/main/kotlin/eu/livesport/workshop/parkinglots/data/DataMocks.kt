@@ -3,40 +3,9 @@ package eu.livesport.workshop.parkinglots.data
 data class ParkingItemModel(
     val title: String,
     val capacity: Int,
-    val address: String,
-    val covered: Boolean,
+    val address: String?,
+    val covered: Boolean?,
     val prohibitions: List<String>,
-)
-
-val parkingItemsMock = listOf(
-    ParkingItemModel(
-        title = "Parking 1",
-        capacity = 100,
-        address = "123 Main St",
-        covered = true,
-        prohibitions = listOf("No smoking", "No pets"),
-    ),
-    ParkingItemModel(
-        title = "Parking 2",
-        capacity = 50,
-        address = "456 Elm St",
-        covered = false,
-        prohibitions = listOf("No overnight parking"),
-    ),
-    ParkingItemModel(
-        title = "Parking 3",
-        capacity = 200,
-        address = "789 Oak St",
-        covered = true,
-        prohibitions = listOf("No loud music", "No littering"),
-    ),
-    ParkingItemModel(
-        title = "Parking 4",
-        capacity = 200,
-        address = "Žitná 1234/987, Praha 2",
-        covered = true,
-        prohibitions = listOf("No loud music", "No littering"),
-    ),
 )
 
 val favoriteItemsMock = listOf(

@@ -1,7 +1,6 @@
 package eu.livesport.workshop.parkinglots
 
-public interface Platform {
-    public val name: String
+public enum class Platform(public val id: String) {
+    ANDROID("android"),
+    IOS("ios"),
 }
-
-public expect fun getPlatform(): Platform
