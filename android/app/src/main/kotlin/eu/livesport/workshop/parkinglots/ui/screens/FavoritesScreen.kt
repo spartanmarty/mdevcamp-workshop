@@ -22,9 +22,9 @@ fun FavoritesScreen(onItemClick: () -> Unit) {
             style = MaterialTheme.typography.titleLarge,
             fontWeight = FontWeight.Bold,
         )
-//        ParkingItemsList(
-//            items = favoriteItemsMock,
-//            onItemClick = { onItemClick() }
-//        )
+        ParkingItemsList(
+            items = favoriteItemsMock,
+            onItemClick = { onItemClick() }
+        )
     }
 }

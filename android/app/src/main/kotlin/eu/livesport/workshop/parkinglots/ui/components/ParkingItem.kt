@@ -13,7 +13,6 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import eu.livesport.workshop.parkinglots.R
-import eu.livesport.workshop.parkinglots.data.ParkingItemModel
 import eu.livesport.workshop.parkinglots.repository.model.ParkingLot
 import eu.livesport.workshop.parkinglots.ui.common.LabelValueText
 import eu.livesport.workshop.parkinglots.ui.theme.ParkingLotsTheme
@@ -75,18 +74,18 @@ fun ParkingInfo(model: ParkingLot) {
 //    )
 }
 
-//@Preview
-//@Composable
-//fun ParkingItemPreview() {
-//    ParkingLotsTheme {
-//        ParkingItem(
-//            ParkingItemModel(
-//                title = "Parking 1",
-//                capacity = 100,
-//                address = "123 Main St",
-//                covered = true,
-//                prohibitions = listOf("No smoking", "No pets"),
-//            )
-//        )
-//    }
-//}
+@Preview
+@Composable
+fun ParkingItemPreview() {
+    ParkingLotsTheme {
+        ParkingItem(
+            ParkingLot(
+                id = "park_123",
+                name = "Parking 1",
+                address = "123 Main St",
+                capacity = 100,
+                covered = true,
+            )
+        )
+    }
+}

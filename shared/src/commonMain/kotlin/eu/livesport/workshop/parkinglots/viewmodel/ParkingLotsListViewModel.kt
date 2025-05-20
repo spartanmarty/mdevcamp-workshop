@@ -19,15 +19,11 @@ public class ParkingLotsListViewModel(
     private val repository: ParkingRepository,
 ) : ViewModel() {
 
-    private var _state: MutableStateFlow<State> = MutableStateFlow(State.Initial)
+    private var _state: MutableStateFlow<State> = MutableStateFlow(State.Loading)
     public val state: StateFlow<State> = _state.asStateFlow()
 
     public fun loadParkingLots(forceRefresh: Boolean = false) {
-        val skipLoading: Boolean =
-            _state.value is State.Loading ||
-                (_state.value is State.Data && !forceRefresh)
-
-        if (skipLoading) {
+        if (_state.value is State.Data && !forceRefresh) {
             return
         }
 
@@ -38,7 +34,6 @@ public class ParkingLotsListViewModel(
     }
 
     public sealed class State {
-        public data object Initial : State()
         public data object Loading : State()
         public data class Data(val parkingLots: List<ParkingLot>) : State()
     }

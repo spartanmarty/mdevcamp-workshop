@@ -30,7 +30,6 @@ fun ParkingLotsListScreen(
         FiltersMock()
 
         when (state) {
-            is ParkingLotsListViewModel.State.Initial,
             is ParkingLotsListViewModel.State.Loading ->
                 Text("Loading...")
 

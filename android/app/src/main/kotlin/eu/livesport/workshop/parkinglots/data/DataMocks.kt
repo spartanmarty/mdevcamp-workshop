@@ -1,22 +1,17 @@
 package eu.livesport.workshop.parkinglots.data
 
-data class ParkingItemModel(
-    val title: String,
-    val capacity: Int,
-    val address: String?,
-    val covered: Boolean?,
-    val prohibitions: List<String>,
-)
+import eu.livesport.workshop.parkinglots.repository.model.ParkingLot
 
-val favoriteItemsMock = listOf(
-    ParkingItemModel(
-        title = "Parking 4",
-        capacity = 200,
-        address = "Žitná 1234/987, Praha 2",
-        covered = true,
-        prohibitions = listOf("No loud music", "No littering"),
-    ),
-)
+val favoriteItemsMock: List<ParkingLot> =
+    listOf(
+        ParkingLot(
+            id = "park_1234",
+            name = "Parking 4",
+            address = "Žitná 1234/987, Praha 2",
+            capacity = 200,
+            covered = true,
+        ),
+    )
 
 data class ParkingDetailModel(
     val title: String,
