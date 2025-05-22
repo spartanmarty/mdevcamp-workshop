@@ -40,11 +40,6 @@ internal class NetworkExecutorImpl : NetworkExecutor {
             append(HEADER_ACCESS_TOKEN, GOLEMIO_API_KEY)
         }
     }
-
-    companion object {
-        // TODO: Use DI to inject the repository.
-        val INSTANCE: NetworkExecutor by lazy { NetworkExecutorImpl() }
-    }
 }
 
 private const val HEADER_ACCESS_TOKEN: String = "X-Access-Token"

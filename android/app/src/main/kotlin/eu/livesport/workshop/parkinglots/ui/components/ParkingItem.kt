@@ -13,15 +13,15 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import eu.livesport.workshop.parkinglots.R
-import eu.livesport.workshop.parkinglots.data.ParkingItemModel
+import eu.livesport.workshop.parkinglots.repository.model.ParkingLot
 import eu.livesport.workshop.parkinglots.ui.common.LabelValueText
 import eu.livesport.workshop.parkinglots.ui.theme.ParkingLotsTheme
 
 @Composable
 fun ParkingItem(
-    model: ParkingItemModel,
+    model: ParkingLot,
     modifier: Modifier = Modifier,
-    onItemClick: (ParkingItemModel) -> Unit = {},
+    onItemClick: (ParkingLot) -> Unit = {},
 ) {
     Card(
         modifier = modifier
@@ -35,7 +35,7 @@ fun ParkingItem(
             modifier = Modifier
                 .padding(8.dp)
         ) {
-            ParkingName(model.title)
+            ParkingName(model.name)
             ParkingInfo(model)
         }
 
@@ -51,7 +51,7 @@ fun ParkingName(parkingName: String) {
 }
 
 @Composable
-fun ParkingInfo(model: ParkingItemModel) {
+fun ParkingInfo(model: ParkingLot) {
     LabelValueText(
         label = stringResource(R.string.label_capacity),
         value = model.capacity.toString(),
@@ -68,10 +68,10 @@ fun ParkingInfo(model: ParkingItemModel) {
             null -> stringResource(R.string.value_unknown)
         },
     )
-    LabelValueText(
-        label = stringResource(R.string.label_prohibitions),
-        value = model.prohibitions.joinToString(", "),
-    )
+//    LabelValueText(
+//        label = stringResource(R.string.label_prohibitions),
+//        value = model.prohibitions.joinToString(", "),
+//    )
 }
 
 @Preview
@@ -79,12 +79,12 @@ fun ParkingInfo(model: ParkingItemModel) {
 fun ParkingItemPreview() {
     ParkingLotsTheme {
         ParkingItem(
-            ParkingItemModel(
-                title = "Parking 1",
-                capacity = 100,
+            ParkingLot(
+                id = "park_123",
+                name = "Parking 1",
                 address = "123 Main St",
+                capacity = 100,
                 covered = true,
-                prohibitions = listOf("No smoking", "No pets"),
             )
         )
     }

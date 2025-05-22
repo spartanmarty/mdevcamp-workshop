@@ -47,7 +47,7 @@ private fun NavGraphBuilder.parkingLotsList(
 ) {
     composable<ParkingLotsList> {
         onBottomBarVisibilityChange(true)
-        ParkingLotsListScreen(navigateParkingLotDetail)
+        ParkingLotsListScreen(onItemClick = navigateParkingLotDetail)
     }
 }
 
