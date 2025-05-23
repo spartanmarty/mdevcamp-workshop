@@ -6,4 +6,5 @@ public data class ParkingLot(
     val address: String?,
     val capacity: Int,
     val covered: Boolean?,
+    val isFavorite: Boolean = false,
 )

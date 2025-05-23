@@ -4,6 +4,6 @@ import eu.livesport.workshop.parkinglots.internal.database.getFavoriteParkingLot
 import org.koin.core.module.Module
 import org.koin.dsl.module
 
-internal actual val sharedDatabaseModule: Module = module {
+internal actual val platformDatabaseModule: Module = module {
     single { getFavoriteParkingLotsDatabase() }
 }

@@ -10,5 +10,9 @@
     <string name="covered_yes">Yes</string>
     <string name="covered_no">No</string>
 
+    <string name="favorites_add">Add to Favorites</string>
+    <string name="favorites_remove">Remove from Favorites</string>
+    <string name="label_no_favorites">There are no favorite Parking Lots, you need to add them in Parking Lot Detail.</string>
+
     <string name="value_unknown">¯\\_(ツ)_/¯</string>
 </resources>

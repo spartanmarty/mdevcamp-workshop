@@ -3,4 +3,6 @@ package eu.livesport.workshop.parkinglots.navigation.destination
 import kotlinx.serialization.Serializable
 
 @Serializable
-object ParkingLotDetail
+data class ParkingLotDetail(
+    val parkingLotId: String,
+)
