@@ -9,8 +9,8 @@ import io.ktor.client.request.headers
 import io.ktor.client.statement.HttpResponse
 import io.ktor.serialization.kotlinx.json.json
 import io.ktor.util.reflect.TypeInfo
-import kotlin.reflect.KClass
 import kotlinx.serialization.json.Json
+import kotlin.reflect.KClass
 
 internal class NetworkExecutorImpl : NetworkExecutor {
 
@@ -45,4 +45,4 @@ internal class NetworkExecutorImpl : NetworkExecutor {
 private const val HEADER_ACCESS_TOKEN: String = "X-Access-Token"
 
 // TODO: Replace with your Golemio API key.
-private const val GOLEMIO_API_KEY: String = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MzQ5MiwiaWF0IjoxNzQ0Mjc0NjgxLCJleHAiOjExNzQ0Mjc0NjgxLCJpc3MiOiJnb2xlbWlvIiwianRpIjoiYzlhZjBlZDEtOTA3NS00ZjAzLTg3ZjktNzNkMjEyYTg0ZTJmIn0.7kuCXecONHjuLKTKkAUgQkuKu7jgBQT-8prqlux05Kk"
+private const val GOLEMIO_API_KEY: String = "<GOLEMIO_API_KEY>"
