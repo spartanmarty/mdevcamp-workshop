@@ -11,4 +11,13 @@
     <string name="covered_no">No</string>
 
     <string name="value_unknown">¯\\_(ツ)_/¯</string>
+
+    <!-- Parking Policy Filter Labels -->
+    <string name="parking_filter_no_filter">All Parking Lots</string>
+    <string name="parking_filter_commercial">Commercial</string>
+    <string name="parking_filter_customer_only">Customer Only</string>
+    <string name="parking_filter_park_and_ride">Park &amp; Ride</string>
+    <string name="parking_filter_kiss_and_ride">Kiss &amp; Ride</string>
+    <string name="parking_filter_park_sharing">Park Sharing</string>
+    <string name="parking_filter_zone">Zone</string>
 </resources>

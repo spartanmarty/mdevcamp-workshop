@@ -8,11 +8,12 @@ import androidx.lifecycle.viewModelScope
 import androidx.lifecycle.viewmodel.CreationExtras
 import eu.livesport.workshop.parkinglots.repository.ParkingRepository
 import eu.livesport.workshop.parkinglots.repository.model.ParkingLot
-import kotlin.reflect.KClass
+import eu.livesport.workshop.parkinglots.repository.model.ParkingPolicyFilter
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
+import kotlin.reflect.KClass
 
 public class ParkingLotsListViewModel(
     private val savedStateHandle: SavedStateHandle,
@@ -22,14 +23,10 @@ public class ParkingLotsListViewModel(
     private var _state: MutableStateFlow<State> = MutableStateFlow(State.Loading)
     public val state: StateFlow<State> = _state.asStateFlow()
 
-    public fun loadParkingLots(forceRefresh: Boolean = false) {
-        if (_state.value is State.Data && !forceRefresh) {
-            return
-        }
-
+    public fun loadParkingLots(filters: ParkingPolicyFilter) {
         _state.value = State.Loading
         viewModelScope.launch {
-            _state.value = State.Data(parkingLots = repository.getParkingLots())
+            _state.value = State.Data(parkingLots = repository.getParkingLots(filters))
         }
     }
 
