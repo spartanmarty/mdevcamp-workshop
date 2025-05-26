@@ -19,7 +19,8 @@ internal class ParkingApi(
 
 private fun ParkingPolicyFilter.toQueryString(): String {
     if (this == ParkingPolicyFilter.NO_FILTER) return ""
-    return "&parkingPolicy=${this.value}"
+    return "$URL_PARAM_POLICY=${this.value}"
 }
 
 private const val URL_PARKING_LOTS: String = "https://api.golemio.cz/v3/parking?limit=10"
+private const val URL_PARAM_POLICY: String = "&parkingPolicy"
