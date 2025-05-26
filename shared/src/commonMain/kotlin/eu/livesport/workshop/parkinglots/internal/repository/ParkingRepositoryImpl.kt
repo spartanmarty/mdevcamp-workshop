@@ -15,7 +15,7 @@ internal class ParkingRepositoryImpl(
     private val favoriteParkingLotsDao: FavoriteParkingLotsDao,
 ) : ParkingRepository {
 
-    override suspend fun getParkingLots(): Flow<List<ParkingLot>> {
+    override fun getParkingLots(): Flow<List<ParkingLot>> {
         val parkingLotsFlow = flow {
             emit(dataSource.getParkingLots().map { it.toParkingLot() })
         }

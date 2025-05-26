@@ -5,5 +5,5 @@ import kotlinx.coroutines.flow.Flow
 
 public interface ParkingRepository {
 
-    public suspend fun getParkingLots(): Flow<List<ParkingLot>>
+    public fun getParkingLots(): Flow<List<ParkingLot>>
 }
