@@ -88,14 +88,14 @@ private fun DetailContent(
         )
 
         LabelValueText(
-            label = "Address: ",
+            label = stringResource(id = R.string.label_address),
             value = parkingLot.address ?: stringResource(id = R.string.value_unknown),
             style = MaterialTheme.typography.bodyLarge,
         )
 
         Spacer(Modifier.height(8.dp))
         LabelValueText(
-            label = "Capacity: ",
+            label = stringResource(id = R.string.label_capacity),
             value = parkingLot.capacity.toString(),
             style = MaterialTheme.typography.bodyLarge,
         )
@@ -116,7 +116,7 @@ private fun DetailContent(
 
         Spacer(Modifier.height(16.dp))
         Text(
-            text = "Prohibitions:",
+            text = stringResource(id = R.string.label_prohibitions),
             style = MaterialTheme.typography.headlineSmall,
             modifier = Modifier.padding(bottom = 4.dp)
         )
