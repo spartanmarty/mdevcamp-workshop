@@ -9,8 +9,8 @@ import io.ktor.client.request.headers
 import io.ktor.client.statement.HttpResponse
 import io.ktor.serialization.kotlinx.json.json
 import io.ktor.util.reflect.TypeInfo
-import kotlin.reflect.KClass
 import kotlinx.serialization.json.Json
+import kotlin.reflect.KClass
 
 internal class NetworkExecutorImpl : NetworkExecutor {
 

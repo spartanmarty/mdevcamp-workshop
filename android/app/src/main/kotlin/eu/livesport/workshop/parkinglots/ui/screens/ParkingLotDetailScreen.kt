@@ -7,78 +7,108 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.Button
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
-import eu.livesport.workshop.parkinglots.data.ParkingDetailModel
+import eu.livesport.workshop.parkinglots.R
 import eu.livesport.workshop.parkinglots.ui.common.LabelValueText
+import eu.livesport.workshop.parkinglots.viewmodel.ParkingLotsViewModel
 
 @Composable
-fun ParkingLotDetailScreen(model: ParkingDetailModel) {
-    Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .padding(horizontal = 18.dp)
-            .padding(top = 24.dp)
-    ) {
-        // Title
-        Text(
-            text = model.title,
-            style = MaterialTheme.typography.headlineMedium,
-            fontWeight = FontWeight.Bold,
-            modifier = Modifier.padding(bottom = 24.dp).align(Alignment.CenterHorizontally)
-        )
+fun ParkingLotDetailScreen(
+    parkingLotId: String,
+    viewModel: ParkingLotsViewModel,
+) {
 
-        LabelValueText(
-            label = "Address: ",
-            value = model.address,
-            style = MaterialTheme.typography.bodyLarge,
-        )
+    val model = viewModel.getParkingLot(parkingLotId).collectAsState(null).value
 
-        Spacer(Modifier.height(8.dp))
-        LabelValueText(
-            label = "Capacity: ",
-            value = model.capacity.toString(),
-            style = MaterialTheme.typography.bodyLarge,
-        )
-
-        Spacer(Modifier.height(8.dp))
-        LabelValueText(
-            label = "Type: ",
-            value = model.type,
-            style = MaterialTheme.typography.bodyLarge,
-        )
-
-        Spacer(Modifier.height(8.dp))
-        LabelValueText(
-            label = "Parking policy: ",
-            value = model.parkingPolicy,
-            style = MaterialTheme.typography.bodyLarge,
-        )
-
-        Spacer(Modifier.height(16.dp))
-        Text(
-            text = "Prohibitions:",
-            style = MaterialTheme.typography.headlineSmall,
-            modifier = Modifier.padding(bottom = 4.dp)
-        )
-
-        Row(
-            horizontalArrangement = Arrangement.spacedBy(16.dp)
+    model?.let {
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(horizontal = 18.dp)
+                .padding(top = 24.dp)
         ) {
-            repeat(3) {
-                ProhibitionIcon()
+            // Title
+            Text(
+                text = model.name,
+                style = MaterialTheme.typography.headlineMedium,
+                fontWeight = FontWeight.Bold,
+                modifier = Modifier.padding(bottom = 24.dp).align(Alignment.CenterHorizontally)
+            )
+
+            LabelValueText(
+                label = "Address: ",
+                value = model.address ?: "Unknown",
+                style = MaterialTheme.typography.bodyLarge,
+            )
+
+            Spacer(Modifier.height(8.dp))
+            LabelValueText(
+                label = "Capacity: ",
+                value = model.capacity.toString(),
+                style = MaterialTheme.typography.bodyLarge,
+            )
+
+//        Spacer(Modifier.height(8.dp))
+//        LabelValueText(
+//            label = "Type: ",
+//            value = model.,
+//            style = MaterialTheme.typography.bodyLarge,
+//        )
+//
+//        Spacer(Modifier.height(8.dp))
+//        LabelValueText(
+//            label = "Parking policy: ",
+//            value = model.parkingPolicy,
+//            style = MaterialTheme.typography.bodyLarge,
+//        )
+
+            Spacer(Modifier.height(16.dp))
+            Text(
+                text = "Prohibitions:",
+                style = MaterialTheme.typography.headlineSmall,
+                modifier = Modifier.padding(bottom = 4.dp)
+            )
+
+            Row(
+                horizontalArrangement = Arrangement.spacedBy(16.dp)
+            ) {
+                repeat(3) {
+                    ProhibitionIcon()
+                }
+            }
+
+            Button(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(80.dp)
+                    .padding(horizontal = 16.dp, vertical = 12.dp),
+                onClick = { viewModel.toggleFavorite(it) },
+            ) {
+                Text(
+                    text = if (model.isFavorite) {
+                        stringResource(R.string.favorites_remove)
+                    } else {
+                        stringResource(R.string.favorites_add)
+                    }
+                )
+
             }
         }
     }
