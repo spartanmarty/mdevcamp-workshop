@@ -6,18 +6,23 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.createSavedStateHandle
 import androidx.lifecycle.viewModelScope
 import androidx.lifecycle.viewmodel.CreationExtras
+import eu.livesport.workshop.parkinglots.repository.FavoriteParkingRepository
 import eu.livesport.workshop.parkinglots.repository.ParkingRepository
 import eu.livesport.workshop.parkinglots.repository.model.ParkingLot
 import eu.livesport.workshop.parkinglots.repository.model.ParkingPolicyFilter
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.filterIsInstance
+import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
 import kotlin.reflect.KClass
 
-public class ParkingLotsListViewModel(
+public class ParkingLotsViewModel(
     private val savedStateHandle: SavedStateHandle,
     private val repository: ParkingRepository,
+    private val favoriteParkingRepository: FavoriteParkingRepository
 ) : ViewModel() {
 
     private var _state: MutableStateFlow<State> = MutableStateFlow(State.Loading)
@@ -26,23 +31,36 @@ public class ParkingLotsListViewModel(
     public fun loadParkingLots(filters: ParkingPolicyFilter) {
         _state.value = State.Loading
         viewModelScope.launch {
-            _state.value = State.Data(parkingLots = repository.getParkingLots(filters))
+            repository.getParkingLots(filters).collect { parkingLots ->
+                _state.value = State.Data(parkingLots = parkingLots)
+            }
         }
     }
 
-    public sealed class State {
-        public data object Loading : State()
-        public data class Data(val parkingLots: List<ParkingLot>) : State()
+    public fun toggleFavorite(parkingLot: ParkingLot) {
+        viewModelScope.launch {
+            favoriteParkingRepository.toggle(parkingLot)
+        }
+    }
+
+    public fun getParkingLot(id: String): Flow<ParkingLot?> {
+        return state
+            .filterIsInstance<State.Data>()
+            .map {
+                it.parkingLots.find { lot -> lot.id == id }
+            }
     }
 
     public class Factory(
         private val repository: ParkingRepository,
+        private val favoriteParkingRepository: FavoriteParkingRepository,
     ) : ViewModelProvider.Factory {
 
         override fun <T : ViewModel> create(modelClass: KClass<T>, extras: CreationExtras): T =
-            ParkingLotsListViewModel(
+            ParkingLotsViewModel(
                 savedStateHandle = extras.createSavedStateHandle(),
                 repository = repository,
+                favoriteParkingRepository = favoriteParkingRepository
             ) as T
     }
 }

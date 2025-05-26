@@ -48,7 +48,7 @@ dependencies {
     implementation(libs.compose.material3)
     implementation(libs.compose.tooling.preview)
     implementation(libs.compose.ui)
-    implementation(libs.koin)
+    implementation(libs.koin.android)
     implementation(libs.kotlinx.serialization.json)
     implementation(libs.navigation.compose)
     debugImplementation(libs.compose.tooling)
