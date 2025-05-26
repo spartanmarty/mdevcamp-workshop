@@ -7,4 +7,6 @@ import kotlinx.coroutines.flow.Flow
 public interface ParkingRepository {
 
     public suspend fun getParkingLots(filter: ParkingPolicyFilter): Flow<List<ParkingLot>>
+
+    public suspend fun getParkingLotDetail(id: String): ParkingLot?
 }

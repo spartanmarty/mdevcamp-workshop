@@ -15,6 +15,10 @@ internal class ParkingApi(
             .getOrNull()
             ?.parkingLots
             ?: emptyList()
+
+    suspend fun getParkingLotDetail(id: String): ParkingLotApiModel? =
+        networkExecutor.get<ParkingLotApiModel>("$URL_BASE/$id")
+            .getOrNull()
 }
 
 private fun ParkingPolicyFilter.toQueryString(): String {
@@ -22,5 +26,6 @@ private fun ParkingPolicyFilter.toQueryString(): String {
     return "$URL_PARAM_POLICY=${this.value}"
 }
 
-private const val URL_PARKING_LOTS: String = "https://api.golemio.cz/v3/parking?limit=10"
+private const val URL_BASE: String = "https://api.golemio.cz/v3/parking"
+private const val URL_PARKING_LOTS: String = "$URL_BASE?limit=10"
 private const val URL_PARAM_POLICY: String = "&parkingPolicy"

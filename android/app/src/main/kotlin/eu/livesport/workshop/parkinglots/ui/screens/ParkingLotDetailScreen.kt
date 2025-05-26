@@ -17,7 +17,8 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -25,97 +26,129 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import androidx.lifecycle.viewmodel.compose.viewModel
 import eu.livesport.workshop.parkinglots.R
+import eu.livesport.workshop.parkinglots.repository.model.ParkingLot
+import eu.livesport.workshop.parkinglots.ui.common.Error
 import eu.livesport.workshop.parkinglots.ui.common.LabelValueText
-import eu.livesport.workshop.parkinglots.viewmodel.ParkingLotsViewModel
+import eu.livesport.workshop.parkinglots.ui.common.Loading
+import eu.livesport.workshop.parkinglots.viewmodel.ParkingLotDetailViewModel
+import eu.livesport.workshop.parkinglots.viewmodel.State
+import org.koin.mp.KoinPlatform
 
 @Composable
 fun ParkingLotDetailScreen(
     parkingLotId: String,
-    viewModel: ParkingLotsViewModel,
+    viewModel: ParkingLotDetailViewModel = createViewModel(),
 ) {
+    LaunchedEffect(parkingLotId) {
+        viewModel.loadParkingLotDetail(parkingLotId)
+    }
 
-    val model = viewModel.getParkingLot(parkingLotId).collectAsState(null).value
+    val state: State by viewModel.state.collectAsStateWithLifecycle()
 
-    model?.let {
-        Column(
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(horizontal = 18.dp)
-                .padding(top = 24.dp)
-        ) {
-            // Title
-            Text(
-                text = model.name,
-                style = MaterialTheme.typography.headlineMedium,
-                fontWeight = FontWeight.Bold,
-                modifier = Modifier.padding(bottom = 24.dp).align(Alignment.CenterHorizontally)
-            )
+    when (state) {
+        is State.Loading -> Loading()
 
-            LabelValueText(
-                label = "Address: ",
-                value = model.address ?: "Unknown",
-                style = MaterialTheme.typography.bodyLarge,
-            )
-
-            Spacer(Modifier.height(8.dp))
-            LabelValueText(
-                label = "Capacity: ",
-                value = model.capacity.toString(),
-                style = MaterialTheme.typography.bodyLarge,
-            )
-
-//        Spacer(Modifier.height(8.dp))
-//        LabelValueText(
-//            label = "Type: ",
-//            value = model.,
-//            style = MaterialTheme.typography.bodyLarge,
-//        )
-//
-//        Spacer(Modifier.height(8.dp))
-//        LabelValueText(
-//            label = "Parking policy: ",
-//            value = model.parkingPolicy,
-//            style = MaterialTheme.typography.bodyLarge,
-//        )
-
-            Spacer(Modifier.height(16.dp))
-            Text(
-                text = "Prohibitions:",
-                style = MaterialTheme.typography.headlineSmall,
-                modifier = Modifier.padding(bottom = 4.dp)
-            )
-
-            Row(
-                horizontalArrangement = Arrangement.spacedBy(16.dp)
-            ) {
-                repeat(3) {
-                    ProhibitionIcon()
+        is State.Data ->
+            (state as State.Data).parkingLots
+                .firstOrNull()
+                ?.let { parkingLot ->
+                    DetailContent(
+                        parkingLot = parkingLot,
+                        onFavoriteToggle = { viewModel.toggleFavorite(parkingLot) },
+                    )
                 }
-            }
+                ?: Error(State.Error(State.Error.Type.NO_DATA_FOUND))
 
-            Button(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .height(80.dp)
-                    .padding(horizontal = 16.dp, vertical = 12.dp),
-                onClick = { viewModel.toggleFavorite(it) },
-            ) {
-                Text(
-                    text = if (model.isFavorite) {
-                        stringResource(R.string.favorites_remove)
-                    } else {
-                        stringResource(R.string.favorites_add)
-                    }
-                )
+        is State.Error -> Error(state as State.Error)
+    }
+}
 
+@Composable
+private fun DetailContent(
+    parkingLot: ParkingLot,
+    onFavoriteToggle: (parkingLot: ParkingLot) -> Unit,
+) {
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(horizontal = 18.dp)
+            .padding(top = 24.dp)
+    ) {
+        // Title
+        Text(
+            text = parkingLot.name,
+            style = MaterialTheme.typography.headlineMedium,
+            fontWeight = FontWeight.Bold,
+            modifier = Modifier
+                .padding(bottom = 24.dp)
+                .align(Alignment.CenterHorizontally)
+        )
+
+        LabelValueText(
+            label = "Address: ",
+            value = parkingLot.address ?: stringResource(id = R.string.value_unknown),
+            style = MaterialTheme.typography.bodyLarge,
+        )
+
+        Spacer(Modifier.height(8.dp))
+        LabelValueText(
+            label = "Capacity: ",
+            value = parkingLot.capacity.toString(),
+            style = MaterialTheme.typography.bodyLarge,
+        )
+
+        //        Spacer(Modifier.height(8.dp))
+        //        LabelValueText(
+        //            label = "Type: ",
+        //            value = model.,
+        //            style = MaterialTheme.typography.bodyLarge,
+        //        )
+        //
+        //        Spacer(Modifier.height(8.dp))
+        //        LabelValueText(
+        //            label = "Parking policy: ",
+        //            value = model.parkingPolicy,
+        //            style = MaterialTheme.typography.bodyLarge,
+        //        )
+
+        Spacer(Modifier.height(16.dp))
+        Text(
+            text = "Prohibitions:",
+            style = MaterialTheme.typography.headlineSmall,
+            modifier = Modifier.padding(bottom = 4.dp)
+        )
+
+        Row(
+            horizontalArrangement = Arrangement.spacedBy(16.dp)
+        ) {
+            repeat(3) {
+                ProhibitionIcon()
             }
+        }
+
+        Button(
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(80.dp)
+                .padding(horizontal = 16.dp, vertical = 12.dp),
+            onClick = { onFavoriteToggle(parkingLot) },
+        ) {
+            Text(
+                text = if (parkingLot.isFavorite) {
+                    stringResource(R.string.favorites_remove)
+                } else {
+                    stringResource(R.string.favorites_add)
+                }
+            )
         }
     }
 }
 
 @Composable
-fun ProhibitionIcon() {
+private fun ProhibitionIcon() {
     Box(
         modifier = Modifier
             .size(48.dp)
@@ -130,3 +163,9 @@ fun ProhibitionIcon() {
         )
     }
 }
+
+@Composable
+private fun createViewModel(): ParkingLotDetailViewModel =
+    viewModel<ParkingLotDetailViewModel>(
+        factory = KoinPlatform.getKoin().get<ParkingLotDetailViewModel.Factory>(),
+    )

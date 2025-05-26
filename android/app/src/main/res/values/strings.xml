@@ -14,6 +14,10 @@
     <string name="favorites_remove">Remove from Favorites</string>
     <string name="label_no_favorites">There are no favorite Parking Lots, you need to add them in Parking Lot Detail.</string>
 
+    <!-- Errors -->
+    <string name="error_message_no_data">No data found.</string>
+    <string name="error_message_network">Problem with network connection.</string>
+
     <string name="value_unknown">¯\\_(ツ)_/¯</string>
 
     <!-- Parking Policy Filter Labels -->

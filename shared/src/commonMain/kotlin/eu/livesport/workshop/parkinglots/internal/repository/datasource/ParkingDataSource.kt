@@ -9,4 +9,6 @@ internal class ParkingDataSource(
 ) {
 
     suspend fun getParkingLots(filter: ParkingPolicyFilter): List<ParkingLotApiModel> = api.getParkingLots(filter)
+
+    suspend fun getParkingLotDetail(id: String): ParkingLotApiModel? = api.getParkingLotDetail(id)
 }
