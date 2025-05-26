@@ -4,10 +4,10 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableIntStateOf
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import eu.livesport.workshop.parkinglots.repository.model.ParkingPolicyFilter
 import eu.livesport.workshop.parkinglots.ui.common.Loading
 import eu.livesport.workshop.parkinglots.ui.common.ParkingItemsList
 import eu.livesport.workshop.parkinglots.ui.components.ParkingTypeFilterBar
@@ -19,14 +19,20 @@ fun ParkingLotsListScreen(
     viewModel: ParkingLotsViewModel,
     onItemClick: (id: String) -> Unit,
 ) {
-    LaunchedEffect(Unit) {
-        viewModel.loadParkingLots()
+    val selectedFilter = remember { mutableStateOf(ParkingPolicyFilter.NO_FILTER) }
+
+    LaunchedEffect(selectedFilter.value) {
+        viewModel.loadParkingLots(selectedFilter.value)
     }
 
     val state: State by viewModel.state.collectAsStateWithLifecycle()
 
     Column {
-        FiltersMock()
+        ParkingTypeFilterBar(
+            filters = ParkingPolicyFilter.entries,
+            selectedFilter = selectedFilter.value,
+            onSelected = { selectedFilter.value = it }
+        )
 
         when (state) {
             is State.Loading ->
@@ -39,15 +45,4 @@ fun ParkingLotsListScreen(
                 )
         }
     }
-}
-
-@Composable
-private fun FiltersMock() {
-    val filters = listOf("On Street", "Underground", "Multi Storey", "Field", "Garage")
-    var selected by remember { mutableIntStateOf(0) }
-    ParkingTypeFilterBar(
-        filters = filters,
-        selectedIndex = selected,
-        onSelected = { selected = it }
-    )
 }

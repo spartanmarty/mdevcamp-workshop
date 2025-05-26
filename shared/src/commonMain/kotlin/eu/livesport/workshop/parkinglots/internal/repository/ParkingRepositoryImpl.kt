@@ -5,6 +5,7 @@ import eu.livesport.workshop.parkinglots.internal.repository.datasource.ParkingD
 import eu.livesport.workshop.parkinglots.internal.repository.model.toParkingLot
 import eu.livesport.workshop.parkinglots.repository.ParkingRepository
 import eu.livesport.workshop.parkinglots.repository.model.ParkingLot
+import eu.livesport.workshop.parkinglots.repository.model.ParkingPolicyFilter
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.flow
@@ -15,9 +16,11 @@ internal class ParkingRepositoryImpl(
     private val favoriteParkingLotsDao: FavoriteParkingLotsDao,
 ) : ParkingRepository {
 
-    override fun getParkingLots(): Flow<List<ParkingLot>> {
+    override suspend fun getParkingLots(filter: ParkingPolicyFilter): Flow<List<ParkingLot>> {
+        dataSource.getParkingLots(filter).map { it.toParkingLot() }
+
         val parkingLotsFlow = flow {
-            emit(dataSource.getParkingLots().map { it.toParkingLot() })
+            emit(dataSource.getParkingLots(filter).map { it.toParkingLot() })
         }
 
         val favoritesFlow = favoriteParkingLotsDao.getAll()
