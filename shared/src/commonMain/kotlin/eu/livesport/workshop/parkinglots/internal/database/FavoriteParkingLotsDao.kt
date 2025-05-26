@@ -12,6 +12,9 @@ internal interface FavoriteParkingLotsDao {
     @Query("SELECT * FROM favorite_parking_lots")
     fun getAll(): Flow<List<FavoriteParkingLotEntity>>
 
+    @Query("SELECT * FROM favorite_parking_lots WHERE id = :id")
+    suspend fun findById(id: String): FavoriteParkingLotEntity?
+
     @Insert(entity = FavoriteParkingLotEntity::class)
     suspend fun insert(parkingLot: FavoriteParkingLotEntity)
 

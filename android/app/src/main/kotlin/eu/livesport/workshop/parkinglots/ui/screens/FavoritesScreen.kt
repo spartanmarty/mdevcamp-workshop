@@ -23,6 +23,7 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import eu.livesport.workshop.parkinglots.R
+import eu.livesport.workshop.parkinglots.ui.common.Error
 import eu.livesport.workshop.parkinglots.ui.common.Loading
 import eu.livesport.workshop.parkinglots.ui.common.ParkingItemsList
 import eu.livesport.workshop.parkinglots.viewmodel.FavoritesViewModel
@@ -47,8 +48,7 @@ fun FavoritesScreen(
             fontWeight = FontWeight.Bold,
         )
         when (state) {
-            is State.Loading ->
-                Loading()
+            is State.Loading -> Loading()
 
             is State.Data -> {
                 val items = (state as State.Data).parkingLots
@@ -62,6 +62,7 @@ fun FavoritesScreen(
                 }
             }
 
+            is State.Error -> Error(state = state as State.Error)
         }
     }
 }
