@@ -29,7 +29,6 @@ internal val sharedInternalModule: Module =
             sharedRepositoryModule,
             sharedViewModelsModule,
             sharedDatabaseModule,
-            sharedPlatformDatabaseModule,
         )
     }
 
