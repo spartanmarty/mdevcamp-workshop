@@ -5,11 +5,11 @@ import eu.livesport.workshop.parkinglots.internal.database.FavoriteParkingLotsDa
 import org.koin.core.module.Module
 import org.koin.dsl.module
 
-internal expect val sharedPlatformDatabaseModule: Module
-
 internal val sharedDatabaseModule: Module = module {
     includes(sharedPlatformDatabaseModule)
     single<FavoriteParkingLotsDao> {
         get<FavoriteParkingLotsDatabase>().favoriteParkingLotsDao()
     }
 }
+
+internal expect val sharedPlatformDatabaseModule: Module
