@@ -5,7 +5,7 @@ import androidx.room.PrimaryKey
 import eu.livesport.workshop.parkinglots.repository.model.ParkingLot
 
 @Entity(tableName = "favorite_parking_lots")
-public data class FavoriteParkingLotEntity(
+internal data class FavoriteParkingLotEntity(
     @PrimaryKey val id: String,
     val title: String,
     val capacity: Int,
@@ -17,7 +17,7 @@ public data class FavoriteParkingLotEntity(
     val parkingPolicy: String,
 )
 
-public fun FavoriteParkingLotEntity.toParkingLot(): ParkingLot =
+internal fun FavoriteParkingLotEntity.toParkingLot(): ParkingLot =
     ParkingLot(
         id = id,
         name = title,
@@ -27,7 +27,7 @@ public fun FavoriteParkingLotEntity.toParkingLot(): ParkingLot =
         isFavorite = true,
     )
 
-public fun ParkingLot.toFavoriteParkingLotEntity(): FavoriteParkingLotEntity =
+internal fun ParkingLot.toFavoriteParkingLotEntity(): FavoriteParkingLotEntity =
     FavoriteParkingLotEntity(
         id = id,
         title = name,

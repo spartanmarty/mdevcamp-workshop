@@ -10,11 +10,11 @@ import androidx.room.RoomDatabaseConstructor
     version = 1,
 )
 @ConstructedBy(FavoriteParkingLotsDatabaseConstructor::class)
-public abstract class FavoriteParkingLotsDatabase : RoomDatabase() {
-    public abstract fun favoriteParkingLotsDao(): FavoriteParkingLotsDao
+internal abstract class FavoriteParkingLotsDatabase : RoomDatabase() {
+    internal  abstract fun favoriteParkingLotsDao(): FavoriteParkingLotsDao
 }
 
 @Suppress("NO_ACTUAL_FOR_EXPECT", "EXPECT_ACTUAL_CLASSIFIERS_ARE_IN_BETA_WARNING")
-public expect object FavoriteParkingLotsDatabaseConstructor : RoomDatabaseConstructor<FavoriteParkingLotsDatabase> {
-    public override fun initialize(): FavoriteParkingLotsDatabase
+internal expect object FavoriteParkingLotsDatabaseConstructor : RoomDatabaseConstructor<FavoriteParkingLotsDatabase> {
+    override fun initialize(): FavoriteParkingLotsDatabase
 }
