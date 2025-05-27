@@ -2,26 +2,40 @@ import Shared
 
 final class ParkingListViewModel: ObservableObject {
 
-	enum ViewState {
-		case loading
-		case data(model: [ParkingCardComponentModel])
-		case empty
-	}
+	private let viewModel: ParkingLotsViewModel
 
 	@Published
-	var viewState: ViewState = .loading
+	public var viewState: State = .Loading()
 
-	func fetchData() {
+	init() {
+		self.viewModel = ParkingLotsViewModel(repository: KoinHelper.shared.getParkingRepository())
 		Task {
-			// TODO - Fetch data
-			await MainActor.run {
-				viewState = .data(model: [.mock])
-			}
-//			do {
-//				// handle data
-//			} catch {
-//				// handle error
-//			}
+			try await viewModel.state.collect(collector: ViewStateCollector(viewModel: self))
+		}
+	}
+
+	@MainActor
+	public func fetchData() async {
+		fetchTabs()
+	}
+
+	private func fetchTabs(_ filter: ParkingPolicyFilter = .noFilter) {
+		viewModel.loadParkingLots(filters: filter)
+	}
+}
+
+class ViewStateCollector: Kotlinx_coroutines_coreFlowCollector {
+
+	weak var viewModel: ParkingListViewModel?
+
+	init(viewModel: ParkingListViewModel) {
+		self.viewModel = viewModel
+	}
+
+	@MainActor
+	func emit(value: Any?) async throws {
+		if let state = value as? State {
+			viewModel?.viewState = state
 		}
 	}
 }

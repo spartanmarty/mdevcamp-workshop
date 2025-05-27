@@ -13,15 +13,9 @@ final class ParkingDetailViewModel: ObservableObject {
 
 	func fetchData(parkId: String) {
 		Task {
-			// TODO - Fetch data
 			await MainActor.run {
 				viewState = .data(model: .mock)
 			}
-//			do {
-//				// handle data
-//			} catch {
-//				// handle error
-//			}
 		}
 	}
 }
