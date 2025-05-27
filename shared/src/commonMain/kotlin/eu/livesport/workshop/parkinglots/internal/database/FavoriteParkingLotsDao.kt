@@ -7,17 +7,17 @@ import androidx.room.Query
 import kotlinx.coroutines.flow.Flow
 
 @Dao
-internal interface FavoriteParkingLotsDao {
+public interface FavoriteParkingLotsDao {
 
     @Query("SELECT * FROM favorite_parking_lots")
-    fun getAll(): Flow<List<FavoriteParkingLotEntity>>
+    public fun getAll(): Flow<List<FavoriteParkingLotEntity>>
 
     @Query("SELECT * FROM favorite_parking_lots WHERE id = :id")
-    suspend fun findById(id: String): FavoriteParkingLotEntity?
+    public suspend fun findById(id: String): FavoriteParkingLotEntity?
 
     @Insert(entity = FavoriteParkingLotEntity::class)
-    suspend fun insert(parkingLot: FavoriteParkingLotEntity)
+    public suspend fun insert(parkingLot: FavoriteParkingLotEntity)
 
     @Delete
-    suspend fun delete(parkingLot: FavoriteParkingLotEntity)
+    public suspend fun delete(parkingLot: FavoriteParkingLotEntity)
 }
