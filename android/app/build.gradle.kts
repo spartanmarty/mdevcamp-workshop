@@ -18,6 +18,7 @@ android {
     }
     buildFeatures {
         compose = true
+        buildConfig = true
     }
     packaging {
         resources {
@@ -35,6 +36,22 @@ android {
     }
     kotlinOptions {
         jvmTarget = "17"
+    }
+
+    flavorDimensions += "version"
+    productFlavors {
+        create("dev") {
+            dimension = "version"
+            applicationIdSuffix = ".dev"
+            versionNameSuffix = "-dev"
+
+            buildConfigField("Boolean", "DEVELOPMENT_BUILD", "true")
+        }
+        create("prod") {
+            dimension = "version"
+
+            buildConfigField("Boolean", "DEVELOPMENT_BUILD", "false")
+        }
     }
 }
 

@@ -35,6 +35,8 @@ ios/DerivedData
 
 # Dependency cache
 **/build/
+# Exclude 'build' directories in source sets, e.g. custom 'build' package with BuildConfigProvider inside.
+!**/src/**/build/
 **/out/
 **/.mf/
 **/.externalNativeBuild/
