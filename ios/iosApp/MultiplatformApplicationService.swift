@@ -7,7 +7,7 @@ public final class MultiplatformApplicationService: ApplicationServiceType {
 		_ application: UIApplication,
 		didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
 	) {
-		KoinKt.doInitKoin(platformModules: [])
+		KoinKt.doInitKoin(platformModules: [], appDeclaration: { _ in })
 	}
 
 	public init() {}
