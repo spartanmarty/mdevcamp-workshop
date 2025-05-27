@@ -8,7 +8,10 @@ final class ParkingListViewModel: ObservableObject {
 	public var viewState: State = .Loading()
 
 	init() {
-		self.viewModel = ParkingLotsViewModel(repository: KoinHelper.shared.getParkingRepository())
+		self.viewModel = ParkingLotsViewModel(
+			savedStateHandle: .init(initialState: [:]),
+			repository: KoinHelper.shared.getParkingRepository()
+		)
 		Task {
 			try await viewModel.state.collect(collector: ViewStateCollector(viewModel: self))
 		}
