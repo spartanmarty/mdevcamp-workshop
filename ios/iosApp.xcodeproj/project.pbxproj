@@ -17,8 +17,6 @@
 		7C35D2482DD74D0E007B26FB /* ParkingDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C35D2472DD74D00007B26FB /* ParkingDetailViewModel.swift */; };
 		7C35D24D2DD75826007B26FB /* ParkingDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C35D24C2DD75826007B26FB /* ParkingDetail.swift */; };
 		7C35D2512DD761D7007B26FB /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C35D2502DD761D7007B26FB /* RootView.swift */; };
-		7C35D2532DD76578007B26FB /* ParkingTabsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C35D2522DD76572007B26FB /* ParkingTabsViewModel.swift */; };
-		7C35D2552DD76719007B26FB /* TabsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C35D2542DD76711007B26FB /* TabsView.swift */; };
 		7C35D2572DD76868007B26FB /* TabList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C35D2562DD76868007B26FB /* TabList.swift */; };
 		7C35D2592DD7706D007B26FB /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C35D2582DD7706D007B26FB /* SettingsView.swift */; };
 		7C35D25B2DD772FD007B26FB /* FavoritesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C35D25A2DD772F8007B26FB /* FavoritesView.swift */; };
@@ -48,8 +46,6 @@
 		7C35D2472DD74D00007B26FB /* ParkingDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkingDetailViewModel.swift; sourceTree = "<group>"; };
 		7C35D24C2DD75826007B26FB /* ParkingDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkingDetail.swift; sourceTree = "<group>"; };
 		7C35D2502DD761D7007B26FB /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
-		7C35D2522DD76572007B26FB /* ParkingTabsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkingTabsViewModel.swift; sourceTree = "<group>"; };
-		7C35D2542DD76711007B26FB /* TabsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabsView.swift; sourceTree = "<group>"; };
 		7C35D2562DD76868007B26FB /* TabList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabList.swift; sourceTree = "<group>"; };
 		7C35D2582DD7706D007B26FB /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		7C35D25A2DD772F8007B26FB /* FavoritesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesView.swift; sourceTree = "<group>"; };
@@ -133,7 +129,6 @@
 		7C35D2492DD757D5007B26FB /* viewModels */ = {
 			isa = PBXGroup;
 			children = (
-				7C35D2522DD76572007B26FB /* ParkingTabsViewModel.swift */,
 				7C35D2472DD74D00007B26FB /* ParkingDetailViewModel.swift */,
 				7C35D23F2DD736B1007B26FB /* ParkingListViewModel.swift */,
 			);
@@ -163,7 +158,6 @@
 			children = (
 				7CBEF7262DDB4ABA00CCE95F /* ParkingListView.swift */,
 				7C35D2502DD761D7007B26FB /* RootView.swift */,
-				7C35D2542DD76711007B26FB /* TabsView.swift */,
 				7C35D25C2DD77464007B26FB /* SomeOtherView.swift */,
 				7CCAB8EA2DD4D772006454D7 /* ParkingDetailView.swift */,
 				7C35D25A2DD772F8007B26FB /* FavoritesView.swift */,
@@ -297,12 +291,10 @@
 				7CCAB8ED2DD4E9FA006454D7 /* ProhibitionItem.swift in Sources */,
 				7CCAB8E52DD4D1DE006454D7 /* TabItem.swift in Sources */,
 				7C35D2402DD736B2007B26FB /* ParkingListViewModel.swift in Sources */,
-				7C35D2532DD76578007B26FB /* ParkingTabsViewModel.swift in Sources */,
 				7C35D2482DD74D0E007B26FB /* ParkingDetailViewModel.swift in Sources */,
 				7CCAB8EB2DD4D772006454D7 /* ParkingDetailView.swift in Sources */,
 				7C35D25D2DD77469007B26FB /* SomeOtherView.swift in Sources */,
 				7C35D2442DD73849007B26FB /* ParkingCard.swift in Sources */,
-				7C35D2552DD76719007B26FB /* TabsView.swift in Sources */,
 				7C35D2612DD77A33007B26FB /* ParkingCardComponentModel+Mock.swift in Sources */,
 				7C35D2592DD7706D007B26FB /* SettingsView.swift in Sources */,
 				7C35D23E2DD729A5007B26FB /* ScrollShadowMask.swift in Sources */,

@@ -3,22 +3,26 @@ import Shared
 
 struct TabList: View {
 
-	private let tabs: [TabItemComponentModel]
-	private var selectedTabId: String?
-	private let closure: (String) -> Void
+	private let tabs: [ParkingPolicyFilter]
+	private var selectedTabFilter: ParkingPolicyFilter
+	private let closure: (ParkingPolicyFilter) -> Void
 
-	init(tabs: [TabItemComponentModel], selectedTabId: String?, closure: @escaping (String) -> Void) {
+	init(
+		tabs: [ParkingPolicyFilter],
+		selectedTabFilter: ParkingPolicyFilter,
+		closure: @escaping (ParkingPolicyFilter) -> Void
+	) {
 		self.tabs = tabs
-		self.selectedTabId = selectedTabId
+		self.selectedTabFilter = selectedTabFilter
 		self.closure = closure
 	}
 
     var body: some View {
 		ScrollView(.horizontal, showsIndicators: false) {
 			HStack {
-				ForEach(tabs, id: \.id) { tab in
-					TabItem(model: tab, isActive: tab.id == selectedTabId) {
-						closure(tab.id)
+				ForEach(tabs, id: \.value) { tab in
+					TabItem(model: tab, isActive: tab == selectedTabFilter) {
+						closure(tab)
 					}
 				}
 			}
@@ -30,9 +34,8 @@ struct TabList: View {
 
 #Preview {
 	TabList(
-		tabs: .mock,
-		selectedTabId: "OnStreet",
+		tabs: ParkingPolicyFilter.entries,
+		selectedTabFilter: ParkingPolicyFilter.noFilter,
 		closure: { _ in }
 	)
-
 }

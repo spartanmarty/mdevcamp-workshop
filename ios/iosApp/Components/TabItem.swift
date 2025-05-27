@@ -3,11 +3,11 @@ import Shared
 
 struct TabItem: View {
 
-	private let model: TabItemComponentModel
+	private let model: ParkingPolicyFilter
 	private let isActive: Bool
 	private let closure: () -> Void
 
-	init(model: TabItemComponentModel, isActive: Bool, closure: @escaping () -> Void = {}) {
+	init(model: ParkingPolicyFilter, isActive: Bool, closure: @escaping () -> Void = {}) {
 		self.model = model
 		self.isActive = isActive
 		self.closure = closure
@@ -17,7 +17,7 @@ struct TabItem: View {
 		Button(
 			action: closure,
 			label: {
-				TextView(text: model.name, font: .headline)
+				TextView(text: getTranslate(key: model), font: .headline)
 					.padding(16)
 					.background(isActive ? Color.orange : Color.yellow)
 					.cornerRadius(16)
@@ -26,9 +26,29 @@ struct TabItem: View {
 		)
 		.buttonStyle(.plain)
     }
+
+	private func getTranslate(key: ParkingPolicyFilter) -> String {
+		switch key {
+		case .noFilter:
+			"All Parking Lots"
+		case .commercial:
+			"Commercial"
+		case .customerOnly:
+			"Customer Only"
+		case .parkAndRide:
+			"Park &amp; Ride"
+		case .kissAndRide:
+			"Kiss &amp; Ride"
+		case .parkSharing:
+			"Park Sharing"
+		default:
+			"Zone"
+		}
+	}
 }
 
 #Preview {
-	TabItem(model: .init(id: "", name: "In-Active"), isActive: true)
-	TabItem(model: .init(id: "", name: "Active"), isActive: false)
+	ForEach(ParkingPolicyFilter.entries, id: \.value) { model in
+		TabItem(model: model, isActive: model == ParkingPolicyFilter.noFilter, closure: {})
+	}
 }

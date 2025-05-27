@@ -14,24 +14,32 @@ struct ParkingListView: View {
 
     var body: some View {
 		VStack(spacing: 0) {
-//			TabsView()
+			TabList(
+				tabs: ParkingPolicyFilter.entries,
+				selectedTabFilter: viewModel.selectTabFilter
+			) {
+				viewModel.setSelectTabFilter(filter: $0)
+			}
+
 			ScrollView {
 				Text("\(viewModel.viewState)")
-//				switch viewModel.viewState {
-//				case .loading:
-//					ProgressView()
-//
-//				case .data(let parkings):
-//					ForEach(parkings, id: \.id) { parkCard in
+				switch viewModel.viewState {
+				case .loading:
+					ProgressView()
+
+				case .data(let parkingLots):
+					ForEach(parkingLots, id: \.id) { parkCard in
+						Text("\(parkCard)")
 //						ParkingCard(model: parkCard) {
 //							closure(parkCard.id)
 //						}
-//					}
-//					.padding(.vertical, 16)
-//
-//				case .empty:
-//					EmptyView()
-//				}
+					}
+					.padding(.vertical, 16)
+					EmptyView()
+
+				case .error(let error):
+					Text(error)
+				}
 			}
 			.scrollShadowMask(type: .vertical)
 			.refreshable { await viewModel.fetchData() }
