@@ -7,16 +7,17 @@ import eu.livesport.workshop.parkinglots.internal.network.NetworkExecutor
 import eu.livesport.workshop.parkinglots.internal.repository.api.model.ParkingLotApiModelMocks
 import eu.livesport.workshop.parkinglots.internal.repository.model.ParkingApiModel
 import eu.livesport.workshop.parkinglots.internal.repository.model.ParkingLotApiModel
+import eu.livesport.workshop.parkinglots.repository.model.ParkingPolicyFilter
 import io.ktor.client.network.sockets.ConnectTimeoutException
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlinx.coroutines.test.runTest
 
-class ParkingApiTest {
+class ParkingApiImplTest {
 
     private val networkExecutorMock: NetworkExecutor = mock()
 
-    private val testedClass: ParkingApi = ParkingApi(networkExecutorMock)
+    private val testedClass: ParkingApiImpl = ParkingApiImpl(networkExecutorMock)
 
     @Test
     fun testGetParkingLots_success() =
@@ -44,7 +45,7 @@ class ParkingApiTest {
 
         everySuspend { networkExecutorMock.get(URL_PARKING_LOTS, ParkingApiModel::class) } returns response
 
-        val result = testedClass.getParkingLots()
+        val result = testedClass.getParkingLots(ParkingPolicyFilter.NO_FILTER)
         assertEquals(expected = expectedResult, actual = result)
     }
 }
