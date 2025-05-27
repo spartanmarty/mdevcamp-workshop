@@ -1,4 +1,4 @@
-package eu.livesport.workshop.parkinglots.components
+package eu.livesport.workshop.parkinglots.repository.model
 
 public data class ProhibitionComponentModel(
     val id: String,

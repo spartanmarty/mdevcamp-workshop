@@ -5,7 +5,6 @@ struct ParkingListView: View {
 
 	@StateObject
 	private var viewModel = ParkingListViewModel()
-
 	private let closure: (String) -> Void
 
 	init(closure: @escaping (String) -> Void) {
@@ -22,24 +21,8 @@ struct ParkingListView: View {
 			}
 
 			ScrollView {
-				Text("\(viewModel.viewState)")
-				switch viewModel.viewState {
-				case .loading:
-					ProgressView()
-
-				case .data(let parkingLots):
-					ForEach(parkingLots, id: \.id) { parkCard in
-						Text("\(parkCard)")
-//						ParkingCard(model: parkCard) {
-//							closure(parkCard.id)
-//						}
-					}
-					.padding(.vertical, 16)
-					EmptyView()
-
-				case .error(let error):
-					Text(error)
-				}
+				content()
+					.padding(.vertical, 8)
 			}
 			.scrollShadowMask(type: .vertical)
 			.refreshable { await viewModel.fetchData() }
@@ -47,6 +30,24 @@ struct ParkingListView: View {
 		.frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
 		.task { await viewModel.fetchData() }
     }
+
+	@ViewBuilder
+	private func content() -> some View {
+		switch viewModel.viewState {
+		case .loading:
+			ProgressView()
+
+		case .data(let parkingLots):
+			ForEach(parkingLots, id: \.id) { parkingLot in
+				ParkingCard(model: parkingLot) {
+					closure(parkingLot.id)
+				}
+			}
+
+		case .error(let error):
+			Text(error)
+		}
+	}
 }
 
 struct ContentView_Previews: PreviewProvider {

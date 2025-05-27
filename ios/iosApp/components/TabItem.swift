@@ -36,9 +36,9 @@ struct TabItem: View {
 		case .customerOnly:
 			"Customer Only"
 		case .parkAndRide:
-			"Park &amp; Ride"
+			"Park & Ride"
 		case .kissAndRide:
-			"Kiss &amp; Ride"
+			"Kiss & Ride"
 		case .parkSharing:
 			"Park Sharing"
 		default:

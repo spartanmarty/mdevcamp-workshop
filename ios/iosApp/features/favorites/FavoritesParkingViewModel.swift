@@ -1,6 +1,6 @@
 import Shared
 
-final class ParkingListViewModel: ObservableObject {
+final class FavoritesParkingViewModel: ObservableObject {
 
 	enum ViewState {
 		case loading
@@ -8,44 +8,29 @@ final class ParkingListViewModel: ObservableObject {
 		case error(String)
 	}
 
-	private let viewModel: ParkingLotsViewModel
+	private let viewModel: FavoritesViewModel
 
 	@Published
 	public var viewState: ViewState = .loading
 
-	@Published
-	public var selectTabFilter: ParkingPolicyFilter = .noFilter
-
 	init() {
-		self.viewModel = ParkingLotsViewModel(
-			savedStateHandle: .init(initialState: [:]),
-			repository: KoinHelper.shared.getParkingRepository()
-		)
+		self.viewModel = FavoritesViewModel(favoriteParkingRepository: KoinHelper.shared.getFavoriteParkingRepository())
 		Task {
-			try await viewModel.state.collect(collector: ViewStateCollector(viewModel: self))
+			try await viewModel.state.collect(collector: FavoritesViewStateCollector(viewModel: self))
 		}
 	}
 
 	@MainActor
 	public func fetchData() async {
-		fetchTabs()
-	}
-
-	@MainActor
-	public func setSelectTabFilter(filter: ParkingPolicyFilter) {
-		selectTabFilter = filter
-	}
-
-	private func fetchTabs(_ filter: ParkingPolicyFilter = .noFilter) {
-		viewModel.loadParkingLots(filters: filter)
+		viewModel.loadFavoriteParkingLots()
 	}
 }
 
-class ViewStateCollector: Kotlinx_coroutines_coreFlowCollector {
+class FavoritesViewStateCollector: Kotlinx_coroutines_coreFlowCollector {
 
-	private weak var viewModel: ParkingListViewModel?
+	private weak var viewModel: FavoritesParkingViewModel?
 
-	init(viewModel: ParkingListViewModel) {
+	init(viewModel: FavoritesParkingViewModel) {
 		self.viewModel = viewModel
 	}
 
