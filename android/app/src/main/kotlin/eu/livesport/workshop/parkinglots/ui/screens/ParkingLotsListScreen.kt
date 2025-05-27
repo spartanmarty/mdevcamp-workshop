@@ -5,7 +5,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import eu.livesport.workshop.parkinglots.repository.model.ParkingPolicyFilter
@@ -22,7 +22,7 @@ fun ParkingLotsListScreen(
     onItemClick: (id: String) -> Unit,
     viewModel: ParkingLotsViewModel = createViewModel(),
 ) {
-    val selectedFilter = remember { mutableStateOf(ParkingPolicyFilter.NO_FILTER) }
+    val selectedFilter = rememberSaveable { mutableStateOf(ParkingPolicyFilter.NO_FILTER) }
 
     LaunchedEffect(selectedFilter.value) {
         viewModel.loadParkingLots(selectedFilter.value)
@@ -56,4 +56,3 @@ private inline fun createViewModel(): ParkingLotsViewModel =
     viewModel<ParkingLotsViewModel>(
         factory = KoinPlatform.getKoin().get<ParkingLotsViewModel.Factory>(),
     )
-
