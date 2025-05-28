@@ -5,11 +5,11 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import androidx.lifecycle.viewmodel.CreationExtras
 import eu.livesport.workshop.parkinglots.repository.FavoriteParkingRepository
-import kotlin.reflect.KClass
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
+import kotlin.reflect.KClass
 
 public class FavoritesViewModel(
     private val favoriteParkingRepository: FavoriteParkingRepository,
@@ -26,6 +26,10 @@ public class FavoritesViewModel(
         _state.value = State.Loading
         viewModelScope.launch {
             favoriteParkingRepository.getFavoriteParkingLots().collect { parkingLots ->
+                if (parkingLots.isEmpty()) {
+                    _state.value = State.Error(type = State.Error.Type.NO_DATA_FOUND)
+                    return@collect
+                }
                 _state.value = State.Data(parkingLots = parkingLots)
             }
         }

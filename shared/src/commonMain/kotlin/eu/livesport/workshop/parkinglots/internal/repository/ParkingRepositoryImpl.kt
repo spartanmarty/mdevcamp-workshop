@@ -23,8 +23,6 @@ internal class ParkingRepositoryImpl(
     private val detailCacheMutex: Mutex = Mutex()
 
     override suspend fun getParkingLots(filter: ParkingPolicyFilter): Flow<List<ParkingLot>> {
-        dataSource.getParkingLots(filter).map { it.toParkingLot() }
-
         val parkingLotsFlow = flow {
             emit(dataSource.getParkingLots(filter).map { it.toParkingLot() })
         }

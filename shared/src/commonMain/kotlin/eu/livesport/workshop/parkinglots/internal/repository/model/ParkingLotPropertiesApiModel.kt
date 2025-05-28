@@ -1,5 +1,6 @@
 package eu.livesport.workshop.parkinglots.internal.repository.model
 
+import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
@@ -9,6 +10,6 @@ internal data class ParkingLotPropertiesApiModel(
     val address: ParkingLotAddressApiModel?,
     val capacity: Int,
     val covered: Boolean?,
-    // TODO: Parse prohibitions from API response
-    //  val prohibitions: ...,
+    @SerialName("parking_prohibitions")
+    val parkingProhibitions: ParkingProhibitions?,
 )
