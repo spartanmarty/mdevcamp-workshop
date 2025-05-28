@@ -25,7 +25,3 @@ struct FavoritesView: View {
 		.task { await viewModel.fetchData() }
 	}
 }
-
-#Preview {
-//	FavoritesView()
-}

@@ -9,7 +9,6 @@ struct RootView: View {
 	enum Tab {
 		case home
 		case favorites
-		case settings
 	}
 
 	@State
@@ -60,8 +59,4 @@ struct RootView: View {
 				}
 		}
 	}
-}
-
-#Preview {
-    RootView()
 }

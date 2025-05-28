@@ -29,9 +29,3 @@ struct ParkingListView: View {
 		.task { await viewModel.fetchData() }
     }
 }
-
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ParkingListView(closure: { _ in })
-    }
-}
