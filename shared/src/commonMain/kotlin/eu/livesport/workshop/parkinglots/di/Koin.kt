@@ -1,6 +1,5 @@
 package eu.livesport.workshop.parkinglots.di
 
-import eu.livesport.workshop.parkinglots.internal.di.sharedNetworkModule
 import eu.livesport.workshop.parkinglots.internal.di.sharedRepositoryModule
 import eu.livesport.workshop.parkinglots.internal.di.sharedUIModule
 import eu.livesport.workshop.parkinglots.internal.di.sharedViewModelsModule
@@ -26,7 +25,6 @@ public fun initKoin(
 internal val sharedInternalModule: Module =
     module {
         includes(
-            sharedNetworkModule,
             sharedPlatformModule,
             sharedRepositoryModule,
             sharedViewModelsModule,
