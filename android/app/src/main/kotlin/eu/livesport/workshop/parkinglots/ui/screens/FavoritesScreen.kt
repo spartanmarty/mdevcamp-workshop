@@ -6,17 +6,13 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
-import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import eu.livesport.workshop.parkinglots.R
 import eu.livesport.workshop.parkinglots.ui.common.Error
-import eu.livesport.workshop.parkinglots.ui.common.Loading
-import eu.livesport.workshop.parkinglots.ui.common.ParkingItemsList
 import eu.livesport.workshop.parkinglots.viewmodel.FavoritesViewModel
 import eu.livesport.workshop.parkinglots.viewmodel.State
 import org.koin.mp.KoinPlatform
@@ -30,7 +26,6 @@ fun FavoritesScreen(
         viewModel.loadFavoriteParkingLots()
     }
 
-    val state: State by viewModel.state.collectAsStateWithLifecycle()
     Column {
         Text(
             modifier = Modifier.padding(start = 12.dp, end = 12.dp, top = 16.dp),
@@ -38,19 +33,8 @@ fun FavoritesScreen(
             style = MaterialTheme.typography.titleLarge,
             fontWeight = FontWeight.Bold,
         )
-        when (state) {
-            is State.Loading -> Loading()
 
-            is State.Data -> {
-                val items = (state as State.Data).parkingLots
-                ParkingItemsList(
-                    items = items,
-                    onItemClick = { onItemClick(it.id) }
-                )
-            }
-
-            is State.Error -> Error(state = state as State.Error)
-        }
+        Error(state = State.Error(type = State.Error.Type.NO_DATA_FOUND))
     }
 }
 
