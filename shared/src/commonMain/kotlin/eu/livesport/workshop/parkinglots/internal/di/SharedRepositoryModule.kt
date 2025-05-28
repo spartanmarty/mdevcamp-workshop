@@ -1,13 +1,11 @@
 package eu.livesport.workshop.parkinglots.internal.di
 
 import eu.livesport.workshop.parkinglots.build.BuildConfigProvider
-import eu.livesport.workshop.parkinglots.internal.repository.FavoriteParkingRepositoryImpl
 import eu.livesport.workshop.parkinglots.internal.repository.ParkingRepositoryImpl
 import eu.livesport.workshop.parkinglots.internal.repository.api.ParkingApi
 import eu.livesport.workshop.parkinglots.internal.repository.api.ParkingApiImpl
 import eu.livesport.workshop.parkinglots.internal.repository.api.mock.MockParkingApi
 import eu.livesport.workshop.parkinglots.internal.repository.datasource.ParkingDataSource
-import eu.livesport.workshop.parkinglots.repository.FavoriteParkingRepository
 import eu.livesport.workshop.parkinglots.repository.ParkingRepository
 import org.koin.core.module.Module
 import org.koin.core.module.dsl.singleOf
@@ -29,7 +27,6 @@ internal val sharedRepositoryModule: Module =
 
         singleOf(::ParkingDataSource)
         singleOf(::ParkingRepositoryImpl) bind ParkingRepository::class
-        singleOf(::FavoriteParkingRepositoryImpl) bind FavoriteParkingRepository::class
     }
 
 private const val NAMED_KEY_PARKING_API_PROD: String = "parking_api_prod"

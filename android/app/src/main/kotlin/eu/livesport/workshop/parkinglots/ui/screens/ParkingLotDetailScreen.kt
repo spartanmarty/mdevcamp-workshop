@@ -7,12 +7,10 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.Button
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -59,7 +57,6 @@ fun ParkingLotDetailScreen(
                 ?.let { parkingLot ->
                     DetailContent(
                         parkingLot = parkingLot,
-                        onFavoriteToggle = { viewModel.toggleFavorite(parkingLot) },
                     )
                 }
                 ?: Error(State.Error(State.Error.Type.NO_DATA_FOUND))
@@ -71,7 +68,6 @@ fun ParkingLotDetailScreen(
 @Composable
 private fun DetailContent(
     parkingLot: ParkingLot,
-    onFavoriteToggle: (parkingLot: ParkingLot) -> Unit,
 ) {
     Column(
         modifier = Modifier
@@ -114,22 +110,6 @@ private fun DetailContent(
             parkingLot.prohibitions.forEach {
                 ProhibitionIcon(it)
             }
-        }
-
-        Button(
-            modifier = Modifier
-                .fillMaxWidth()
-                .height(80.dp)
-                .padding(horizontal = 16.dp, vertical = 12.dp),
-            onClick = { onFavoriteToggle(parkingLot) },
-        ) {
-            Text(
-                text = if (parkingLot.isFavorite) {
-                    stringResource(R.string.favorites_remove)
-                } else {
-                    stringResource(R.string.favorites_add)
-                }
-            )
         }
     }
 }

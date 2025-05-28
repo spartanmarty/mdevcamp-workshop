@@ -1,11 +1,9 @@
 package eu.livesport.workshop.parkinglots.di
 
-import eu.livesport.workshop.parkinglots.internal.di.sharedDatabaseModule
 import eu.livesport.workshop.parkinglots.internal.di.sharedNetworkModule
 import eu.livesport.workshop.parkinglots.internal.di.sharedRepositoryModule
 import eu.livesport.workshop.parkinglots.internal.di.sharedUIModule
 import eu.livesport.workshop.parkinglots.internal.di.sharedViewModelsModule
-import eu.livesport.workshop.parkinglots.repository.FavoriteParkingRepository
 import eu.livesport.workshop.parkinglots.repository.ParkingRepository
 import org.koin.core.KoinApplication
 import org.koin.core.component.KoinComponent
@@ -32,7 +30,6 @@ internal val sharedInternalModule: Module =
             sharedPlatformModule,
             sharedRepositoryModule,
             sharedViewModelsModule,
-            sharedDatabaseModule,
             sharedUIModule,
         )
     }
@@ -40,6 +37,5 @@ internal val sharedInternalModule: Module =
 internal expect val sharedPlatformModule: Module
 
 public object KoinHelper : KoinComponent {
-    public fun getFavoriteParkingRepository(): FavoriteParkingRepository = get()
     public fun getParkingRepository(): ParkingRepository = get()
 }
