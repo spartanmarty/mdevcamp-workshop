@@ -111,7 +111,7 @@ private fun DetailContent(
         Row(
             horizontalArrangement = Arrangement.spacedBy(16.dp)
         ) {
-            parkingLot.prohibitions.onEach {
+            parkingLot.prohibitions.forEach {
                 ProhibitionIcon(it)
             }
         }
