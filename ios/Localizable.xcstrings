@@ -125,6 +125,17 @@
         }
       }
     },
+    "label_loading" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Loading…"
+          }
+        }
+      }
+    },
     "label_no_favorites" : {
       "extractionState" : "manual",
       "localizations" : {

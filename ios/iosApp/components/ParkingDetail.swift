@@ -12,59 +12,34 @@ struct ParkingDetail: View {
 	}
 
     var body: some View {
-		VStack(spacing: 0) {
+		VStack(spacing: 16) {
 			Text(model.name)
-				.font(.caption)
-				.fontWeight(.regular)
+				.font(.title)
+				.fontWeight(.bold)
+				.padding(8)
 
-			VStack(alignment: .leading, spacing: 4) {
-				ParkInfoRow(title: "label_capacity", value: "\(model.capacity)")
+			InfoSection(model: model, type: .detail)
+				.frame(maxWidth: .infinity, alignment: .leading)
 
-				if let address = model.address {
-					ParkInfoRow(title: "label_address", value: address)
-				}
-
-				if let covered = model.covered {
-					ParkInfoRow(title: "label_covered", value: covered == true ? "covered_yes" : "covered_no")
-				}
-			}
-			.padding(16)
-			.frame(maxWidth: .infinity, alignment: .leading)
-
-//			sectionProhibition(items: model.prohibitions)
+			ProhibitionRow(items: model.prohibitions)
 
 			Button(
 				action: { closure(model) },
 				label: {
 					Text(model.isFavorite ? "favorites_remove" : "favorites_add")
-						.font(.caption)
+						.font(.callout)
 						.fontWeight(.regular)
-						.padding(16)
-						.background(Color.yellow)
-						.cornerRadius(16)
+						.padding(.vertical, 16)
+						.frame(maxWidth: .infinity)
+						.background(Color("primary"))
+						.cornerRadius(24)
 				}
 			)
+			.buttonStyle(.plain)
+			.padding(.vertical, 16)
+			.padding(.horizontal, 24)
 		}
+		.padding(.horizontal, 16)
 		.frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
-    }
-
-	private func sectionProhibition(items: [ProhibitionComponentModel]) -> some View {
-		Group {
-			if !items.isEmpty {
-				VStack(alignment: .leading, spacing: 0) {
-					Text("label_prohibitions")
-						.font(.body)
-
-					HStack(spacing: 0) {
-						ForEach(items, id: \.id) { item in
-							ProhibitionItem()
-						}
-					}
-				}
-				.padding(.top, 32)
-				.padding(.horizontal, 16)
-				.frame(maxWidth: .infinity, alignment: .leading)
-			}
-		}
 	}
 }
