@@ -22,15 +22,18 @@ struct ParkingCard: View {
 	@ViewBuilder
 	private func contentView() -> some View {
 		VStack(alignment: .leading, spacing: 2) {
-			TextView(text: model.name, weight: .bold)
-			row(title: "capacity", value: "\(model.capacity)")
+			Text(model.name)
+				.font(.caption)
+				.fontWeight(.bold)
+
+			ParkInfoRow(title: "label_capacity", value: "\(model.capacity)")
 
 			if let address = model.address {
-				row(title: "address", value: address)
+				ParkInfoRow(title: "label_address", value: address)
 			}
 
 			if let covered = model.covered {
-				row(title: "covered", value: covered == true ? "YES" : "NO")
+				ParkInfoRow(title: "label_covered", value: covered == true ? "covered_yes" : "covered_no")
 			}
 		}
 		.frame(maxWidth: .infinity, alignment: .leading)
@@ -38,13 +41,5 @@ struct ParkingCard: View {
 		.background(Color.yellow)
 		.cornerRadius(8)
 		.padding(.horizontal, 16)
-	}
-
-	@ViewBuilder
-	private func row(title: String, value: String) -> some View {
-		HStack {
-			TextView(text: title)
-			TextView(text: value, weight: .bold)
-		}
 	}
 }

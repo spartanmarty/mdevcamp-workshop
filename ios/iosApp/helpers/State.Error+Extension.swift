@@ -1,16 +1,16 @@
 import Shared
 
 extension State.Error {
-	func getTranslate() -> String {
+	func getTranslate() -> LocalizedStringResource {
 		switch self.type {
 		case .noDataFound:
-			"No data found."
+			"error_message_no_data"
 
 		case .network:
-			"Problem with network connection."
+			"error_message_network"
 
 		case .unknown:
-			"¯\\_(ツ)_/¯"
+			"value_unknown"
 
 		default:
 			""

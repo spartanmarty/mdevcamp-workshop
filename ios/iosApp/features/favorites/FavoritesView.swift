@@ -13,8 +13,9 @@ struct FavoritesView: View {
 
 	var body: some View {
 		VStack(spacing: 0) {
-			TextView(text: "Favorites", font: .headline, weight: .bold)
-				.frame(maxWidth: .infinity, alignment: .leading)
+			Text("label_favorites")
+				.font(.headline)
+				.fontWeight(.bold)
 
 			viewModel.viewState.content { parkingLots in
 				ListParkingsLotsView(parkingLots: parkingLots, closure: closure)

@@ -13,17 +13,19 @@ struct ParkingDetail: View {
 
     var body: some View {
 		VStack(spacing: 0) {
-			TextView(text: model.name)
+			Text(model.name)
+				.font(.caption)
+				.fontWeight(.regular)
 
 			VStack(alignment: .leading, spacing: 4) {
-				row(title: "capacity", value: "\(model.capacity)")
+				ParkInfoRow(title: "label_capacity", value: "\(model.capacity)")
 
 				if let address = model.address {
-					row(title: "address", value: address)
+					ParkInfoRow(title: "label_address", value: address)
 				}
 
 				if let covered = model.covered {
-					row(title: "covered", value: covered == true ? "YES" : "NO")
+					ParkInfoRow(title: "label_covered", value: covered == true ? "covered_yes" : "covered_no")
 				}
 			}
 			.padding(16)
@@ -34,7 +36,9 @@ struct ParkingDetail: View {
 			Button(
 				action: { closure(model) },
 				label: {
-					TextView(text: model.isFavorite ? "Remove from favorites" : "Add to favorites")
+					Text(model.isFavorite ? "favorites_remove" : "favorites_add")
+						.font(.caption)
+						.fontWeight(.regular)
 						.padding(16)
 						.background(Color.yellow)
 						.cornerRadius(16)
@@ -44,19 +48,11 @@ struct ParkingDetail: View {
 		.frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
     }
 
-	@ViewBuilder
-	private func row(title: String, value: String) -> some View {
-		HStack {
-			TextView(text: title)
-			TextView(text: value, weight: .bold)
-		}
-	}
-
 	private func sectionProhibition(items: [ProhibitionComponentModel]) -> some View {
 		Group {
 			if !items.isEmpty {
 				VStack(alignment: .leading, spacing: 0) {
-					Text("Prohibition")
+					Text("label_prohibitions")
 						.font(.body)
 
 					HStack(spacing: 0) {

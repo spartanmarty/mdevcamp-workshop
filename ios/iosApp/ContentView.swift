@@ -26,7 +26,7 @@ struct ContentView: View {
 			}
 			.tabItem {
 				Label(
-					title: { Text("Parking Lots") },
+					title: { Text("label_parking_lots") },
 					icon: { Image("icon_list") }
 				)
 			}
@@ -39,7 +39,7 @@ struct ContentView: View {
 			}
 			.tabItem {
 				Label(
-					title: { Text("Favorites Lots") },
+					title: { Text("label_favorites") },
 					icon: { Image("icon_favorites") }
 				)
 			}
