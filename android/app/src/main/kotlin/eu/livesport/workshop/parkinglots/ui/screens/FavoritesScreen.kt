@@ -15,12 +15,11 @@ import eu.livesport.workshop.parkinglots.R
 import eu.livesport.workshop.parkinglots.ui.common.Error
 import eu.livesport.workshop.parkinglots.viewmodel.FavoritesViewModel
 import eu.livesport.workshop.parkinglots.viewmodel.State
-import org.koin.mp.KoinPlatform
 
 @Composable
 fun FavoritesScreen(
     onItemClick: (id: String) -> Unit,
-    viewModel: FavoritesViewModel = createViewModel()
+    viewModel: FavoritesViewModel = viewModel<FavoritesViewModel>()
 ) {
     LaunchedEffect(Unit) {
         viewModel.loadFavoriteParkingLots()
@@ -37,9 +36,3 @@ fun FavoritesScreen(
         Error(state = State.Error(type = State.Error.Type.NO_DATA_FOUND))
     }
 }
-
-@Composable
-private fun createViewModel(): FavoritesViewModel =
-    viewModel<FavoritesViewModel>(
-        factory = KoinPlatform.getKoin().get<FavoritesViewModel.Factory>(),
-    )
