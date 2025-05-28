@@ -1,12 +1,15 @@
 {
   "images" : [
     {
-      "filename" : "icon_lpg.svg",
+      "filename" : "icon_bike.svg",
       "idiom" : "universal"
     }
   ],
   "info" : {
     "author" : "xcode",
     "version" : 1
+  },
+  "properties" : {
+    "preserves-vector-representation" : true
   }
 }

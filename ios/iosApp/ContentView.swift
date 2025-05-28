@@ -20,20 +20,17 @@ struct ContentView: View {
 	var body: some View {
 		VStack(spacing: 0) {
 			navigationView
-			bottomBar
+			if path.isEmpty {
+				bottomBar
+			}
 		}
 	}
 
 	@ViewBuilder
 	private var bottomBar: some View {
 		HStack(spacing: 16) {
-			BottomTabItem(tabType: .home, selectedTab: selectedTab) {
-				selectedTab = $0
-			}
-
-			BottomTabItem(tabType: .favorites, selectedTab: selectedTab) {
-				selectedTab = $0
-			}
+			BottomTabItem(tabType: .home, selectedTab: selectedTab) { selectedTab = $0 }
+			BottomTabItem(tabType: .favorites, selectedTab: selectedTab) { selectedTab = $0 }
 		}
 	}
 
@@ -41,7 +38,10 @@ struct ContentView: View {
 	private var navigationView: some View {
 		NavigationStack(path: $path) {
 			content
-				.navigationDestination(for: Route.self) { destination(route: $0) }
+				.frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
+				.navigationDestination(for: Route.self) {
+					destination(route: $0)
+				}
 		}
 	}
 
@@ -49,14 +49,10 @@ struct ContentView: View {
 	private var content: some View {
 		switch selectedTab {
 		case .home:
-			ParkingListView { parkId in
-				path.append(Route.parkingDetail(id: parkId))
-			}
+			ParkingListView { path.append(Route.parkingDetail(id: $0)) }
 
 		case .favorites:
-			FavoritesView { parkId in
-				path.append(Route.parkingDetail(id: parkId))
-			}
+			FavoritesView { path.append(Route.parkingDetail(id: $0)) }
 		}
 	}
 
@@ -65,7 +61,6 @@ struct ContentView: View {
 		switch route {
 		case .parkingDetail(let id):
 			ParkingDetailView(parkId: id)
-				.toolbar(.hidden, for: .tabBar)
 		}
 	}
 }

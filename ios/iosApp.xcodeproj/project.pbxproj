@@ -11,28 +11,26 @@
 		058557D9273AAEEB004C7B11 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 058557D8273AAEEB004C7B11 /* Preview Assets.xcassets */; };
 		2152FB042600AC8F00CF470E /* iOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2152FB032600AC8F00CF470E /* iOSApp.swift */; };
 		7C2F02622DE71AF000E556D0 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 7C2F02612DE71AF000E556D0 /* Localizable.xcstrings */; };
-		7C2F02642DE7220200E556D0 /* ParkInfoRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C2F02632DE721F900E556D0 /* ParkInfoRow.swift */; };
 		7C2F02662DE7229500E556D0 /* ParkingPolicyFilter+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C2F02652DE7229100E556D0 /* ParkingPolicyFilter+Extension.swift */; };
 		7C2F02682DE7286800E556D0 /* BottomTabItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C2F02672DE7285200E556D0 /* BottomTabItem.swift */; };
+		7C2F026C2DE7574C00E556D0 /* ProhibitionRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C2F026B2DE7574900E556D0 /* ProhibitionRow.swift */; };
+		7C2F026F2DE7599D00E556D0 /* InfoSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C2F026E2DE7599600E556D0 /* InfoSection.swift */; };
 		7C35D23E2DD729A5007B26FB /* ScrollShadowMask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C35D23D2DD72999007B26FB /* ScrollShadowMask.swift */; };
 		7C35D2402DD736B2007B26FB /* ParkingListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C35D23F2DD736B1007B26FB /* ParkingListViewModel.swift */; };
-		7C35D2442DD73849007B26FB /* ParkingCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C35D2432DD73849007B26FB /* ParkingCard.swift */; };
 		7C35D2482DD74D0E007B26FB /* ParkingDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C35D2472DD74D00007B26FB /* ParkingDetailViewModel.swift */; };
 		7C35D24D2DD75826007B26FB /* ParkingDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C35D24C2DD75826007B26FB /* ParkingDetail.swift */; };
 		7C35D2512DD761D7007B26FB /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C35D2502DD761D7007B26FB /* ContentView.swift */; };
-		7C35D2572DD76868007B26FB /* TabList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C35D2562DD76868007B26FB /* TabList.swift */; };
+		7C35D2572DD76868007B26FB /* FilterTabRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C35D2562DD76868007B26FB /* FilterTabRow.swift */; };
 		7C35D25B2DD772FD007B26FB /* FavoritesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C35D25A2DD772F8007B26FB /* FavoritesView.swift */; };
 		7CBEF7272DDB4ABA00CCE95F /* ParkingListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CBEF7262DDB4ABA00CCE95F /* ParkingListView.swift */; };
-		7CCAB8E52DD4D1DE006454D7 /* TabItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CCAB8E12DD4D1DE006454D7 /* TabItem.swift */; };
 		7CCAB8EB2DD4D772006454D7 /* ParkingDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CCAB8EA2DD4D772006454D7 /* ParkingDetailView.swift */; };
-		7CCAB8ED2DD4E9FA006454D7 /* ProhibitionItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CCAB8EC2DD4E9F4006454D7 /* ProhibitionItem.swift */; };
 		7CF0290C2DE6077C0074939A /* BuildConfigProviderImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF0290B2DE6077C0074939A /* BuildConfigProviderImpl.swift */; };
 		7CF029102DE67BB60074939A /* FavoritesParkingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF0290F2DE67BB50074939A /* FavoritesParkingViewModel.swift */; };
 		7CF029192DE6FB770074939A /* UniversalStateCollector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF029182DE6FB760074939A /* UniversalStateCollector.swift */; };
 		7CF0291B2DE6FC4E0074939A /* ViewStateType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF0291A2DE6FC4B0074939A /* ViewStateType.swift */; };
 		7CF0291D2DE6FD2D0074939A /* State.Error+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF0291C2DE6FD290074939A /* State.Error+Extension.swift */; };
 		7CF0291F2DE6FFF40074939A /* ViewStateType+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF0291E2DE6FFEC0074939A /* ViewStateType+Extension.swift */; };
-		7CF029212DE7017D0074939A /* ListParkingsLotsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF029202DE7016B0074939A /* ListParkingsLotsView.swift */; };
+		7CF029212DE7017D0074939A /* ParkingCards.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF029202DE7016B0074939A /* ParkingCards.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,28 +40,26 @@
 		7555FF7B242A565900829871 /* ParkingLots.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ParkingLots.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7555FF8C242A565B00829871 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7C2F02612DE71AF000E556D0 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
-		7C2F02632DE721F900E556D0 /* ParkInfoRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkInfoRow.swift; sourceTree = "<group>"; };
 		7C2F02652DE7229100E556D0 /* ParkingPolicyFilter+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ParkingPolicyFilter+Extension.swift"; sourceTree = "<group>"; };
 		7C2F02672DE7285200E556D0 /* BottomTabItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomTabItem.swift; sourceTree = "<group>"; };
+		7C2F026B2DE7574900E556D0 /* ProhibitionRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProhibitionRow.swift; sourceTree = "<group>"; };
+		7C2F026E2DE7599600E556D0 /* InfoSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoSection.swift; sourceTree = "<group>"; };
 		7C35D23D2DD72999007B26FB /* ScrollShadowMask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollShadowMask.swift; sourceTree = "<group>"; };
 		7C35D23F2DD736B1007B26FB /* ParkingListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkingListViewModel.swift; sourceTree = "<group>"; };
-		7C35D2432DD73849007B26FB /* ParkingCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkingCard.swift; sourceTree = "<group>"; };
 		7C35D2472DD74D00007B26FB /* ParkingDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkingDetailViewModel.swift; sourceTree = "<group>"; };
 		7C35D24C2DD75826007B26FB /* ParkingDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkingDetail.swift; sourceTree = "<group>"; };
 		7C35D2502DD761D7007B26FB /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		7C35D2562DD76868007B26FB /* TabList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabList.swift; sourceTree = "<group>"; };
+		7C35D2562DD76868007B26FB /* FilterTabRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterTabRow.swift; sourceTree = "<group>"; };
 		7C35D25A2DD772F8007B26FB /* FavoritesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesView.swift; sourceTree = "<group>"; };
 		7CBEF7262DDB4ABA00CCE95F /* ParkingListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkingListView.swift; sourceTree = "<group>"; };
-		7CCAB8E12DD4D1DE006454D7 /* TabItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabItem.swift; sourceTree = "<group>"; };
 		7CCAB8EA2DD4D772006454D7 /* ParkingDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkingDetailView.swift; sourceTree = "<group>"; };
-		7CCAB8EC2DD4E9F4006454D7 /* ProhibitionItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProhibitionItem.swift; sourceTree = "<group>"; };
 		7CF0290B2DE6077C0074939A /* BuildConfigProviderImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildConfigProviderImpl.swift; sourceTree = "<group>"; };
 		7CF0290F2DE67BB50074939A /* FavoritesParkingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesParkingViewModel.swift; sourceTree = "<group>"; };
 		7CF029182DE6FB760074939A /* UniversalStateCollector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UniversalStateCollector.swift; sourceTree = "<group>"; };
 		7CF0291A2DE6FC4B0074939A /* ViewStateType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewStateType.swift; sourceTree = "<group>"; };
 		7CF0291C2DE6FD290074939A /* State.Error+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "State.Error+Extension.swift"; sourceTree = "<group>"; };
 		7CF0291E2DE6FFEC0074939A /* ViewStateType+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewStateType+Extension.swift"; sourceTree = "<group>"; };
-		7CF029202DE7016B0074939A /* ListParkingsLotsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListParkingsLotsView.swift; sourceTree = "<group>"; };
+		7CF029202DE7016B0074939A /* ParkingCards.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkingCards.swift; sourceTree = "<group>"; };
 		AB3632DC29227652001CCB65 /* Config.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -140,14 +136,12 @@
 		7CCAB8E42DD4D1DE006454D7 /* components */ = {
 			isa = PBXGroup;
 			children = (
+				7C35D2562DD76868007B26FB /* FilterTabRow.swift */,
 				7C2F02672DE7285200E556D0 /* BottomTabItem.swift */,
-				7C2F02632DE721F900E556D0 /* ParkInfoRow.swift */,
-				7CF029202DE7016B0074939A /* ListParkingsLotsView.swift */,
-				7C35D2562DD76868007B26FB /* TabList.swift */,
+				7C2F026B2DE7574900E556D0 /* ProhibitionRow.swift */,
+				7C2F026E2DE7599600E556D0 /* InfoSection.swift */,
+				7CF029202DE7016B0074939A /* ParkingCards.swift */,
 				7C35D24C2DD75826007B26FB /* ParkingDetail.swift */,
-				7C35D2432DD73849007B26FB /* ParkingCard.swift */,
-				7CCAB8EC2DD4E9F4006454D7 /* ProhibitionItem.swift */,
-				7CCAB8E12DD4D1DE006454D7 /* TabItem.swift */,
 			);
 			path = components;
 			sourceTree = "<group>";
@@ -316,28 +310,26 @@
 			buildActionMask = 2147483647;
 			files = (
 				2152FB042600AC8F00CF470E /* iOSApp.swift in Sources */,
-				7CCAB8ED2DD4E9FA006454D7 /* ProhibitionItem.swift in Sources */,
-				7C2F02642DE7220200E556D0 /* ParkInfoRow.swift in Sources */,
-				7CCAB8E52DD4D1DE006454D7 /* TabItem.swift in Sources */,
 				7C35D2402DD736B2007B26FB /* ParkingListViewModel.swift in Sources */,
 				7CF0291B2DE6FC4E0074939A /* ViewStateType.swift in Sources */,
+				7C2F026C2DE7574C00E556D0 /* ProhibitionRow.swift in Sources */,
 				7CF0290C2DE6077C0074939A /* BuildConfigProviderImpl.swift in Sources */,
 				7CF029102DE67BB60074939A /* FavoritesParkingViewModel.swift in Sources */,
 				7CF029192DE6FB770074939A /* UniversalStateCollector.swift in Sources */,
 				7CF0291F2DE6FFF40074939A /* ViewStateType+Extension.swift in Sources */,
 				7C35D2482DD74D0E007B26FB /* ParkingDetailViewModel.swift in Sources */,
-				7CF029212DE7017D0074939A /* ListParkingsLotsView.swift in Sources */,
+				7CF029212DE7017D0074939A /* ParkingCards.swift in Sources */,
 				7CCAB8EB2DD4D772006454D7 /* ParkingDetailView.swift in Sources */,
-				7C35D2442DD73849007B26FB /* ParkingCard.swift in Sources */,
 				7C2F02662DE7229500E556D0 /* ParkingPolicyFilter+Extension.swift in Sources */,
 				7C35D23E2DD729A5007B26FB /* ScrollShadowMask.swift in Sources */,
 				7CF0291D2DE6FD2D0074939A /* State.Error+Extension.swift in Sources */,
 				7C35D2512DD761D7007B26FB /* ContentView.swift in Sources */,
 				7C2F02682DE7286800E556D0 /* BottomTabItem.swift in Sources */,
 				7C35D24D2DD75826007B26FB /* ParkingDetail.swift in Sources */,
+				7C2F026F2DE7599D00E556D0 /* InfoSection.swift in Sources */,
 				7C35D25B2DD772FD007B26FB /* FavoritesView.swift in Sources */,
 				7CBEF7272DDB4ABA00CCE95F /* ParkingListView.swift in Sources */,
-				7C35D2572DD76868007B26FB /* TabList.swift in Sources */,
+				7C35D2572DD76868007B26FB /* FilterTabRow.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

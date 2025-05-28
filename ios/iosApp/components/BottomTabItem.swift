@@ -38,7 +38,7 @@ struct BottomTabItem: View {
 						Group {
 							if isSelected {
 								RoundedRectangle(cornerRadius: 25)
-									.fill(Color.green)
+									.fill(Color("primary"))
 									.frame(width: 70, height: 40)
 							} else {
 								Color.clear
