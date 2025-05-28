@@ -17,7 +17,9 @@ struct TabItem: View {
 		Button(
 			action: closure,
 			label: {
-				TextView(text: getTranslate(key: model), font: .headline)
+				Text(model.getTranslate())
+					.font(.headline)
+					.fontWeight(.regular)
 					.padding(16)
 					.background(isActive ? Color.orange : Color.yellow)
 					.cornerRadius(16)
@@ -26,25 +28,6 @@ struct TabItem: View {
 		)
 		.buttonStyle(.plain)
     }
-
-	private func getTranslate(key: ParkingPolicyFilter) -> String {
-		switch key {
-		case .noFilter:
-			"All Parking Lots"
-		case .commercial:
-			"Commercial"
-		case .customerOnly:
-			"Customer Only"
-		case .parkAndRide:
-			"Park & Ride"
-		case .kissAndRide:
-			"Kiss & Ride"
-		case .parkSharing:
-			"Park Sharing"
-		default:
-			"Zone"
-		}
-	}
 }
 
 #Preview {
