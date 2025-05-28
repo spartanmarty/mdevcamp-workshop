@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct RootView: View {
+struct ContentView: View {
 
 	enum Route: Hashable {
 		case parkingDetail(id: String)
