@@ -1,7 +1,7 @@
 import SwiftUI
 import Shared
 
-public struct ParkingDetailView: View {
+struct ParkingDetailView: View {
 
 	@StateObject
 	private var viewModel = ParkingDetailViewModel()
@@ -11,24 +11,18 @@ public struct ParkingDetailView: View {
 		self.parkId = parkId
 	}
 
-	public var body: some View {
-		content()
-			.task { await viewModel.fetchData(parkId: parkId) }
-    }
-
-	@ViewBuilder
-	private func content() -> some View {
-		switch viewModel.viewState {
-		case .loading:
-			ProgressView()
-
-		case let .data(model):
-			ParkingDetail(model: model) { parkingLot in
-				viewModel.toggleFavorite(parkingLot)
+	var body: some View {
+		viewModel.viewState.content { parkingLots in
+			Group {
+				if let model = parkingLots.first {
+					ParkingDetail(model: model) { parkingLot in
+						viewModel.toggleFavorite(parkingLot)
+					}
+				} else {
+					EmptyView()
+				}
 			}
-
-		case let .error(error):
-			Text(error)
 		}
-	}
+		.task { await viewModel.fetchData(parkId: parkId) }
+    }
 }

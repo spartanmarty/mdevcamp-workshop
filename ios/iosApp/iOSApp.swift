@@ -1,14 +1,21 @@
 import SwiftUI
+import Shared
 
 @main
 struct iOSApp: App {
 
-	@UIApplicationDelegateAdaptor(AppDelegate.self)
-	private var delegate
+	init() {
+		KoinKt.doInitKoin(
+			platformModules: [
+				ApplicationModule().createKoinModule(buildConfigProvider: { BuildConfigProviderImpl() }),
+			],
+			appDeclaration: { _ in }
+		)
+	}
 
     var body: some Scene {
         WindowGroup {
-			RootView()
+			ContentView()
         }
     }
 }

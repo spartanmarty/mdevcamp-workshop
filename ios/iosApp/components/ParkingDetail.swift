@@ -72,7 +72,3 @@ struct ParkingDetail: View {
 		}
 	}
 }
-
-#Preview {
-//	ParkingDetail(model: .mock)
-}

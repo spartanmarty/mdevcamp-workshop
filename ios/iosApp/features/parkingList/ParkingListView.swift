@@ -20,38 +20,12 @@ struct ParkingListView: View {
 				viewModel.setSelectTabFilter(filter: $0)
 			}
 
-			ScrollView {
-				content()
-					.padding(.vertical, 8)
+			viewModel.viewState.content { parkingLots in
+				ListParkingsLotsView(parkingLots: parkingLots, closure: closure)
+					.refreshable { await viewModel.fetchData() }
 			}
-			.scrollShadowMask(type: .vertical)
-			.refreshable { await viewModel.fetchData() }
 		}
 		.frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
 		.task { await viewModel.fetchData() }
-    }
-
-	@ViewBuilder
-	private func content() -> some View {
-		switch viewModel.viewState {
-		case .loading:
-			ProgressView()
-
-		case .data(let parkingLots):
-			ForEach(parkingLots, id: \.id) { parkingLot in
-				ParkingCard(model: parkingLot) {
-					closure(parkingLot.id)
-				}
-			}
-
-		case .error(let error):
-			Text(error)
-		}
-	}
-}
-
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ParkingListView(closure: { _ in })
     }
 }

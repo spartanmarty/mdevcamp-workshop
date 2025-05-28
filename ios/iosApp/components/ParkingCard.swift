@@ -48,7 +48,3 @@ struct ParkingCard: View {
 		}
 	}
 }
-
-#Preview {
-//	ParkingCard(model: .mock)
-}
