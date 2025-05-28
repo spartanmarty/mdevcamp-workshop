@@ -5,6 +5,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.createSavedStateHandle
 import androidx.lifecycle.viewmodel.CreationExtras
+import eu.livesport.workshop.parkinglots.repository.model.ParkingLot
+import eu.livesport.workshop.parkinglots.repository.model.ParkingProhibitions
 import kotlin.reflect.KClass
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -21,7 +23,22 @@ public class ParkingLotDetailViewModel(
             savedStateHandle[SAVED_KEY_PARKING_LOT_ID] = value
         }
 
-    public val state: StateFlow<State> = MutableStateFlow(State.Error(type = State.Error.Type.NO_DATA_FOUND))
+    public val state: StateFlow<State> =
+        MutableStateFlow(
+            State.Data(
+                listOf(
+                    ParkingLot(
+                        id = "123",
+                        name = "Dummy Parking Lot",
+                        address = null,
+                        capacity = 0,
+                        covered = false,
+                        isFavorite = false,
+                        prohibitions = listOf(ParkingProhibitions.LPG_CNG, ParkingProhibitions.TRUCK),
+                    )
+                )
+            )
+        )
 
     public fun loadParkingLotDetail(id: String) {
         parkingLotId = id
