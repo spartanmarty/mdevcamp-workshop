@@ -13,19 +13,17 @@ struct ParkingListView: View {
 
     var body: some View {
 		VStack(spacing: 0) {
-			TabList(
+			TabRow(
 				tabs: ParkingPolicyFilter.entries,
-				selectedTabFilter: viewModel.selectTabFilter
-			) {
-				viewModel.setSelectTabFilter(filter: $0)
-			}
+				selectedTabFilter: viewModel.selectTabFilter,
+				closure: { viewModel.setSelectTabFilter(filter: $0) }
+			)
 
-			viewModel.viewState.content { parkingLots in
-				ListParkingsLotsView(parkingLots: parkingLots, closure: closure)
-					.refreshable { await viewModel.fetchData() }
+			viewModel.viewState.content {
+				ParkingCards(parkingLots: $0, closure: closure)
 			}
+			.refreshable { await viewModel.fetchData() }
 		}
-		.frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
 		.task { await viewModel.fetchData() }
     }
 }

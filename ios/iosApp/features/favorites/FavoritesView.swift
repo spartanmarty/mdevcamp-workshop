@@ -14,15 +14,14 @@ struct FavoritesView: View {
 	var body: some View {
 		VStack(spacing: 0) {
 			Text("label_favorites")
-				.font(.headline)
+				.font(.title)
 				.fontWeight(.bold)
+				.padding(8)
 
-			viewModel.viewState.content { parkingLots in
-				ListParkingsLotsView(parkingLots: parkingLots, closure: closure)
-					.refreshable { await viewModel.fetchData() }
+			viewModel.viewState.content {
+				ParkingCards(parkingLots: $0, closure: closure)
 			}
 		}
-		.frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
 		.task { await viewModel.fetchData() }
 	}
 }
