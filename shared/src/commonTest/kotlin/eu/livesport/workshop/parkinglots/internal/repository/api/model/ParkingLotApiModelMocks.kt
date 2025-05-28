@@ -4,6 +4,7 @@ import eu.livesport.workshop.parkinglots.internal.repository.model.ParkingApiMod
 import eu.livesport.workshop.parkinglots.internal.repository.model.ParkingLotAddressApiModel
 import eu.livesport.workshop.parkinglots.internal.repository.model.ParkingLotApiModel
 import eu.livesport.workshop.parkinglots.internal.repository.model.ParkingLotPropertiesApiModel
+import eu.livesport.workshop.parkinglots.internal.repository.model.ParkingProhibitions
 
 internal object ParkingLotApiModelMocks {
 
@@ -17,8 +18,16 @@ internal object ParkingLotApiModelMocks {
                         address = ParkingLotAddressApiModel(formatted = "address"),
                         capacity = 500,
                         covered = true,
+                        parkingProhibitions = ParkingProhibitions(
+                            lpgCng = true,
+                            bus = false,
+                            truck = true,
+                            motorcycle = false,
+                            bicycle = true,
+                            trailer = false,
+                        ),
                     ),
                 ),
-            )
+            ),
         )
 }

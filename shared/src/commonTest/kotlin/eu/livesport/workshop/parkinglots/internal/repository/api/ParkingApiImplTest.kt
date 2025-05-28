@@ -45,9 +45,11 @@ class ParkingApiImplTest {
 
         everySuspend { networkExecutorMock.get(URL_PARKING_LOTS, ParkingApiModel::class) } returns response
 
-        val result = testedClass.getParkingLots(ParkingPolicyFilter.NO_FILTER)
+        val result = testedClass.getParkingLots(PARKING_POLICY_FILTER)
         assertEquals(expected = expectedResult, actual = result)
     }
 }
 
-private const val URL_PARKING_LOTS: String = "https://api.golemio.cz/v3/parking?limit=10"
+private val PARKING_POLICY_FILTER: ParkingPolicyFilter = ParkingPolicyFilter.PARK_AND_RIDE
+private val URL_PARKING_LOTS: String =
+    "https://api.golemio.cz/v3/parking?limit=10&parkingPolicy=${PARKING_POLICY_FILTER.value}"
