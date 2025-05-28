@@ -53,7 +53,7 @@ private fun navBarItems(): List<NavBarItem> {
     return listOf(
         NavBarItem(
             route = ParkingLotsList,
-            icon = R.drawable.icon_list,
+            icon = R.drawable.icon_parking,
             label = stringResource(R.string.label_parking_lots)
         ),
         NavBarItem(

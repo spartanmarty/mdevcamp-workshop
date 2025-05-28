@@ -25,6 +25,7 @@ internal fun FavoriteParkingLotEntity.toParkingLot(): ParkingLot =
         capacity = capacity,
         covered = covered,
         isFavorite = true,
+        prohibitions = emptyList()
     )
 
 internal fun ParkingLot.toFavoriteParkingLotEntity(): FavoriteParkingLotEntity =

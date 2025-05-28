@@ -4,6 +4,7 @@ import eu.livesport.workshop.parkinglots.internal.repository.api.ParkingApi
 import eu.livesport.workshop.parkinglots.internal.repository.model.ParkingLotAddressApiModel
 import eu.livesport.workshop.parkinglots.internal.repository.model.ParkingLotApiModel
 import eu.livesport.workshop.parkinglots.internal.repository.model.ParkingLotPropertiesApiModel
+import eu.livesport.workshop.parkinglots.internal.repository.model.ParkingProhibitions
 import eu.livesport.workshop.parkinglots.repository.model.ParkingPolicyFilter
 import kotlin.random.Random
 import kotlin.random.nextInt
@@ -25,6 +26,18 @@ private val PARKING_LOTS: List<ParkingLotApiModel> =
                 address = ParkingLotAddressApiModel(formatted = "Address for Parking Lot $id"),
                 capacity = Random.nextInt(100..500),
                 covered = Random.nextBoolean(),
+                parkingProhibitions = generateRandomParkingProhibitions(),
             ),
         )
     }
+
+private fun generateRandomParkingProhibitions(): ParkingProhibitions {
+    return ParkingProhibitions(
+        lpgCng = Random.nextBoolean(),
+        bus = Random.nextBoolean(),
+        truck = Random.nextBoolean(),
+        motorcycle = Random.nextBoolean(),
+        bicycle = Random.nextBoolean(),
+        trailer = Random.nextBoolean()
+    )
+}

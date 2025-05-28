@@ -68,10 +68,6 @@ fun ParkingInfo(model: ParkingLot) {
             null -> stringResource(R.string.value_unknown)
         },
     )
-//    LabelValueText(
-//        label = stringResource(R.string.label_prohibitions),
-//        value = model.prohibitions.joinToString(", "),
-//    )
 }
 
 @Preview
@@ -85,6 +81,7 @@ fun ParkingItemPreview() {
                 address = "123 Main St",
                 capacity = 100,
                 covered = true,
+                prohibitions = emptyList(),
             )
         )
     }

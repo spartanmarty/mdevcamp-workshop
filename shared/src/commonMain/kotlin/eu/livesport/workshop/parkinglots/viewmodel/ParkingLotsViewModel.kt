@@ -8,7 +8,6 @@ import androidx.lifecycle.viewModelScope
 import androidx.lifecycle.viewmodel.CreationExtras
 import eu.livesport.workshop.parkinglots.repository.ParkingRepository
 import eu.livesport.workshop.parkinglots.repository.model.ParkingPolicyFilter
-import kotlin.reflect.KClass
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
@@ -19,6 +18,7 @@ import kotlinx.coroutines.flow.flatMapLatest
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
+import kotlin.reflect.KClass
 
 @OptIn(ExperimentalCoroutinesApi::class)
 public class ParkingLotsViewModel(
@@ -43,7 +43,12 @@ public class ParkingLotsViewModel(
                     emit(State.Loading)
                     emitAll(
                         repository.getParkingLots(filter)
-                            .map { parkingLots -> State.Data(parkingLots = parkingLots) }
+                            .map { parkingLots ->
+                                if (parkingLots.isEmpty()) {
+                                    return@map State.Error(type = State.Error.Type.NO_DATA_FOUND)
+                                }
+                                State.Data(parkingLots = parkingLots)
+                            }
                     )
                 }
             }

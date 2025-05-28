@@ -30,6 +30,8 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import eu.livesport.workshop.parkinglots.R
 import eu.livesport.workshop.parkinglots.repository.model.ParkingLot
+import eu.livesport.workshop.parkinglots.repository.model.ParkingProhibitions
+import eu.livesport.workshop.parkinglots.ui.ProhibitionIconResolver
 import eu.livesport.workshop.parkinglots.ui.common.Error
 import eu.livesport.workshop.parkinglots.ui.common.LabelValueText
 import eu.livesport.workshop.parkinglots.ui.common.Loading
@@ -77,7 +79,6 @@ private fun DetailContent(
             .padding(horizontal = 18.dp)
             .padding(top = 24.dp)
     ) {
-        // Title
         Text(
             text = parkingLot.name,
             style = MaterialTheme.typography.headlineMedium,
@@ -100,20 +101,6 @@ private fun DetailContent(
             style = MaterialTheme.typography.bodyLarge,
         )
 
-        //        Spacer(Modifier.height(8.dp))
-        //        LabelValueText(
-        //            label = "Type: ",
-        //            value = model.,
-        //            style = MaterialTheme.typography.bodyLarge,
-        //        )
-        //
-        //        Spacer(Modifier.height(8.dp))
-        //        LabelValueText(
-        //            label = "Parking policy: ",
-        //            value = model.parkingPolicy,
-        //            style = MaterialTheme.typography.bodyLarge,
-        //        )
-
         Spacer(Modifier.height(16.dp))
         Text(
             text = stringResource(id = R.string.label_prohibitions),
@@ -124,8 +111,8 @@ private fun DetailContent(
         Row(
             horizontalArrangement = Arrangement.spacedBy(16.dp)
         ) {
-            repeat(3) {
-                ProhibitionIcon()
+            parkingLot.prohibitions.onEach {
+                ProhibitionIcon(it)
             }
         }
 
@@ -148,7 +135,10 @@ private fun DetailContent(
 }
 
 @Composable
-private fun ProhibitionIcon() {
+private fun ProhibitionIcon(
+    prohibition: ParkingProhibitions,
+    prohibitionIconResolver: ProhibitionIconResolver = KoinPlatform.getKoin().get()
+) {
     Box(
         modifier = Modifier
             .size(48.dp)
@@ -156,7 +146,7 @@ private fun ProhibitionIcon() {
         contentAlignment = Alignment.Center
     ) {
         Icon(
-            painter = painterResource(id = android.R.drawable.ic_dialog_alert), // TODO
+            painter = painterResource(id = prohibitionIconResolver.resolveIcon(prohibition)),
             contentDescription = "Prohibition",
             tint = Color(0xFF132925),
             modifier = Modifier.size(32.dp)
