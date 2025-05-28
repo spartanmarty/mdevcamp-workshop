@@ -20,55 +20,44 @@ struct RootView: View {
 
 	var body: some View {
 		TabView(selection: $selectedTab) {
-			homeView
-				.tabItem {
-					Label(
-						title: { Text("Parking Lots") },
-						icon: { Image("icon_list") }
-					)
+			buildStack {
+				ParkingListView { parkId in
+					path.append(Route.parkingDetail(id: parkId))
 				}
-				.tag(Tab.home)
+			}
+			.tabItem {
+				Label(
+					title: { Text("Parking Lots") },
+					icon: { Image("icon_list") }
+				)
+			}
+			.tag(Tab.home)
 
-			favoritesView
-				.tabItem {
-					Label(
-						title: { Text("Favorites Lots") },
-						icon: { Image("icon_favorites") }
-					)
+			buildStack {
+				FavoritesView { parkId in
+					path.append(Route.parkingDetail(id: parkId))
 				}
-				.tag(Tab.favorites)
+			}
+			.tabItem {
+				Label(
+					title: { Text("Favorites Lots") },
+					icon: { Image("icon_favorites") }
+				)
+			}
+			.tag(Tab.favorites)
 		}
 	}
 
-	@ViewBuilder
-	private var homeView: some View {
+	private func buildStack<Content: View>(@ViewBuilder content: @escaping () -> Content) -> some View {
 		NavigationStack(path: $path) {
-			ParkingListView { parkId in
-				path.append(Route.parkingDetail(id: parkId))
-			}
-			.navigationDestination(for: Route.self) { route in
-				switch route {
-				case .parkingDetail(let id):
-					ParkingDetailView(parkId: id)
-						.toolbar(.hidden, for: .tabBar)
+			content()
+				.navigationDestination(for: Route.self) { route in
+					switch route {
+					case .parkingDetail(let id):
+						ParkingDetailView(parkId: id)
+							.toolbar(.hidden, for: .tabBar)
+					}
 				}
-			}
-		}
-	}
-
-	@ViewBuilder
-	private var favoritesView: some View {
-		NavigationStack(path: $path) {
-			FavoritesView { parkId in
-				path.append(Route.parkingDetail(id: parkId))
-			}
-			.navigationDestination(for: Route.self) { route in
-				switch route {
-				case .parkingDetail(let id):
-					ParkingDetailView(parkId: id)
-						.toolbar(.hidden, for: .tabBar)
-				}
-			}
 		}
 	}
 }

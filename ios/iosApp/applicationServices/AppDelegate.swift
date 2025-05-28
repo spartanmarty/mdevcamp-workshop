@@ -1,6 +1,7 @@
 import UIKit
 
 final class AppDelegate: NSObject, UIApplicationDelegate {
+
 	private var applicationServices: [ApplicationServiceType]  = [
 		MultiplatformApplicationService(),
 	]
