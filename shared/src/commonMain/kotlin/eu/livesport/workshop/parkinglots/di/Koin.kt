@@ -38,11 +38,6 @@ internal val sharedInternalModule: Module =
 internal expect val sharedPlatformModule: Module
 
 public object KoinHelper : KoinComponent {
-    public fun getFavoriteParkingRepository(): FavoriteParkingRepository {
-        return get()
-    }
-
-    public fun getParkingRepository(): ParkingRepository {
-        return get()
-    }
+    public fun getFavoriteParkingRepository(): FavoriteParkingRepository = get()
+    public fun getParkingRepository(): ParkingRepository = get()
 }
