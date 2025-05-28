@@ -3,6 +3,7 @@ package eu.livesport.workshop.parkinglots.di
 import eu.livesport.workshop.parkinglots.internal.di.sharedDatabaseModule
 import eu.livesport.workshop.parkinglots.internal.di.sharedNetworkModule
 import eu.livesport.workshop.parkinglots.internal.di.sharedRepositoryModule
+import eu.livesport.workshop.parkinglots.internal.di.sharedUIModule
 import eu.livesport.workshop.parkinglots.internal.di.sharedViewModelsModule
 import eu.livesport.workshop.parkinglots.repository.FavoriteParkingRepository
 import eu.livesport.workshop.parkinglots.repository.ParkingRepository
@@ -32,6 +33,7 @@ internal val sharedInternalModule: Module =
             sharedRepositoryModule,
             sharedViewModelsModule,
             sharedDatabaseModule,
+            sharedUIModule,
         )
     }
 

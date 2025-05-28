@@ -1,24 +1,15 @@
 package eu.livesport.workshop.parkinglots.ui.screens
 
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
-import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
@@ -52,47 +43,14 @@ fun FavoritesScreen(
 
             is State.Data -> {
                 val items = (state as State.Data).parkingLots
-                if (items.isEmpty()) {
-                    EmptyFavoritesScreen()
-                } else {
-                    ParkingItemsList(
-                        items = items,
-                        onItemClick = { onItemClick(it.id) }
-                    )
-                }
+                ParkingItemsList(
+                    items = items,
+                    onItemClick = { onItemClick(it.id) }
+                )
             }
 
             is State.Error -> Error(state = state as State.Error)
         }
-    }
-}
-
-@Composable
-private fun EmptyFavoritesScreen() {
-    Box(
-        modifier = Modifier
-            .fillMaxSize()
-            .padding(all = 16.dp),
-        contentAlignment = Alignment.TopCenter
-    ) {
-        Column(
-            modifier = Modifier.fillMaxWidth(),
-            horizontalAlignment = Alignment.CenterHorizontally,
-        ) {
-            Icon(
-                painter = painterResource(id = android.R.drawable.ic_dialog_alert), // TODO
-                contentDescription = "Alert",
-                tint = Color(0xFF132925),
-                modifier = Modifier.size(70.dp)
-            )
-            Text(
-                modifier = Modifier.fillMaxWidth(),
-                text = stringResource(R.string.label_no_favorites),
-                style = MaterialTheme.typography.bodyLarge,
-                textAlign = TextAlign.Center
-            )
-        }
-
     }
 }
 
