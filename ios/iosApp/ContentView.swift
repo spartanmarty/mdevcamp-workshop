@@ -26,8 +26,8 @@ struct ContentView: View {
 			}
 			.tabItem {
 				Label(
-					title: { Text("Parking Lots") },
-					icon: { Image("icon_list") }
+					title: { Text("label_parking_lots") },
+					icon: { Image("icon_parking") }
 				)
 			}
 			.tag(Tab.home)
