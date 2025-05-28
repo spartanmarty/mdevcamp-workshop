@@ -9,13 +9,24 @@ extension ViewStateType {
 	) -> some View {
 		switch self {
 		case .loading:
-			ProgressView()
+			VStack(alignment: .center, spacing: 5) {
+				ProgressView()
+				Text("label_loading")
+			}
+			.frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
 
 		case .data(let parkingLots):
 			dataView(parkingLots)
 
 		case let .error(err):
-			Text(err.getTranslate())
+			VStack(alignment: .center, spacing: 5) {
+				Image("icon_warning")
+					.resizable()
+					.frame(width: 80, height: 80)
+
+				Text(err.getTranslate())
+			}
+			.frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
 		}
 	}
 

@@ -1,7 +1,7 @@
 import SwiftUI
 import Shared
 
-struct TabList: View {
+struct TabRow: View {
 
 	private let tabs: [ParkingPolicyFilter]
 	private var selectedTabFilter: ParkingPolicyFilter
@@ -21,7 +21,7 @@ struct TabList: View {
 		ScrollView(.horizontal, showsIndicators: false) {
 			HStack {
 				ForEach(tabs, id: \.value) { tab in
-					TabItem(model: tab, isActive: tab == selectedTabFilter) {
+					tabItem(model: tab, isActive: tab == selectedTabFilter) {
 						closure(tab)
 					}
 				}
@@ -30,10 +30,26 @@ struct TabList: View {
 		}
 		.scrollShadowMask(type: .horizontal)
     }
+
+	private func tabItem(model: ParkingPolicyFilter, isActive: Bool, closure: @escaping () -> Void) -> some View {
+		Button(
+			action: closure,
+			label: {
+				Text(model.getTranslate())
+					.font(.headline)
+					.fontWeight(.regular)
+					.padding(16)
+					.background(isActive ? Color("primary") : Color("primary_highlighted"))
+					.cornerRadius(16)
+					.fixedSize()
+			}
+		)
+		.buttonStyle(.plain)
+	}
 }
 
 #Preview {
-	TabList(
+	TabRow(
 		tabs: ParkingPolicyFilter.entries,
 		selectedTabFilter: ParkingPolicyFilter.noFilter,
 		closure: { _ in }
