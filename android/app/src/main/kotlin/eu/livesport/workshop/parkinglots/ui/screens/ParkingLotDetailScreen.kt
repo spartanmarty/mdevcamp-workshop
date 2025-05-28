@@ -28,8 +28,6 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import eu.livesport.workshop.parkinglots.R
 import eu.livesport.workshop.parkinglots.repository.model.ParkingLot
-import eu.livesport.workshop.parkinglots.repository.model.ParkingProhibitions
-import eu.livesport.workshop.parkinglots.ui.ProhibitionIconResolver
 import eu.livesport.workshop.parkinglots.ui.common.Error
 import eu.livesport.workshop.parkinglots.ui.common.LabelValueText
 import eu.livesport.workshop.parkinglots.ui.common.Loading
@@ -108,17 +106,14 @@ private fun DetailContent(
             horizontalArrangement = Arrangement.spacedBy(16.dp)
         ) {
             parkingLot.prohibitions.forEach {
-                ProhibitionIcon(it)
+                ProhibitionIcon()
             }
         }
     }
 }
 
 @Composable
-private fun ProhibitionIcon(
-    prohibition: ParkingProhibitions,
-    prohibitionIconResolver: ProhibitionIconResolver = KoinPlatform.getKoin().get()
-) {
+private fun ProhibitionIcon() {
     Box(
         modifier = Modifier
             .size(48.dp)
@@ -126,7 +121,7 @@ private fun ProhibitionIcon(
         contentAlignment = Alignment.Center
     ) {
         Icon(
-            painter = painterResource(id = prohibitionIconResolver.resolveIcon(prohibition)),
+            painter = painterResource(id = R.drawable.icon_warning),
             contentDescription = "Prohibition",
             tint = Color(0xFF132925),
             modifier = Modifier.size(32.dp)
