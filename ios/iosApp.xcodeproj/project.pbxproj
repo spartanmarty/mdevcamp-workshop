@@ -13,6 +13,7 @@
 		7C2F02622DE71AF000E556D0 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 7C2F02612DE71AF000E556D0 /* Localizable.xcstrings */; };
 		7C2F02642DE7220200E556D0 /* ParkInfoRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C2F02632DE721F900E556D0 /* ParkInfoRow.swift */; };
 		7C2F02662DE7229500E556D0 /* ParkingPolicyFilter+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C2F02652DE7229100E556D0 /* ParkingPolicyFilter+Extension.swift */; };
+		7C2F02682DE7286800E556D0 /* BottomTabItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C2F02672DE7285200E556D0 /* BottomTabItem.swift */; };
 		7C35D23E2DD729A5007B26FB /* ScrollShadowMask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C35D23D2DD72999007B26FB /* ScrollShadowMask.swift */; };
 		7C35D2402DD736B2007B26FB /* ParkingListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C35D23F2DD736B1007B26FB /* ParkingListViewModel.swift */; };
 		7C35D2442DD73849007B26FB /* ParkingCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C35D2432DD73849007B26FB /* ParkingCard.swift */; };
@@ -43,6 +44,7 @@
 		7C2F02612DE71AF000E556D0 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		7C2F02632DE721F900E556D0 /* ParkInfoRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkInfoRow.swift; sourceTree = "<group>"; };
 		7C2F02652DE7229100E556D0 /* ParkingPolicyFilter+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ParkingPolicyFilter+Extension.swift"; sourceTree = "<group>"; };
+		7C2F02672DE7285200E556D0 /* BottomTabItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomTabItem.swift; sourceTree = "<group>"; };
 		7C35D23D2DD72999007B26FB /* ScrollShadowMask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollShadowMask.swift; sourceTree = "<group>"; };
 		7C35D23F2DD736B1007B26FB /* ParkingListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkingListViewModel.swift; sourceTree = "<group>"; };
 		7C35D2432DD73849007B26FB /* ParkingCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkingCard.swift; sourceTree = "<group>"; };
@@ -138,6 +140,7 @@
 		7CCAB8E42DD4D1DE006454D7 /* components */ = {
 			isa = PBXGroup;
 			children = (
+				7C2F02672DE7285200E556D0 /* BottomTabItem.swift */,
 				7C2F02632DE721F900E556D0 /* ParkInfoRow.swift */,
 				7CF029202DE7016B0074939A /* ListParkingsLotsView.swift */,
 				7C35D2562DD76868007B26FB /* TabList.swift */,
@@ -330,6 +333,7 @@
 				7C35D23E2DD729A5007B26FB /* ScrollShadowMask.swift in Sources */,
 				7CF0291D2DE6FD2D0074939A /* State.Error+Extension.swift in Sources */,
 				7C35D2512DD761D7007B26FB /* ContentView.swift in Sources */,
+				7C2F02682DE7286800E556D0 /* BottomTabItem.swift in Sources */,
 				7C35D24D2DD75826007B26FB /* ParkingDetail.swift in Sources */,
 				7C35D25B2DD772FD007B26FB /* FavoritesView.swift in Sources */,
 				7CBEF7272DDB4ABA00CCE95F /* ParkingListView.swift in Sources */,

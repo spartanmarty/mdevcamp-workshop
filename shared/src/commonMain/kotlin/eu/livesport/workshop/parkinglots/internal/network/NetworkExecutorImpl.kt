@@ -45,4 +45,4 @@ internal class NetworkExecutorImpl : NetworkExecutor {
 private const val HEADER_ACCESS_TOKEN: String = "X-Access-Token"
 
 // TODO: Replace with your Golemio API key.
-private const val GOLEMIO_API_KEY: String = "<GOLEMIO_API_KEY>"
+private const val GOLEMIO_API_KEY: String = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MzYyMywiaWF0IjoxNzQ4MzQ0MDEwLCJleHAiOjExNzQ4MzQ0MDEwLCJpc3MiOiJnb2xlbWlvIiwianRpIjoiNzRlOGZhYTMtYTc2NS00YmVkLTllYTEtZjY2ZThjYmJjZDQxIn0.83RAZ3hytkwkfAewkF4OiX_W5KFyfwnL5GylipGhLVQ"
