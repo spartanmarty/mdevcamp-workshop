@@ -23,7 +23,21 @@ struct ParkingDetail: View {
 
 			ProhibitionRow(items: model.prohibitions)
 
-			// TODO - Button - Add to favorites / Remove from favorites
+			Button(
+				action: { closure(model) },
+				label: {
+					Text(model.isFavorite ? "favorites_remove" : "favorites_add")
+						.font(.callout)
+						.fontWeight(.regular)
+						.padding(.vertical, 16)
+						.frame(maxWidth: .infinity)
+						.background(Color("primary"))
+						.cornerRadius(24)
+				}
+			)
+			.buttonStyle(.plain)
+			.padding(.vertical, 16)
+			.padding(.horizontal, 24)
 		}
 		.padding(.horizontal, 16)
 		.frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
