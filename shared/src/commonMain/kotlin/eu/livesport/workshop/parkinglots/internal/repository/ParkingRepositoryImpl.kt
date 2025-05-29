@@ -8,9 +8,7 @@ import eu.livesport.workshop.parkinglots.repository.ParkingRepository
 import eu.livesport.workshop.parkinglots.repository.model.ParkingLot
 import eu.livesport.workshop.parkinglots.repository.model.ParkingPolicyFilter
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.combine
-import kotlinx.coroutines.flow.flow
-import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
 
@@ -22,24 +20,8 @@ internal class ParkingRepositoryImpl(
     private val detailCache: MutableMap<String, ParkingLotApiModel> = mutableMapOf()
     private val detailCacheMutex: Mutex = Mutex()
 
-    override suspend fun getParkingLots(filter: ParkingPolicyFilter): Flow<List<ParkingLot>> {
-        val parkingLotsFlow = flow {
-            emit(dataSource.getParkingLots(filter).map { it.toParkingLot() })
-        }
-
-        val favoritesFlow = favoriteParkingLotsDao.getAll()
-            .map { favoriteEntities -> favoriteEntities.map { it.id }.toSet() }
-
-        return parkingLotsFlow.combine(favoritesFlow) { parkingLots, favoriteIds ->
-            parkingLots.map { lot ->
-                if (lot.id in favoriteIds) {
-                    lot.copy(isFavorite = true)
-                } else {
-                    lot
-                }
-            }
-        }
-    }
+    override suspend fun getParkingLots(filter: ParkingPolicyFilter): Flow<List<ParkingLot>> =
+        flowOf(dataSource.getParkingLots(filter).map { it.toParkingLot() })
 
     override suspend fun getParkingLotDetail(id: String): ParkingLot? {
         suspend fun result(): ParkingLot {
