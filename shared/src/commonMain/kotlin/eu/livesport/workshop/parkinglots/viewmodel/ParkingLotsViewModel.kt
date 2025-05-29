@@ -62,7 +62,7 @@ public class ParkingLotsViewModel(
         selectedFilter = filters
     }
 
-    public class Factory() : ViewModelProvider.Factory {
+    public class Factory : ViewModelProvider.Factory {
 
         override fun <T : ViewModel> create(modelClass: KClass<T>, extras: CreationExtras): T =
             ParkingLotsViewModel(

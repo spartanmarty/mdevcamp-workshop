@@ -12,7 +12,7 @@ final class ParkingListViewModel: ObservableObject {
 	init() {
 		self.viewModel = ParkingLotsViewModel(
 			savedStateHandle: .init(initialState: [:]),
-			repository: KoinHelper.shared.getParkingRepository()
+			repository: ParkingRepositoryCompanion.shared.INSTANCE
 		)
 		Task {
 			try await viewModel.state.collect(

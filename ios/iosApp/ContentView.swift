@@ -8,7 +8,7 @@ struct ContentView: View {
 
 	enum Tab {
 		case home
-		case favorites
+//		case favorites
 	}
 
 	@State
@@ -30,7 +30,7 @@ struct ContentView: View {
 	private var bottomBar: some View {
 		HStack(spacing: 16) {
 			BottomTabItem(tabType: .home, selectedTab: selectedTab) { selectedTab = $0 }
-			BottomTabItem(tabType: .favorites, selectedTab: selectedTab) { selectedTab = $0 }
+//			BottomTabItem(tabType: .favorites, selectedTab: selectedTab) { selectedTab = $0 }
 		}
 	}
 
@@ -50,9 +50,6 @@ struct ContentView: View {
 		switch selectedTab {
 		case .home:
 			ParkingListView { path.append(Route.parkingDetail(id: $0)) }
-
-		case .favorites:
-			FavoritesView { path.append(Route.parkingDetail(id: $0)) }
 		}
 	}
 

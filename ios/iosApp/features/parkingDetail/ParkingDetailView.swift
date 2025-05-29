@@ -1,10 +1,8 @@
-import SwiftUI
 import Shared
+import SwiftUI
 
 struct ParkingDetailView: View {
 
-	@StateObject
-	private var viewModel = ParkingDetailViewModel()
 	private let parkId: String
 
 	init(parkId: String) {
@@ -12,17 +10,17 @@ struct ParkingDetailView: View {
 	}
 
 	var body: some View {
-		viewModel.viewState.content { parkingLots in
-			Group {
-				if let model = parkingLots.first {
-					ParkingDetail(model: model) { parkingLot in
-						viewModel.toggleFavorite(parkingLot)
-					}
-				} else {
-					EmptyView()
-				}
-			}
+		ParkingDetail(
+			model: .init(
+				id: "id",
+				name: "parking_lot",
+				address: "address",
+				capacity: 42,
+				covered: false,
+				isFavorite: false,
+				prohibitions: [.bicycle, .bus]
+			)
+		) { _ in
 		}
-		.task { await viewModel.fetchData(parkId: parkId) }
-    }
+	}
 }

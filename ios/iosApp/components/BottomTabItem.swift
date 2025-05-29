@@ -17,9 +17,9 @@ struct BottomTabItem: View {
 			self.iconName = "icon_parking"
 
 
-		case .favorites:
-			self.title = "label_favorites"
-			self.iconName = "icon_favorites"
+//		case .favorites:
+//			self.title = "label_favorites"
+//			self.iconName = "icon_favorites"
 		}
 		
 		self.isSelected = selectedTab == tabType
