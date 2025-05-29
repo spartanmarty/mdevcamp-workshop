@@ -39,5 +39,37 @@ fun ParkingTypeFilterBar(
 
 @Composable
 private fun FilterChip(selected: Boolean, filter: ParkingPolicyFilter, onClick: () -> Unit) {
-    Text(text = "filter")
+    androidx.compose.material3.FilterChip(
+        modifier = Modifier.height(55.dp),
+        selected = true,
+        onClick = onClick,
+        label = {
+            Text(
+                text = getChipLabel(filter),
+                fontWeight = if (selected) FontWeight.Bold else FontWeight.Normal,
+                fontSize = 18.sp,
+                color = Color.Black
+            )
+        },
+        shape = RoundedCornerShape(40.dp),
+        colors = FilterChipDefaults.filterChipColors(
+            selectedContainerColor = MaterialTheme.colorScheme.primary,
+            selectedLabelColor = Color.Black,
+            containerColor = MaterialTheme.colorScheme.surfaceVariant,
+            labelColor = Color.Black
+        ),
+    )
+}
+
+@Composable
+private fun getChipLabel(filter: ParkingPolicyFilter): String {
+    return when (filter) {
+        ParkingPolicyFilter.NO_FILTER -> stringResource(id = R.string.parking_filter_no_filter)
+        ParkingPolicyFilter.COMMERCIAL -> stringResource(id = R.string.parking_filter_commercial)
+        ParkingPolicyFilter.CUSTOMER_ONLY -> stringResource(id = R.string.parking_filter_customer_only)
+        ParkingPolicyFilter.PARK_AND_RIDE -> stringResource(id = R.string.parking_filter_park_and_ride)
+        ParkingPolicyFilter.KISS_AND_RIDE -> stringResource(id = R.string.parking_filter_kiss_and_ride)
+        ParkingPolicyFilter.PARK_SHARING -> stringResource(id = R.string.parking_filter_park_sharing)
+        ParkingPolicyFilter.ZONE -> stringResource(id = R.string.parking_filter_zone)
+    }
 }
