@@ -112,6 +112,7 @@ private fun DetailContent(
     }
 }
 
+// TODO: Show specific icon for prohibition type using `ProhibitionIconResolver`.
 @Composable
 private fun ProhibitionIcon() {
     Box(
