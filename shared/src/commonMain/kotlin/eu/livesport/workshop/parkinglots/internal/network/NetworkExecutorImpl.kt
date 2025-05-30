@@ -45,4 +45,5 @@ internal class NetworkExecutorImpl : NetworkExecutor {
 private const val HEADER_ACCESS_TOKEN: String = "X-Access-Token"
 
 // TODO: Replace with your Golemio API key.
+// Keep it for yourself. You can move it to a different file and keep it untracked in GIT.
 private const val GOLEMIO_API_KEY: String = "<GOLEMIO_API_KEY>"
