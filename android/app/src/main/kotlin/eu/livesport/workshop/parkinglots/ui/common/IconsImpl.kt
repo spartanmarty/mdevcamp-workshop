@@ -1,14 +1,13 @@
 package eu.livesport.workshop.parkinglots.ui.common
 
-import eu.livesport.workshop.parkinglots.R
 import eu.livesport.workshop.parkinglots.ui.Icons
 import eu.livesport.workshop.parkinglots.ui.resources.DrawableRes
 
 class IconsImpl : Icons {
-    override val lpgCng: DrawableRes = R.drawable.icon_lpg
-    override val bus: DrawableRes = R.drawable.icon_bus
-    override val truck: DrawableRes = R.drawable.icon_truck
-    override val motorcycle: DrawableRes = R.drawable.icon_motorcycle
-    override val bicycle: DrawableRes = R.drawable.icon_bike
-    override val trailer: DrawableRes = R.drawable.icon_trailer
+    override val lpgCng: DrawableRes = TODO("Not implemented.")
+    override val bus: DrawableRes = TODO("Not implemented.")
+    override val truck: DrawableRes = TODO("Not implemented.")
+    override val motorcycle: DrawableRes = TODO("Not implemented.")
+    override val bicycle: DrawableRes = TODO("Not implemented.")
+    override val trailer: DrawableRes = TODO("Not implemented.")
 }
