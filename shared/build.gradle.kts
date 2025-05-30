@@ -8,6 +8,7 @@ plugins {
     alias(libs.plugins.ksp)
     alias(libs.plugins.room.plugin)
     alias(libs.plugins.testing.mokkery)
+    alias(libs.plugins.skie)
 }
 
 kotlin {
@@ -26,6 +27,7 @@ kotlin {
             baseName = "Shared"
             isStatic = true
             linkerOpts.add("-lsqlite3")
+            export(libs.androidx.lifecycle.viewmodel)
         }
     }
 
@@ -51,6 +53,7 @@ kotlin {
 
         iosMain.dependencies {
             implementation(libs.ktor.client.darwin)
+            api(libs.androidx.lifecycle.viewmodel)
         }
 
         commonTest.dependencies {
@@ -76,6 +79,12 @@ android {
 
 room {
     schemaDirectory("$projectDir/schemas")
+}
+
+skie {
+    features {
+        enableSwiftUIObservingPreview = true
+    }
 }
 
 dependencies {

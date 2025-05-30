@@ -1,5 +1,5 @@
 [versions]
-agp = "8.6.1"
+agp = "8.8.2"
 android-compileSdk = "35"
 android-minSdk = "24"
 android-targetSdk = "35"
@@ -22,6 +22,7 @@ sqlite = "2.5.1"
 testing-androidx-test-junit = "1.2.1"
 testing-junit = "4.13.2"
 testing-mokkery = "2.7.2"
+skie = "0.10.2"
 
 [libraries]
 androidx-activity-compose = { module = "androidx.activity:activity-compose", version.ref = "androidx-activityCompose" }
@@ -29,6 +30,7 @@ androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version
 androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "androidx-constraintlayout" }
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "androidx-core-ktx" }
 androidx-lifecycle-common = { group = "androidx.lifecycle", name = "lifecycle-common", version.ref = "androidx-lifecycle" }
+androidx-lifecycle-viewmodel = { module = "androidx.lifecycle:lifecycle-viewmodel", version.ref = "androidx-lifecycle" }
 androidx-lifecycle-viewmodel-savedstate = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-savedstate", version.ref = "androidx-lifecycle" }
 androidx-material = { group = "com.google.android.material", name = "material", version.ref = "androidx-material" }
 compose-bom = { module = "androidx.compose:compose-bom", version.ref = "compose-bom" }
@@ -66,4 +68,4 @@ kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", versi
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 room-plugin = { id = "androidx.room", version.ref = "room" }
 testing-mokkery = { id = "dev.mokkery", version.ref = "testing-mokkery" }
-
+skie = { id = "co.touchlab.skie", version.ref = "skie" }

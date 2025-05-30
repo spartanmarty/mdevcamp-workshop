@@ -18,7 +18,7 @@ import eu.livesport.workshop.parkinglots.ui.common.Error
 import eu.livesport.workshop.parkinglots.ui.common.Loading
 import eu.livesport.workshop.parkinglots.ui.common.ParkingItemsList
 import eu.livesport.workshop.parkinglots.viewmodel.FavoritesViewModel
-import eu.livesport.workshop.parkinglots.viewmodel.State
+import eu.livesport.workshop.parkinglots.viewmodel.ParkingLotsState
 import org.koin.mp.KoinPlatform
 
 @Composable
@@ -30,7 +30,7 @@ fun FavoritesScreen(
         viewModel.loadFavoriteParkingLots()
     }
 
-    val state: State by viewModel.state.collectAsStateWithLifecycle()
+    val state: ParkingLotsState by viewModel.state.collectAsStateWithLifecycle()
     Column {
         Text(
             modifier = Modifier.padding(start = 12.dp, end = 12.dp, top = 16.dp),
@@ -39,17 +39,17 @@ fun FavoritesScreen(
             fontWeight = FontWeight.Bold,
         )
         when (state) {
-            is State.Loading -> Loading()
+            is ParkingLotsState.Loading -> Loading()
 
-            is State.Data -> {
-                val items = (state as State.Data).parkingLots
+            is ParkingLotsState.Data -> {
+                val items = (state as ParkingLotsState.Data).parkingLots
                 ParkingItemsList(
                     items = items,
                     onItemClick = { onItemClick(it.id) }
                 )
             }
 
-            is State.Error -> Error(state = state as State.Error)
+            is ParkingLotsState.Error -> Error(state = state as ParkingLotsState.Error)
         }
     }
 }
