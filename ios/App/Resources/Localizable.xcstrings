@@ -169,17 +169,6 @@
         }
       }
     },
-    "Loading..." : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Loading…"
-          }
-        }
-      }
-    },
     "parking_filter_commercial" : {
       "extractionState" : "manual",
       "localizations" : {
