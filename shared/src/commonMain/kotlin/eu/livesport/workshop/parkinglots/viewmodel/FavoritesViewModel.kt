@@ -15,22 +15,22 @@ public class FavoritesViewModel(
     private val favoriteParkingRepository: FavoriteParkingRepository,
 ) : ViewModel() {
 
-    private val _state: MutableStateFlow<State> = MutableStateFlow(State.Loading)
-    public val state: StateFlow<State> = _state.asStateFlow()
+    private val _state: MutableStateFlow<ParkingLotsState> = MutableStateFlow(ParkingLotsState.Loading)
+    public val state: StateFlow<ParkingLotsState> = _state.asStateFlow()
 
     public fun loadFavoriteParkingLots() {
-        if (_state.value is State.Data) {
+        if (_state.value is ParkingLotsState.Data) {
             return
         }
 
-        _state.value = State.Loading
+        _state.value = ParkingLotsState.Loading
         viewModelScope.launch {
             favoriteParkingRepository.getFavoriteParkingLots().collect { parkingLots ->
                 if (parkingLots.isEmpty()) {
-                    _state.value = State.Error(type = State.Error.Type.NO_DATA_FOUND)
+                    _state.value = ParkingLotsState.Error(type = ParkingLotsState.Error.Type.NO_DATA_FOUND)
                     return@collect
                 }
-                _state.value = State.Data(parkingLots = parkingLots)
+                _state.value = ParkingLotsState.Data(parkingLots = parkingLots)
             }
         }
     }
