@@ -7,7 +7,10 @@ struct iOSApp: App {
 	init() {
 		KoinKt.doInitKoin(
 			platformModules: [
-				ApplicationModule.shared.createKoinModule(buildConfigProvider: { DefaultBuildConfigProvider() }),
+				ApplicationModule.shared.createKoinModule(
+					buildConfigProvider: { DefaultBuildConfigProvider() },
+					icons: { DefaultIcons() }
+				),
 			],
 			appDeclaration: { _ in }
 		)

@@ -5,6 +5,8 @@ struct ProhibitionRow: View {
 
 	let items: [ParkingProhibitions]
 
+	private var iconsResolver: ProhibitionIconResolver = inject()
+
 	var body: some View {
 		VStack(alignment: .leading, spacing: 16) {
 			Text(L10n.label_prohibitions)
@@ -19,28 +21,14 @@ struct ProhibitionRow: View {
 		.frame(maxWidth: .infinity, alignment: .leading)
 	}
 
+	init(items: [ParkingProhibitions]) {
+		self.items = items
+	}
+
 	@ViewBuilder
 	private func prohibitionItem(_ item: ParkingProhibitions) -> some View {
-		let resource: ImageResource = switch item {
-		case .bicycle:
-			.iconBike
-
-		case .bus:
-			.iconBus
-
-		case .lpgCng:
-			.iconLpg
-
-		case .motorcycle:
-			.iconMotocycle
-
-		case .trailer:
-			.iconTrailer
-
-		case .truck:
-			.iconTruck
-		}
-		Image(resource)
+		let icon = iconsResolver.resolveIcon(prohibition: item)
+		Image(uiImage: icon)
 			.resizable()
 			.frame(width: 32, height: 32)
 			.padding(8)

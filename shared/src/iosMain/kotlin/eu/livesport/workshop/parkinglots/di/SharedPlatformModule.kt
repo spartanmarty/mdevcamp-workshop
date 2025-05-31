@@ -5,7 +5,6 @@ import eu.livesport.workshop.parkinglots.Platform
 import eu.livesport.workshop.parkinglots.viewmodel.FavoritesViewModel
 import eu.livesport.workshop.parkinglots.viewmodel.ParkingLotDetailViewModel
 import eu.livesport.workshop.parkinglots.viewmodel.ParkingLotsViewModel
-import org.koin.core.module.factory
 import org.koin.dsl.module
 
 internal actual val sharedPlatformModule = module {
