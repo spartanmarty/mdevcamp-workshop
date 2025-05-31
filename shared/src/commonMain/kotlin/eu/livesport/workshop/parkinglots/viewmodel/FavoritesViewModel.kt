@@ -13,8 +13,8 @@ public class FavoritesViewModel(
     private val favoriteParkingRepository: FavoriteParkingRepository,
 ) : ViewModel() {
 
-    private val _state: MutableStateFlow<State> = MutableStateFlow(State.Error(type = State.Error.Type.NO_DATA_FOUND))
-    public val state: StateFlow<State> = _state.asStateFlow()
+    private val _state: MutableStateFlow<ParkingLotsState> = MutableStateFlow(ParkingLotsState.Error(type = ParkingLotsState.Error.Type.NO_DATA_FOUND))
+    public val state: StateFlow<ParkingLotsState> = _state.asStateFlow()
 
     public fun loadFavoriteParkingLots(): Unit = Unit // TODO: Implement.
 

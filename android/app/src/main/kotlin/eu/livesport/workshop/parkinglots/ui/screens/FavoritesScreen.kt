@@ -34,7 +34,7 @@ fun FavoritesScreen(
             fontWeight = FontWeight.Bold,
         )
 
-        Error(state = State.Error(type = State.Error.Type.NO_DATA_FOUND))
+        Error(state = ParkingLotsState.Error(type = ParkingLotsState.Error.Type.NO_DATA_FOUND))
     }
 }
 
