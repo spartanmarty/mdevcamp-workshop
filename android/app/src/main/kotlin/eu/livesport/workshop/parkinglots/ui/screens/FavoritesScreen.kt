@@ -14,7 +14,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import eu.livesport.workshop.parkinglots.R
 import eu.livesport.workshop.parkinglots.ui.common.Error
 import eu.livesport.workshop.parkinglots.viewmodel.FavoritesViewModel
-import eu.livesport.workshop.parkinglots.viewmodel.State
+import eu.livesport.workshop.parkinglots.viewmodel.ParkingLotsState
 import org.koin.mp.KoinPlatform
 
 @Composable

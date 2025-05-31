@@ -38,24 +38,24 @@ public class ParkingLotDetailViewModel(
     private val parkingLotIdState: MutableStateFlow<String> = MutableStateFlow(parkingLotId)
     private val favoriteToggleTrigger: MutableSharedFlow<Unit> = MutableSharedFlow(replay = 1)
 
-    public val state: StateFlow<State> =
+    public val state: StateFlow<ParkingLotsState> =
         parkingLotIdState.flatMapLatest { id ->
             if (id.isEmpty()) {
-                flowOf<State>(State.Loading)
+                flowOf<ParkingLotsState>(ParkingLotsState.Loading)
             } else {
                 favoriteToggleTrigger.transformLatest {
                     val detail = repository.getParkingLotDetail(id)
                     if (detail == null) {
-                        emit(State.Error(type = State.Error.Type.NO_DATA_FOUND))
+                        emit(ParkingLotsState.Error(type = ParkingLotsState.Error.Type.NO_DATA_FOUND))
                     } else {
-                        emit(State.Data(parkingLots = listOf(detail)))
+                        emit(ParkingLotsState.Data(parkingLots = listOf(detail)))
                     }
                 }
             }
         }.stateIn(
             scope = viewModelScope,
             started = SharingStarted.WhileSubscribed(5_000),
-            initialValue = State.Loading,
+            initialValue = ParkingLotsState.Loading,
         )
 
     public fun loadParkingLotDetail(id: String) {

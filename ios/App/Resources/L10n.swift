@@ -1,0 +1,27 @@
+import SwiftUI
+
+enum L10n {
+	static let appName: LocalizedStringKey = "app_name"
+	static let covered_no: LocalizedStringKey = "covered_no"
+	static let covered_yes: LocalizedStringKey = "covered_yes"
+	static let error_message_network: LocalizedStringKey = "error_message_network"
+	static let error_message_no_data: LocalizedStringKey = "error_message_no_data"
+	static let favorites_add: LocalizedStringKey = "favorites_add"
+	static let favorites_remove: LocalizedStringKey = "favorites_remove"
+	static let label_address: LocalizedStringKey = "label_address"
+	static let label_capacity: LocalizedStringKey = "label_capacity"
+	static let label_covered: LocalizedStringKey = "label_covered"
+	static let label_favorites: LocalizedStringKey = "label_favorites"
+	static let label_loading: LocalizedStringKey = "label_loading"
+	static let label_no_favorites: LocalizedStringKey = "label_favorites"
+	static let label_parking_lots: LocalizedStringKey = "label_parking_lots"
+	static let label_prohibitions: LocalizedStringKey = "label_prohibitions"
+	static let parking_filter_commercial: LocalizedStringKey = "parking_filter_commercial"
+	static let parking_filter_customer_only: LocalizedStringKey = "parking_filter_customer_only"
+	static let parking_filter_kiss_and_ride: LocalizedStringKey = "parking_filter_kiss_and_ride"
+	static let parking_filter_no_filter: LocalizedStringKey = "parking_filter_no_filter"
+	static let parking_filter_park_and_ride: LocalizedStringKey = "parking_filter_park_and_ride"
+	static let parking_filter_park_sharing: LocalizedStringKey = "parking_filter_park_sharing"
+	static let parking_filter_zone: LocalizedStringKey = "parking_filter_zone"
+	static let value_unknown: LocalizedStringKey = "value_unknown"
+}
