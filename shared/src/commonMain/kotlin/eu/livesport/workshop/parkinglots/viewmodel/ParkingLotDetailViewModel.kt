@@ -23,9 +23,9 @@ public class ParkingLotDetailViewModel(
             savedStateHandle[SAVED_KEY_PARKING_LOT_ID] = value
         }
 
-    public val state: StateFlow<State> =
+    public val state: StateFlow<ParkingLotsState> =
         MutableStateFlow(
-            State.Data(
+            ParkingLotsState.Data(
                 listOf(
                     ParkingLot(
                         id = "123",

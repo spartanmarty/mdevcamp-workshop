@@ -19,11 +19,11 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import eu.livesport.workshop.parkinglots.R
-import eu.livesport.workshop.parkinglots.viewmodel.State
+import eu.livesport.workshop.parkinglots.viewmodel.ParkingLotsState
 
 @Composable
 fun Error(
-    state: State.Error,
+    state: ParkingLotsState.Error,
     modifier: Modifier = Modifier,
     style: TextStyle = MaterialTheme.typography.bodySmall,
 ) {
@@ -43,9 +43,9 @@ fun Error(
         Spacer(Modifier.height(16.dp))
 
         val errorMessageId: Int = when (state.type) {
-            State.Error.Type.NO_DATA_FOUND -> R.string.error_message_no_data
-            State.Error.Type.NETWORK -> R.string.error_message_network
-            State.Error.Type.UNKNOWN -> R.string.value_unknown
+            ParkingLotsState.Error.Type.NO_DATA_FOUND -> R.string.error_message_no_data
+            ParkingLotsState.Error.Type.NETWORK -> R.string.error_message_network
+            ParkingLotsState.Error.Type.UNKNOWN -> R.string.value_unknown
         }
 
         Text(

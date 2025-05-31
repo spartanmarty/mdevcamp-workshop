@@ -32,7 +32,7 @@ import eu.livesport.workshop.parkinglots.ui.common.Error
 import eu.livesport.workshop.parkinglots.ui.common.LabelValueText
 import eu.livesport.workshop.parkinglots.ui.common.Loading
 import eu.livesport.workshop.parkinglots.viewmodel.ParkingLotDetailViewModel
-import eu.livesport.workshop.parkinglots.viewmodel.State
+import eu.livesport.workshop.parkinglots.viewmodel.ParkingLotsState
 import org.koin.mp.KoinPlatform
 
 @Composable
@@ -44,22 +44,22 @@ fun ParkingLotDetailScreen(
         viewModel.loadParkingLotDetail(parkingLotId)
     }
 
-    val state: State by viewModel.state.collectAsStateWithLifecycle()
+    val state: ParkingLotsState by viewModel.state.collectAsStateWithLifecycle()
 
     when (state) {
-        is State.Loading -> Loading()
+        is ParkingLotsState.Loading -> Loading()
 
-        is State.Data ->
-            (state as State.Data).parkingLots
+        is ParkingLotsState.Data ->
+            (state as ParkingLotsState.Data).parkingLots
                 .firstOrNull()
                 ?.let { parkingLot ->
                     DetailContent(
                         parkingLot = parkingLot,
                     )
                 }
-                ?: Error(State.Error(State.Error.Type.NO_DATA_FOUND))
+                ?: Error(ParkingLotsState.Error(ParkingLotsState.Error.Type.NO_DATA_FOUND))
 
-        is State.Error -> Error(state as State.Error)
+        is ParkingLotsState.Error -> Error(state as ParkingLotsState.Error)
     }
 }
 

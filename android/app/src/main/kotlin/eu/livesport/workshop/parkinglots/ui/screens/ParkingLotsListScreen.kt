@@ -14,7 +14,7 @@ import eu.livesport.workshop.parkinglots.ui.common.Loading
 import eu.livesport.workshop.parkinglots.ui.common.ParkingItemsList
 import eu.livesport.workshop.parkinglots.ui.components.ParkingTypeFilterBar
 import eu.livesport.workshop.parkinglots.viewmodel.ParkingLotsViewModel
-import eu.livesport.workshop.parkinglots.viewmodel.State
+import eu.livesport.workshop.parkinglots.viewmodel.ParkingLotsState
 import org.koin.mp.KoinPlatform
 
 @Composable
@@ -25,10 +25,10 @@ fun ParkingLotsListScreen(
     val selectedFilter = rememberSaveable { mutableStateOf(ParkingPolicyFilter.NO_FILTER) }
 
     LaunchedEffect(selectedFilter.value) {
-        viewModel.loadParkingLots(selectedFilter.value)
+        viewModel.onFilterChange(selectedFilter.value)
     }
 
-    val state: State by viewModel.state.collectAsStateWithLifecycle()
+    val state: ParkingLotsState by viewModel.state.collectAsStateWithLifecycle()
 
     Column {
         ParkingTypeFilterBar(
@@ -38,15 +38,15 @@ fun ParkingLotsListScreen(
         )
 
         when (state) {
-            is State.Loading -> Loading()
+            is ParkingLotsState.Loading -> Loading()
 
-            is State.Data ->
+            is ParkingLotsState.Data ->
                 ParkingItemsList(
-                    items = (state as State.Data).parkingLots,
+                    items = (state as ParkingLotsState.Data).parkingLots,
                     onItemClick = { onItemClick(it.id) }
                 )
 
-            is State.Error -> Error(state = state as State.Error)
+            is ParkingLotsState.Error -> Error(state = state as ParkingLotsState.Error)
         }
     }
 }
