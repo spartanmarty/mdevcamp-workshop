@@ -6,6 +6,7 @@ plugins {
     alias(libs.plugins.kotlin.multiplatform)
     alias(libs.plugins.kotlin.serialization)
     alias(libs.plugins.testing.mokkery)
+    alias(libs.plugins.skie)
 }
 
 kotlin {
@@ -23,6 +24,7 @@ kotlin {
         iosTarget.binaries.framework {
             baseName = "Shared"
             isStatic = true
+            export(libs.androidx.lifecycle.viewmodel)
         }
     }
 
@@ -46,6 +48,7 @@ kotlin {
 
         iosMain.dependencies {
             implementation(libs.ktor.client.darwin)
+            api(libs.androidx.lifecycle.viewmodel)
         }
 
         commonTest.dependencies {
@@ -66,5 +69,11 @@ android {
     }
     defaultConfig {
         minSdk = libs.versions.android.minSdk.get().toInt()
+    }
+}
+
+skie {
+    features {
+        enableSwiftUIObservingPreview = true
     }
 }

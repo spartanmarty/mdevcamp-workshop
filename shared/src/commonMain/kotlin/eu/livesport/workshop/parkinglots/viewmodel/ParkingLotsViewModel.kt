@@ -35,19 +35,19 @@ public class ParkingLotsViewModel(
 
     private val selectedFilterState: MutableStateFlow<ParkingPolicyFilter> = MutableStateFlow(selectedFilter)
 
-    public val state: StateFlow<State> =
+    public val state: StateFlow<ParkingLotsState> =
         selectedFilterState
             .distinctUntilChangedBy { it }
             .flatMapLatest { filter ->
                 flow {
-                    emit(State.Loading)
+                    emit(ParkingLotsState.Loading)
                     emitAll(
                         repository.getParkingLots(filter)
                             .map { parkingLots ->
                                 if (parkingLots.isEmpty()) {
-                                    return@map State.Error(type = State.Error.Type.NO_DATA_FOUND)
+                                    return@map ParkingLotsState.Error(type = ParkingLotsState.Error.Type.NO_DATA_FOUND)
                                 }
-                                State.Data(parkingLots = parkingLots)
+                                ParkingLotsState.Data(parkingLots = parkingLots)
                             }
                     )
                 }
@@ -55,11 +55,11 @@ public class ParkingLotsViewModel(
             .stateIn(
                 scope = viewModelScope,
                 started = SharingStarted.Lazily,
-                initialValue = State.Loading,
+                initialValue = ParkingLotsState.Loading,
             )
 
-    public fun loadParkingLots(filters: ParkingPolicyFilter) {
-        selectedFilter = filters
+    public fun onFilterChange(filter: ParkingPolicyFilter) {
+        selectedFilter = filter
     }
 
     public class Factory : ViewModelProvider.Factory {
