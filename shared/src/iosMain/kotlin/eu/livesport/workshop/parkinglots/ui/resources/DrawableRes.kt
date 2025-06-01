@@ -1,5 +1,5 @@
 package eu.livesport.workshop.parkinglots.ui.resources
 
-import platform.UIKit.UIImageAsset
+import platform.UIKit.UIImage
 
-public actual typealias DrawableRes = UIImageAsset
+public actual typealias DrawableRes = UIImage

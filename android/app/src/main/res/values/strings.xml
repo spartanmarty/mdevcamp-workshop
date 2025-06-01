@@ -5,9 +5,14 @@
     <string name="label_address">Address:</string>
     <string name="label_covered">Covered:</string>
     <string name="label_prohibitions">Prohibitions:</string>
+    <string name="label_favorites">Favorites</string>
     <string name="label_parking_lots">Parking Lots</string>
     <string name="covered_yes">Yes</string>
     <string name="covered_no">No</string>
+
+    <string name="favorites_add">Add to Favorites</string>
+    <string name="favorites_remove">Remove from Favorites</string>
+    <string name="label_no_favorites">There are no favorite Parking Lots, you need to add them in Parking Lot Detail.</string>
 
     <!-- Errors -->
     <string name="error_message_no_data">No data found.</string>

@@ -16,6 +16,7 @@ import androidx.navigation.NavDestination.Companion.hasRoute
 import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.navigation.compose.currentBackStackEntryAsState
 import eu.livesport.workshop.parkinglots.R
+import eu.livesport.workshop.parkinglots.navigation.destination.Favorites
 import eu.livesport.workshop.parkinglots.navigation.destination.ParkingLotsList
 
 @Composable
@@ -55,6 +56,11 @@ private fun navBarItems(): List<NavBarItem> {
             icon = R.drawable.icon_parking,
             label = stringResource(R.string.label_parking_lots)
         ),
+        NavBarItem(
+            route = Favorites,
+            icon = R.drawable.icon_favorites,
+            label = stringResource(R.string.label_favorites)
+        )
     )
 }
 

@@ -3,8 +3,7 @@ import Shared
 
 public final class DefaultBuildConfigProvider: BuildConfigProvider {
 
-	#warning("TODO: Change to false to use real networking")
-	public var isDebug: Bool = true
+	public var isDebug: Bool = true // set to false to use real networking
 	public var isDevBuild: Bool { isDebug }
 
 	/* example how it can be in real application

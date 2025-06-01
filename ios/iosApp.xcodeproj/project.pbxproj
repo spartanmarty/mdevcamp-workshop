@@ -15,6 +15,7 @@
 		482F65702DEA577C0020A8F5 /* ParkingPolicyFilter+TabItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482F656F2DEA57750020A8F5 /* ParkingPolicyFilter+TabItem.swift */; };
 		482F65722DEA583B0020A8F5 /* Loading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482F65712DEA58380020A8F5 /* Loading.swift */; };
 		482F65742DEA586E0020A8F5 /* ErrorMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482F65732DEA58640020A8F5 /* ErrorMessage.swift */; };
+		482F65762DEB8D580020A8F5 /* DefaultIcons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482F65752DEB8D550020A8F5 /* DefaultIcons.swift */; };
 		48663B332DE9019900AAC1EC /* KoinInjector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48663B322DE9019600AAC1EC /* KoinInjector.swift */; };
 		486B67FA2DE872A30034B238 /* L10n.swift in Sources */ = {isa = PBXBuildFile; fileRef = 486B67F92DE8726C0034B238 /* L10n.swift */; };
 		7C2F02622DE71AF000E556D0 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 7C2F02612DE71AF000E556D0 /* Localizable.xcstrings */; };
@@ -22,6 +23,7 @@
 		7C2F026F2DE7599D00E556D0 /* InfoSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C2F026E2DE7599600E556D0 /* InfoSection.swift */; };
 		7C35D2512DD761D7007B26FB /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C35D2502DD761D7007B26FB /* ContentView.swift */; };
 		7C35D2572DD76868007B26FB /* TabRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C35D2562DD76868007B26FB /* TabRow.swift */; };
+		7C35D25B2DD772FD007B26FB /* Favorites.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C35D25A2DD772F8007B26FB /* Favorites.swift */; };
 		7CBEF7272DDB4ABA00CCE95F /* ParkingList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CBEF7262DDB4ABA00CCE95F /* ParkingList.swift */; };
 		7CCAB8EB2DD4D772006454D7 /* ParkingDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CCAB8EA2DD4D772006454D7 /* ParkingDetail.swift */; };
 		7CF0290C2DE6077C0074939A /* DefaultBuildConfigProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF0290B2DE6077C0074939A /* DefaultBuildConfigProvider.swift */; };
@@ -37,6 +39,7 @@
 		482F656F2DEA57750020A8F5 /* ParkingPolicyFilter+TabItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ParkingPolicyFilter+TabItem.swift"; sourceTree = "<group>"; };
 		482F65712DEA58380020A8F5 /* Loading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loading.swift; sourceTree = "<group>"; };
 		482F65732DEA58640020A8F5 /* ErrorMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorMessage.swift; sourceTree = "<group>"; };
+		482F65752DEB8D550020A8F5 /* DefaultIcons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultIcons.swift; sourceTree = "<group>"; };
 		48663B322DE9019600AAC1EC /* KoinInjector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KoinInjector.swift; sourceTree = "<group>"; };
 		486B67F92DE8726C0034B238 /* L10n.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = L10n.swift; sourceTree = "<group>"; };
 		7555FF7B242A565900829871 /* ParkingLots.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ParkingLots.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -46,6 +49,7 @@
 		7C2F026E2DE7599600E556D0 /* InfoSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoSection.swift; sourceTree = "<group>"; };
 		7C35D2502DD761D7007B26FB /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		7C35D2562DD76868007B26FB /* TabRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabRow.swift; sourceTree = "<group>"; };
+		7C35D25A2DD772F8007B26FB /* Favorites.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Favorites.swift; sourceTree = "<group>"; };
 		7CBEF7262DDB4ABA00CCE95F /* ParkingList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkingList.swift; sourceTree = "<group>"; };
 		7CCAB8EA2DD4D772006454D7 /* ParkingDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkingDetail.swift; sourceTree = "<group>"; };
 		7CF0290B2DE6077C0074939A /* DefaultBuildConfigProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultBuildConfigProvider.swift; sourceTree = "<group>"; };
@@ -141,6 +145,7 @@
 			children = (
 				7CCAB8EA2DD4D772006454D7 /* ParkingDetail.swift */,
 				7CBEF7262DDB4ABA00CCE95F /* ParkingList.swift */,
+				7C35D25A2DD772F8007B26FB /* Favorites.swift */,
 			);
 			path = Features;
 			sourceTree = "<group>";
@@ -156,6 +161,7 @@
 		7CF029172DE6FB670074939A /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				482F65752DEB8D550020A8F5 /* DefaultIcons.swift */,
 				482F656F2DEA57750020A8F5 /* ParkingPolicyFilter+TabItem.swift */,
 				482F656B2DEA56FA0020A8F5 /* SharedViewModelStoreOwner.swift */,
 				48663B322DE9019600AAC1EC /* KoinInjector.swift */,
@@ -272,6 +278,7 @@
 			files = (
 				482F65702DEA577C0020A8F5 /* ParkingPolicyFilter+TabItem.swift in Sources */,
 				482F65742DEA586E0020A8F5 /* ErrorMessage.swift in Sources */,
+				482F65762DEB8D580020A8F5 /* DefaultIcons.swift in Sources */,
 				48663B332DE9019900AAC1EC /* KoinInjector.swift in Sources */,
 				2152FB042600AC8F00CF470E /* iOSApp.swift in Sources */,
 				7C2F026C2DE7574C00E556D0 /* ProhibitionRow.swift in Sources */,
@@ -284,6 +291,7 @@
 				482F656E2DEA573D0020A8F5 /* ParkingLotCard.swift in Sources */,
 				486B67FA2DE872A30034B238 /* L10n.swift in Sources */,
 				7C2F026F2DE7599D00E556D0 /* InfoSection.swift in Sources */,
+				7C35D25B2DD772FD007B26FB /* Favorites.swift in Sources */,
 				7CBEF7272DDB4ABA00CCE95F /* ParkingList.swift in Sources */,
 				7C35D2572DD76868007B26FB /* TabRow.swift in Sources */,
 			);

@@ -7,10 +7,12 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.Button
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -28,6 +30,8 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import eu.livesport.workshop.parkinglots.R
 import eu.livesport.workshop.parkinglots.repository.model.ParkingLot
+import eu.livesport.workshop.parkinglots.repository.model.ParkingProhibitions
+import eu.livesport.workshop.parkinglots.ui.ProhibitionIconResolver
 import eu.livesport.workshop.parkinglots.ui.common.Error
 import eu.livesport.workshop.parkinglots.ui.common.LabelValueText
 import eu.livesport.workshop.parkinglots.ui.common.Loading
@@ -55,6 +59,7 @@ fun ParkingLotDetailScreen(
                 ?.let { parkingLot ->
                     DetailContent(
                         parkingLot = parkingLot,
+                        onFavoriteToggle = { viewModel.toggleFavorite(parkingLot) },
                     )
                 }
                 ?: Error(ParkingLotsState.Error(ParkingLotsState.Error.Type.NO_DATA_FOUND))
@@ -66,6 +71,7 @@ fun ParkingLotDetailScreen(
 @Composable
 private fun DetailContent(
     parkingLot: ParkingLot,
+    onFavoriteToggle: (parkingLot: ParkingLot) -> Unit,
 ) {
     Column(
         modifier = Modifier
@@ -106,15 +112,33 @@ private fun DetailContent(
             horizontalArrangement = Arrangement.spacedBy(16.dp)
         ) {
             parkingLot.prohibitions.forEach {
-                ProhibitionIcon()
+                ProhibitionIcon(it)
             }
+        }
+
+        Button(
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(80.dp)
+                .padding(horizontal = 16.dp, vertical = 12.dp),
+            onClick = { onFavoriteToggle(parkingLot) },
+        ) {
+            Text(
+                text = if (parkingLot.isFavorite) {
+                    stringResource(R.string.favorites_remove)
+                } else {
+                    stringResource(R.string.favorites_add)
+                }
+            )
         }
     }
 }
 
-// TODO: Show specific icon for prohibition type using `ProhibitionIconResolver`.
 @Composable
-private fun ProhibitionIcon() {
+private fun ProhibitionIcon(
+    prohibition: ParkingProhibitions,
+    prohibitionIconResolver: ProhibitionIconResolver = KoinPlatform.getKoin().get()
+) {
     Box(
         modifier = Modifier
             .size(48.dp)
@@ -122,7 +146,7 @@ private fun ProhibitionIcon() {
         contentAlignment = Alignment.Center
     ) {
         Icon(
-            painter = painterResource(id = R.drawable.icon_warning),
+            painter = painterResource(id = prohibitionIconResolver.resolveIcon(prohibition)),
             contentDescription = "Prohibition",
             tint = Color(0xFF132925),
             modifier = Modifier.size(32.dp)

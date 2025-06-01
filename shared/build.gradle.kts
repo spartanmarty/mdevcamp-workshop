@@ -5,6 +5,8 @@ plugins {
 
     alias(libs.plugins.kotlin.multiplatform)
     alias(libs.plugins.kotlin.serialization)
+    alias(libs.plugins.ksp)
+    alias(libs.plugins.room.plugin)
     alias(libs.plugins.testing.mokkery)
     alias(libs.plugins.skie)
 }
@@ -24,6 +26,7 @@ kotlin {
         iosTarget.binaries.framework {
             baseName = "Shared"
             isStatic = true
+            linkerOpts.add("-lsqlite3")
             export(libs.androidx.lifecycle.viewmodel)
         }
     }
@@ -38,6 +41,8 @@ kotlin {
             implementation(libs.ktor.client.content.negotiation)
             implementation(libs.ktor.client.core)
             implementation(libs.ktor.serialization.kotlinx.json)
+            implementation(libs.room.runtime)
+            implementation(libs.sqlite.bundled)
         }
 
         androidMain.dependencies {
@@ -72,8 +77,16 @@ android {
     }
 }
 
+room {
+    schemaDirectory("$projectDir/schemas")
+}
+
 skie {
     features {
         enableSwiftUIObservingPreview = true
     }
+}
+
+dependencies {
+    ksp(libs.room.compiler)
 }

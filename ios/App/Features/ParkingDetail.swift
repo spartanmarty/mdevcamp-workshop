@@ -46,6 +46,23 @@ struct ParkingDetail: View {
 			if !model.prohibitions.isEmpty {
 				ProhibitionRow(items: model.prohibitions)
 			}
+
+			Button(
+				action: { viewModel.instance.toggleFavorite(parkingLot: model) },
+				label: {
+					Text(model.isFavorite ? L10n.favorites_remove : L10n.favorites_add)
+						.font(.callout)
+						.textCase(.uppercase)
+						.fontWeight(.bold)
+						.padding()
+						.frame(maxWidth: .infinity)
+						.background(Color(.accent))
+						.cornerRadius(24)
+				}
+			)
+			.buttonStyle(.plain)
+			.padding(.vertical, 16)
+			.padding(.horizontal, 24)
 		}
 		.padding(.horizontal, 16)
 		.frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)

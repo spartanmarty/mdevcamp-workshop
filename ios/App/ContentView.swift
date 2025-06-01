@@ -9,6 +9,12 @@ struct ContentView: View {
 					ParkingList()
 				}
 			}
+
+			Tab(L10n.label_favorites, image: "icon_favorites") {
+				NavigationStack {
+					Favorites()
+				}
+			}
 		}
 	}
 }
