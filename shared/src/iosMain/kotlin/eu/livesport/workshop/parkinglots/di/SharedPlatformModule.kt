@@ -2,7 +2,7 @@ package eu.livesport.workshop.parkinglots.di
 
 import androidx.lifecycle.SavedStateHandle
 import eu.livesport.workshop.parkinglots.Platform
-import eu.livesport.workshop.parkinglots.repository.ParkingRepository
+import eu.livesport.workshop.parkinglots.viewmodel.ParkingLotDetailViewModel
 import eu.livesport.workshop.parkinglots.viewmodel.ParkingLotsViewModel
 import org.koin.dsl.module
 
@@ -11,7 +11,12 @@ internal actual val sharedPlatformModule = module {
     factory {
         ParkingLotsViewModel(
             savedStateHandle = SavedStateHandle(emptyMap()),
-            repository = ParkingRepository.INSTANCE
+            repository = get()
+        )
+    }
+    factory {
+        ParkingLotDetailViewModel(
+            savedStateHandle = SavedStateHandle(emptyMap()),
         )
     }
 }

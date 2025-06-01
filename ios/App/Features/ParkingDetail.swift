@@ -3,6 +3,9 @@ import SwiftUI
 
 struct ParkingDetail: View {
 
+	@StateObject
+	private var viewModel: SharedViewModelStoreOwner<ParkingLotDetailViewModel> = .init()
+
 	private let parkingLotId: String
 
 	init(parkingLotId: String) {
@@ -10,7 +13,41 @@ struct ParkingDetail: View {
 	}
 
 	var body: some View {
-		#warning("TODO: Implement UI for detail")
-		EmptyView()
+		Observing(viewModel.instance.state) { state in
+			switch onEnum(of: state) {
+				case let .data(model):
+				if let parkingLot = model.parkingLots.first {
+					content(parkingLot)
+				}
+
+			case .loading:
+				Loading()
+
+			case let .error(error):
+				ErrorMessage(error: error)
+			}
+		}
+		.onAppear {
+			viewModel.instance.loadParkingLotDetail(id: parkingLotId)
+		}
+	}
+
+	@ViewBuilder
+	private func content(_ model: ParkingLot) -> some View {
+		VStack(spacing: 16) {
+			Text(model.name)
+				.font(.title)
+				.fontWeight(.bold)
+				.padding(8)
+
+			InfoSection(model: model, type: .detail)
+				.frame(maxWidth: .infinity, alignment: .leading)
+
+			if !model.prohibitions.isEmpty {
+				ProhibitionRow(items: model.prohibitions)
+			}
+		}
+		.padding(.horizontal, 16)
+		.frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
 	}
 }
