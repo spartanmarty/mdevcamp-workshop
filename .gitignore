@@ -1,0 +1,43 @@
+# General
+.gradle
+build
+*.log
+*.keystore
+.DS_Store
+
+# Local configuration file (sdk path, etc)
+local.properties
+
+# Android
+android/local.properties
+android/google-services.json
+android/app/build
+android/app/debug
+android/app/release
+
+# iOS
+ios/Pods
+ios/*.xcworkspace
+ios/*.xcodeproj/xcuserdata
+ios/*.xcodeproj/project.pbxproj
+ios/**/*.xcuserstate
+ios/GoogleService-Info.plist
+ios/DerivedData
+
+# IntelliJ/Android Studio
+.idea
+*.iml
+*.hprof
+
+# Kotlin
+.kotlin
+.kotlin_module
+
+# Dependency cache
+**/build/
+# Exclude 'build' directories in source sets, e.g. custom 'build' package with BuildConfigProvider inside.
+!**/src/**/build/
+**/out/
+**/.mf/
+**/.externalNativeBuild/
+**/CMakeLists.txt.user
